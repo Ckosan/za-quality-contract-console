@@ -1,0 +1,135 @@
+.credit-record {
+  .el-textarea.is-disabled .el-textarea__inner,
+  .el-input.is-disabled .el-input__inner {
+    background-color: #fff;
+    border-color: #e4e7ed;
+    color: #606266;
+    cursor: not-allowed;
+  }
+  .el-table-column--selection > .cell {
+    text-align: center;
+  }
+  .mt15 {
+    margin-top: 15px;
+  }
+  .button-box {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+  }
+  .dialog-table{
+    .cell{
+      padding: 5px 8px
+    }
+  }
+}
+table.table-info {
+  min-width: 50%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.table-mod {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.wp-100 {
+  boxs-sizing: border-box!important;
+  width: 100%!important;
+}
+.w-150 {
+  // width: 150px!important;
+  white-space: nowrap;
+}
+
+.search-container {
+  padding: 30px;
+}
+.app-container {
+  border-radius: 25px;
+  margin: 20px;
+  padding: 10px 50px;
+  background-color: #fff;
+}
+td {
+  display: table-cell;
+  vertical-align: inherit;
+}
+table {
+  border-collapse: separate;
+  border-spacing: 0px;
+}
+.table-mod.table-info tr td:nth-child(odd) {
+  background: #f5f5f557;
+  font-weight: 700;
+}
+.table-mod td {
+  color: #888;
+}
+.table-mod.table-info tr td {
+  padding: 15px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.tableHead {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.rowItem .el-form-item__label {
+  font-size: 15px;
+  font-weight: bold;
+
+}
+
+.el-dialog__body {
+  padding: 1px 10px;
+}
+
+.el-dialog__header {
+  padding: 10px;
+  text-align: left;
+  background-color: #CED8F6;
+}
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 18px;
+  font-weight: bold;
+  align: center;
+  color: #606266;
+}
+
+.el-table--border:after,
+.el-table--group:after,
+.el-table:before {
+  background-color: rgba(62, 78, 255, 0.29);
+}
+
+.el-table--border,
+.el-table--group {
+  border-color: rgba(62, 78, 255, 0.29);
+}
+
+.el-table td,
+.el-table th.is-leaf {
+  border-bottom: 1px solid rgba(62, 78, 255, 0.29);
+}
+
+.el-table--border th,
+.el-table--border th.gutter:last-of-type {
+  border-bottom: rgba(62, 78, 255, 0.29);
+}
+
+.el-table--border td,
+.el-table--border th {
+  border-right: 1px solid rgba(62, 78, 255, 0.29);
+}
+
+.el-button {
+  margin-right: -5px;
+  margin-left: -5px;
+}

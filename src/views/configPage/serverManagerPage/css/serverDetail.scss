@@ -1,0 +1,116 @@
+.infinite-server-list{
+  height: 200px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.env-item{
+  color:#3b91b6;
+  font-size: 14px;
+  font-family: "Times New Roman";
+}
+.credit-record {
+  .el-textarea.is-disabled .el-textarea__inner,
+  .el-input.is-disabled .el-input__inner {
+    background-color: #fff;
+    border-color: #e4e7ed;
+    color: #606266;
+    cursor: not-allowed;
+  }
+  .el-table-column--selection > .cell {
+    text-align: center;
+  }
+  .mt15 {
+    margin-top: 15px;
+  }
+  .button-box {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+  }
+  .dialog-table{
+    .cell{
+      padding: 5px 8px
+    }
+  }
+}
+
+.search-container {
+  padding: 30px;
+}
+
+.app-container {
+  border-radius: 25px;
+  margin: 20px;
+  padding: 10px 50px;
+  background-color: #fff;
+}
+
+.el-table--border:after,
+.el-table--group:after,
+.el-table:before {
+  background-color: rgba(62, 78, 255, 0.29);
+}
+.el-select-dropdown{
+  max-width: 243px;
+}
+.el-select-dropdown__item{
+  display: inline-block;
+}
+.el-select-dropdown__item span {
+  min-width: 205px;
+  display: inline-block;
+}
+
+.el-table--border,
+.el-table--group {
+  border-color: rgba(62, 78, 255, 0.29);
+}
+
+.el-table td,
+.el-table th.is-leaf {
+  border-bottom: 1px solid rgba(62, 78, 255, 0.29);
+}
+
+.el-table--border th,
+.el-table--border th.gutter:last-of-type {
+  border-bottom: rgba(62, 78, 255, 0.29);
+}
+.branch-table{
+  background: #ede6e5;
+}
+
+.el-table--border td,
+.el-table--border th {
+  border-right: 1px solid rgba(62, 78, 255, 0.29);
+}
+
+.el-dialog__body {
+  padding: 1px 10px;
+}
+
+.el-dialog__header {
+  padding: 10px;
+  text-align: left;
+  background-color: #CED8F6;
+}
+
+.el-dialog__title {
+  line-height: 24px;
+  font-size: 18px;
+  font-weight: bold;
+  align: center;
+  color: #606266;
+}
+
+.eltable {
+  margin: 20px;
+}
+#table2 .el-table__expanded-cell{
+  padding:0 !important;
+  border-bottom: none;
+}
+.hiderow .el-table__expand-column .el-icon {
+  visibility: hidden;
+  readonly:true
+}

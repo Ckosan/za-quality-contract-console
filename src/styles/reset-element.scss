@@ -1,0 +1,7 @@
+td .cell, th .cell{
+  word-break: keep-all !important;
+  white-space: nowrap !important;
+}
+.el-table th, .el-table td{
+  padding: 8px 0 !important
+}

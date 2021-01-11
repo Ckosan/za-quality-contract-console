@@ -1,0 +1,65 @@
+.credit-record {
+  .el-textarea.is-disabled .el-textarea__inner,
+  .el-input.is-disabled .el-input__inner {
+    background-color: #fff;
+    border-color: #e4e7ed;
+    color: #606266;
+    cursor: not-allowed;
+  }
+  .el-table-column--selection > .cell {
+    text-align: center;
+  }
+  .mt15 {
+    margin-top: 15px;
+  }
+  .button-box {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+  }
+  .dialog-table{
+    .cell{
+      padding: 5px 8px
+    }
+  }
+}
+
+.search-container {
+  padding: 30px;
+}
+
+.app-container {
+  border-radius: 25px;
+  margin: 20px;
+  padding: 10px 50px;
+  background-color: #fff;
+}
+.el-table--border:after,
+.el-table--group:after,
+.el-table:before {
+  background-color: rgba(62, 78, 255, 0.29);
+}
+
+.el-table--border,
+.el-table--group {
+  border-color: rgba(62, 78, 255, 0.29);
+}
+
+.el-table td,
+.el-table th.is-leaf {
+  border-bottom: 1px solid rgba(62, 78, 255, 0.29);
+}
+
+.el-table--border th,
+.el-table--border th.gutter:last-of-type {
+  border-bottom: rgba(62, 78, 255, 0.29);
+}
+
+.el-table--border td,
+.el-table--border th {
+  border-right: 1px solid rgba(62, 78, 255, 0.29);
+}
+
+.eltable {
+  margin: 20px;
+}
