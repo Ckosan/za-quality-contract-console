@@ -48,7 +48,7 @@
           <el-tooltip content="我的消息" placement="top">
             <el-popover
               placement="bottom"
-              width="500"
+              width="350"
               trigger="click"
             >
               <template>
@@ -64,21 +64,21 @@
                 </div>
                 <div>
                   <ul v-if="currentCount!=0" class="infinite-list" style="overflow:auto">
-                    <el-timeline style="margin-top: 10px;margin-right: 15px;margin-left: 5px">
+                    <el-timeline style="margin-top: 2px;margin-right: 2px;margin-left: -30px">
                       <el-timeline-item
                         v-for="(message, index) in loadMessageList"
                         :key="index"
                         type="primary"
                         color="#0bbd87"
                         icon="el-icon-chat-dot-round"
-                        size="large"
+                        size="normal"
                         :timestamp="message.createTime"
                       >
                         <el-link
                           target="_blank"
                           style="color:#35b2ed"
                           @click="updateMessageByOne(message)"
-                        ><label>{{ message.message }}</label>
+                        ><label style="font-size: 6px">{{ message.message }}</label>
                         </el-link>
                       </el-timeline-item>
                     </el-timeline>
@@ -96,7 +96,7 @@
             <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
               <div class="avatar-wrapper" style="margin-top: 0px">
                 <img class="imgstyle" src="../../assets/imgs/bussiness-man-fill.png">
-                <span style="font-size: 16px;font-weight: bold">{{ currentUserName }}</span>
+                <span style="font-size: 12px;font-weight: bold">{{ currentUserName }}</span>
                 <span style="font-size: 10px">{{ departmentName }}</span>
                 <i class="el-icon-caret-bottom" />
               </div>
@@ -271,8 +271,8 @@ export default {
     align-items: center;
     overflow: auto;
     background: rgba(232, 243, 254, 0.01);
-    margin: 10px;
     color: #7dbcfc;
+    font-size: 8px;
   }
 
   .badge-item {
@@ -317,7 +317,7 @@ export default {
   }
 
   .spanClass {
-    font-size: 16px;
+    font-size: 12px;
     font-weight: bold;
     margin-top: 0px;
 
@@ -373,7 +373,7 @@ export default {
         display: inline-block;
         padding: 0 8px;
         height: 100%;
-        font-size: 18px;
+        font-size: 10px;
         color: #197fcd;
         vertical-align: text-bottom;
 

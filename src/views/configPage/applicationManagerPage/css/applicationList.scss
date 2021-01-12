@@ -6,6 +6,10 @@
     color: #606266;
     cursor: not-allowed;
   }
+  .rowItem .el-form-item__label {
+    font-size: 8px;
+    font-weight: bold;
+  }
   .el-table-column--selection > .cell {
     text-align: center;
   }

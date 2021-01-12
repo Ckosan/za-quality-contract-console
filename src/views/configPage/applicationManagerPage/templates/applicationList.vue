@@ -4,7 +4,7 @@
   <div class="credit-record" style="margin-top: -30px;">
     <Box v-loading="loading" class="content-box">
       <SearchContainer style="text-align: center;">
-        <el-form ref="searchForm" :inline="true" label-width="110px" size="medium" :rules="rules" :model="searchForm" class="query-form mb20">
+        <el-form ref="searchForm" :inline="true" label-width="110px" size="mini" :rules="rules" :model="searchForm" class="query-form mb20">
           <el-form-item label="项目信息" prop="project_code" class="rowItem">
             <el-select
               v-model="searchForm.projectinfo"

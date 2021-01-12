@@ -8,7 +8,7 @@
           ref="searchForm"
           :inline="true"
           label-width="110px"
-          size="medium"
+          size="mini"
           :rules="rules"
           :model="searchForm"
           class="query-form mb20"

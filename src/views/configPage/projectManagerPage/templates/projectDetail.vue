@@ -98,14 +98,14 @@
           <el-table-column label="操作" width="250px" align="center">
             <template slot-scope="scope">
               <el-button
-                size="small"
+                size="mini"
                 type="primary"
                 icon="el-icon-view"
                 @click="handleDetail(scope.$index, scope.row)"
               >应用详情
               </el-button>
               <el-button
-                size="small"
+                size="mini"
                 type="danger"
                 icon="el-icon-delete"
                 @click="handleDeleteApplication(scope.$index, scope.row)"

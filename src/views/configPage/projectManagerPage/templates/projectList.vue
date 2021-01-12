@@ -8,7 +8,7 @@
           ref="searchForm"
           :inline="true"
           label-width="110px"
-          size="medium"
+          size="mini"
           :model="searchForm"
           class="query-form mb20"
         >
@@ -19,7 +19,7 @@
               clearable
               placeholder="请选择一级部门"
               auto-complete="off"
-              style="width:200px;"
+              style="width:200px;font-size: 8px"
               @change="getSubDept"
             >
               <el-option
@@ -132,7 +132,6 @@
                 v-show="scope.row.permission_type!=1"
                 size="mini"
                 type="warning"
-                st
                 icon="el-icon-edit"
                 circle
                 @click="handleEdit(scope.$index, scope.row)"
@@ -165,7 +164,7 @@
     <!--编辑弹出框-->
     <el-dialog title="编辑项目" :visible.sync="editFormVisible" width="60%" class="elDiaLog" :show-close="false" :close-on-click-modal="false">
       <div style="margin: 10px">
-        <div style="text-align: center;font-size: 20px;font-weight: bold;margin-bottom: 25px"><label>项目信息</label>
+        <div style="text-align: center;font-size: 15px;font-weight: bold;margin-bottom: 25px"><label>项目信息</label>
         </div>
         <el-form
           ref="editForm"
@@ -225,7 +224,7 @@
             />
           </el-form-item>
           <div style="margin: 20px 0;" />
-          <div style="text-align: center;font-size: 20px;font-weight: bold;margin-bottom: 25px">
+          <div style="text-align: center;font-size: 12px;font-weight: bold;margin-bottom: 25px">
             <label>成员信息</label>
           </div>
           <div v-for="(resource_list,index) in editForm.resource_list" :key="index">
@@ -282,8 +281,8 @@
                       :key="item.email"
                       :label="item.label"
                       :value="item.value"
-                    ><span style="float: left">{{ item.label }}</span>
-                      <span style="float: right; color: #8492a6; font-size: 13px">{{ item.email }}</span>
+                    ><span style="float: left;font-size: 8px">{{ item.label }}</span>
+                      <span style="float: right; color: #8492a6; font-size: 8px">{{ item.email }}</span>
                     </el-option>
                   </el-select>
                 </el-form-item>
@@ -350,7 +349,7 @@
     <!-- 添加弹出框 -->
     <el-dialog title="添加项目" :visible.sync="addFormVisible" width="60%" :show-close="false" :close-on-click-modal="false">
       <div style="margin: 10px">
-        <div style="text-align: center;font-size: 20px;font-weight: bold;margin-bottom: 25px"><label>项目信息</label>
+        <div style="text-align: center;font-size: 15px;font-weight: bold;margin-bottom: 25px"><label>项目信息</label>
         </div>
         <el-form
           ref="form"
@@ -376,7 +375,7 @@
           <el-row>
             <el-col :span="12">
               <el-form-item label="一级部门:" prop="parent_dept">
-                <el-select v-model="form.parent_dept" filterable placeholder="请输入一级部门" style="display: block;" @change="getSubDept">
+                <el-select v-model="form.parent_dept" filterable placeholder="请输入一级部门" style="display: block;font-size: 8px" @change="getSubDept">
                   <el-option
                     v-for="item in departmentList"
                     :key="item.value"
@@ -410,12 +409,12 @@
             />
           </el-form-item>
           <div style="margin: 20px 0;" />
-          <div style="text-align: center;font-size: 20px;font-weight: bold;margin-bottom: 25px">
+          <div style="text-align: center;font-size: 15px;font-weight: bold;margin-bottom: 25px">
             <label>成员信息</label>
           </div>
           <div v-for="(resource_list,index) in form.resource_list" :key="index">
             <el-row>
-              <el-col :span="4" style="padding: 5px;font-size: 14px">
+              <el-col :span="4" style="padding: 5px;font-size: 12px">
                 <el-form-item
                   label-width="0px"
                   :prop="'resource_list.' + index + '.role_name'"
@@ -467,8 +466,8 @@
                       :key="item.email"
                       :label="item.label"
                       :value="item.value"
-                    ><span style="float: left">{{ item.label }}</span>
-                      <span style="float: right; color: #8492a6; font-size: 13px">{{ item.email }}</span>
+                    ><span style="float: left;font-size: 8px">{{ item.label }}</span>
+                      <span style="float: right; color: #8492a6; font-size: 8px">{{ item.email }}</span>
                     </el-option>
                   </el-select>
                 </el-form-item>

@@ -55,6 +55,9 @@ table.table-info {
   padding: 10px 50px;
   background-color: #fff;
 }
+.el-radio__label{
+  font-size: 8px;
+}
 td {
   display: table-cell;
   vertical-align: inherit;
@@ -72,12 +75,12 @@ table {
 }
 .table-mod.table-info tr td {
   padding: 15px;
-  font-size: 14px;
+  font-size: 8px;
   line-height: 1.6;
 }
 
 .rowItem .el-form-item__label {
-  font-size: 15px;
+  font-size: 8px;
   font-weight: bold;
 
 }
@@ -94,7 +97,7 @@ table {
 
 .el-dialog__title {
   line-height: 24px;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
   align: center;
   color: #606266;
