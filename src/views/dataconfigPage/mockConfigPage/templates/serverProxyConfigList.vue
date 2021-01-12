@@ -100,7 +100,8 @@
           :data="list.slice((currentPage-1)*pagesize,currentPage*pagesize)"
           border
           class="form-table"
-          :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
+          style="font-size: 10px"
+          :header-cell-style="{fontSize:'12px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
           @selection-change="handleSelectionChange"
         >
           <el-table-column

@@ -16,25 +16,25 @@
       </el-row>
       <section>
         <div style="margin-top: 30px;display: inline-block">
-          <div style="float: left"><label style="font-weight: bold;font-size: 20px">项目信息</label></div>
+          <div style="float: left"><label style="font-weight: bold;font-size: 15px">项目信息</label></div>
         </div>
         <div class="app-container">
           <div style="display: inline-block">
-            <div style="float:left;margin-bottom: 20px;margin-top: 10px;margin-right: 5rem"><label style="font-size: 15px">项目名称：<label
+            <div style="float:left;margin-bottom: 20px;margin-top: 10px;margin-right: 5rem"><label style="font-size: 12px">项目名称：<label
               style="font-weight: normal"
             >{{ projectDetail.project_name }}({{
               projectDetail.project_code }})</label></label></div>
-            <div style="float:right;margin-bottom: 20px;margin-top: 10px"><label style="font-size: 15px">项目归属：<label
+            <div style="float:right;margin-bottom: 20px;margin-top: 10px"><label style="font-size: 12px">项目归属：<label
               style="font-weight: normal"
             >{{ projectDetail.parentdept_name
             }}/{{
               projectDetail.subdept_name }}</label></label></div>
           </div>
-          <div style="margin-bottom: 20px;margin-top: 20px"><label style="font-size: 15px">项目介绍：</label></div>
+          <div style="margin-bottom: 20px;margin-top: 20px"><label style="font-size: 12px">项目介绍：</label></div>
           <div>
             <el-input
               v-model="projectDetail.project_describe"
-              style="display: inline-block;font-weight: normal"
+              style="display: inline-block;font-weight: normal;font-size: 11px"
               autocomplete="off"
               icon="caret-top"
               type="textarea"
@@ -45,15 +45,15 @@
         </div>
       </section>
       <section>
-        <div><label style="font-weight: bold;font-size: 20px;">成员信息</label></div>
+        <div><label style="font-weight: bold;font-size: 15px;">成员信息</label></div>
         <div class="app-container">
           <el-table
             :data="resourceList"
             border
-            :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#CED8F6',color:'#606266','text-align':'center'}"
+            :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#CED8F6',color:'#606266','text-align':'center'}"
             :cell-style="{'text-align':'center'}"
             prop="role_name"
-            style="width: 50%;font-weight: normal;text-align: center"
+            style="width: 50%;font-weight: normal;text-align: center;font-size: 8px"
           >
             <el-table-column
               prop="role_name"
@@ -69,14 +69,15 @@
           </el-table>
         </div>
       </section>
-      <div><label style="font-weight: bold;font-size: 20px">应用列表</label></div>
+      <div><label style="font-weight: bold;font-size: 15px">应用列表</label></div>
       <div style="text-align: center" class="eltable">
         <el-table
           element-loading-spinner="el-icon-loading"
           :data="projectDetail.applications"
           border
-          :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
+          :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
           class="form-table"
+          style="font-size: 8px"
         >
           <el-table-column
             label="序号"

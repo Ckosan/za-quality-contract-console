@@ -1,9 +1,8 @@
 <template>
   <div :class="{'has-logo':showLogo}" style="background: rgba(84,94,102,0)">
     <!-- <logo v-if="showLogo" :collapse="isCollapse" /> -->
-    <div class="logo-mod" style="margin-bottom: 50px" @click="$router.push('/dashboard')">
+    <div class="logo-mod" @click="$router.push('/dashboard')">
       <img src="./../../../assets/images/za-logo.png">
-      <div style="margin-top: 20px"><label style="color:rgba(58,76,99,0.82);font-weight: bolder;margin-left:10%;margin-top: 20% ;font-size: 24px;">Contract</label></div>
     </div>
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
@@ -60,7 +59,6 @@ export default {
     }
   },
   created() {
-
   }
 }
 </script>
@@ -90,12 +88,10 @@ export default {
   position: absolute;
   left: 0;
   top: 0;
-  height: 100px;
+  height: 60px;
   background: rgba(84, 94, 102, 0);//#ffffff;
-  font-size: 16px;
   cursor: pointer;
   z-index: 10;
-  margin-bottom: 10px;
 }
 
 .logo-mod:hover {

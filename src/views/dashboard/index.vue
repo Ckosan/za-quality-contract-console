@@ -20,6 +20,10 @@ export default {
   computed: {
     ...mapGetters(['pagination', 'regionLoading'])
   },
+  beforeCreate() {
+  },
+  mounted() {
+  },
   created() {
     const ticket = getQueryTicket('ticket')
     if (ticket) {

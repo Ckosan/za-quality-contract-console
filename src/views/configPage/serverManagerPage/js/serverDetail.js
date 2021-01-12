@@ -206,6 +206,8 @@ export default {
   beforeDestroy() {
     clearInterval(this.timer)
   },
+  beforeCreate() {
+  },
   created() {
     this.getDetailData()
     this.apiUrl = api_url

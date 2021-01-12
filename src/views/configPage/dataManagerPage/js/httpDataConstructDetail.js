@@ -183,6 +183,9 @@ export default {
       httpResponseSettings: httpResponseSettings
     }
   },
+  beforeCreate() {
+    document.querySelector('body').setAttribute('style', 'zoom:0.8')
+  },
   create() {
   },
   computed: {

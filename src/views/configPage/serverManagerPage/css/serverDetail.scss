@@ -2,11 +2,13 @@
   height: 200px;
   padding: 0;
   margin: 0;
+  font-size: 8px;
   list-style: none;
 }
+
 .env-item{
   color:#3b91b6;
-  font-size: 14px;
+  font-size: 10px;
   font-family: "Times New Roman";
 }
 .credit-record {
@@ -66,7 +68,9 @@
 .el-table--group {
   border-color: rgba(62, 78, 255, 0.29);
 }
-
+.col-cont{
+  font-size: 8px;
+}
 .el-table td,
 .el-table th.is-leaf {
   border-bottom: 1px solid rgba(62, 78, 255, 0.29);
@@ -97,7 +101,7 @@
 
 .el-dialog__title {
   line-height: 24px;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
   align: center;
   color: #606266;

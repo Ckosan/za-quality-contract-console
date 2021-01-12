@@ -40,6 +40,8 @@ export default {
     // this.vueTable()
     this.getRolesOptions()
   },
+  beforeCreate() {
+  },
   created() {
     this.vueTable()
     getStaffData()

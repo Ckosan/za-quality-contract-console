@@ -50,6 +50,8 @@ export default {
   mounted() {
     // this.vueTable()
   },
+  beforeCreate() {
+  },
   created() {
     this.vueTable()
   },

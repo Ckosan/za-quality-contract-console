@@ -104,6 +104,8 @@ export default {
     this.vueTable()
     this.getHttpTemplates()
   },
+  beforeCreate() {
+  },
   created() {
   },
   computed: {

@@ -16,10 +16,10 @@
             </el-button>
             <el-button type="warning" style="float: right;" icon="el-icon-edit" @click="editHandle">编辑应用</el-button>
           </el-row>
-          <div style="margin-top: 30px"><label style="font-weight: bold;font-size: 20px">应用信息</label></div>
+          <div style="margin-top: 30px"><label style="font-weight: bold;font-size: 15px">应用信息</label></div>
           <div class="app-container">
             <div style="display: inline-block">
-              <div style="float:left;margin-bottom: 20px;margin-top: 10px;margin-right:10rem"><label style="font-size: 15px">所属项目：
+              <div style="float:left;margin-bottom: 20px;margin-top: 10px;margin-right:10rem"><label style="font-size: 12px">所属项目：
                 <router-link
                   tag="a"
                   style="color:#0174DF;font-weight: normal"
@@ -28,22 +28,22 @@
                 }}({{ applicationDetail.project_code }})
                 </router-link>
               </label></div>
-              <div style="float:left;margin-bottom: 20px;margin-top: 10px;margin-right: 10rem"><label style="font-size: 15px">应用代码：<label
+              <div style="float:left;margin-bottom: 20px;margin-top: 10px;margin-right: 10rem"><label style="font-size: 12px">应用代码：<label
                 style="font-weight: normal"
               >{{
                 applicationDetail.application_code
               }}</label></label></div>
-              <div style="float:left;margin-bottom: 20px;margin-top: 10px;"><label style="font-size: 15px">应用状态：<label
+              <div style="float:left;margin-bottom: 20px;margin-top: 10px;"><label style="font-size: 12px">应用状态：<label
                 style="font-weight: normal"
               >{{
                 applicationDetail.application_status
               }}</label></label></div>
             </div>
-            <div style="margin-bottom: 20px;margin-top: 10px"><label style="font-size: 15px">应用简介：</label></div>
+            <div style="margin-bottom: 20px;margin-top: 10px"><label style="font-size: 12px">应用简介：</label></div>
             <div>
               <el-input
                 v-model="applicationDetail.application_describe"
-                style="display: inline-block"
+                style="display: inline-block;font-size: 11px"
                 autocomplete="off"
                 icon="caret-top"
                 readonly
@@ -52,27 +52,28 @@
           </div>
         </section>
         <section>
-          <div><label style="font-weight: bold;font-size: 20px">成员信息</label></div>
+          <div><label style="font-weight: bold;font-size: 15px">成员信息</label></div>
           <div class="app-container">
             <div style="display: inline-block">
-              <div style="float:left;margin-bottom: 20px;margin-top: 10px;margin-right: 450px"><label style="font-size: 15px">开发人员：<label
+              <div style="float:left;margin-bottom: 20px;margin-top: 10px;margin-right: 450px"><label style="font-size: 12px">开发人员：<label
                 style="font-weight: normal"
               >{{ applicationDetail.developers || "无" }}</label></label>
               </div>
-              <div style="float:left;margin-bottom: 20px;margin-top: 10px"><label style="font-size: 15px">测试人员：<label
+              <div style="float:left;margin-bottom: 20px;margin-top: 10px"><label style="font-size: 12px">测试人员：<label
                 style="font-weight: normal"
               >{{ applicationDetail.testers || "无" }}</label></label></div>
             </div>
           </div>
         </section>
-        <div><label style="font-weight: bold;font-size: 20px;">服务信息</label></div>
+        <div><label style="font-weight: bold;font-size: 15px;">服务信息</label></div>
         <div class="eltable">
           <el-table
             element-loading-spinner="el-icon-loading"
             :data="applicationDetail.server_info"
             border
-            :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
+            :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
             class="form-table"
+            style="font-size: 8px"
           >
             <el-table-column
               label="序号"

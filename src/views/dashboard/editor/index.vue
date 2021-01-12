@@ -163,6 +163,8 @@ export default {
   computed: {
     ...mapGetters(['name', 'avatar', 'roles', 'regionLoading'])
   },
+  beforeCreate() {
+  },
   created() {
     this.getProjectCount()
   },

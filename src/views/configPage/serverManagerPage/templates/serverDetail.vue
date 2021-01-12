@@ -14,14 +14,14 @@
           <el-button type="info" style="float: right;" icon="el-icon-back" @click="goback">服务列表</el-button>
         </el-row>
         <div style="margin-top: 30px;display: inline-block">
-          <div style="float: left"><label style="font-weight: bold;font-size: 20px">服务信息({{ serverDetail.server_code
+          <div style="float: left"><label style="font-weight: bold;font-size: 15px">服务信息({{ serverDetail.server_code
           }})</label></div>
         </div>
         <section>
           <div class="app-container">
             <div style="display: inline-block">
               <div style="float:left;margin-bottom: 20px;margin-top: 10px;margin-right: 8rem"><label
-                style="font-size: 15px"
+                style="font-size: 12px"
               >项目名称：
                 <router-link
                   tag="a"
@@ -31,7 +31,7 @@
                 </router-link>
               </label></div>
               <div style="float:left;margin-bottom: 20px;margin-top: 10px;margin-right: 8rem"><label
-                style="font-size: 15px"
+                style="font-size: 12px"
               >应用名称：
                 <router-link
                   tag="a"
@@ -40,15 +40,15 @@
                 >{{ application_info }}
                 </router-link>
               </label></div>
-              <div style="float:left;margin-bottom: 20px;margin-top: 10px"><label style="font-size: 15px">服务类型：<label
+              <div style="float:left;margin-bottom: 20px;margin-top: 10px"><label style="font-size: 12px">服务类型：<label
                 style="font-weight: normal"
               >{{ serverDetail.server_type }}</label></label></div>
             </div>
-            <div style="margin-bottom: 20px;margin-top: 10px"><label style="font-size: 15px">服务简介：</label></div>
+            <div style="margin-bottom: 20px;margin-top: 10px"><label style="font-size: 12px">服务简介：</label></div>
             <div>
               <el-input
                 v-model="serverDetail.server_name"
-                style="display: inline-block;font-weight: normal"
+                style="display: inline-block;font-weight: normal;font-size: 11px"
                 autocomplete="off"
                 icon="caret-top"
                 readonly
@@ -67,14 +67,15 @@
 
         </section>
         <br>
-        <div><label style="font-weight: bold;font-size: 20px">配置信息</label></div>
+        <div><label style="font-weight: bold;font-size: 15px">配置信息</label></div>
         <br>
         <div v-show="serverDetail.server_type ==='API'" class="eltable">
           <el-table
             element-loading-spinner="el-icon-loading"
             :data="serverDetail.server_env"
             border
-            :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
+            style="font-size: 8px"
+            :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
             class="form-table"
           >
             <el-table-column
@@ -136,7 +137,8 @@
             element-loading-spinner="el-icon-loading"
             :data="serverDetail.server_env"
             border
-            :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
+            style="font-size: 10px"
+            :header-cell-style="{fontSize:'12px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
             class="form-table"
           >
             <el-table-column
@@ -161,6 +163,7 @@
             element-loading-spinner="el-icon-loading"
             :data="serverDetail.server_env"
             border
+            style="font-size: 10px"
             class="form-table"
           >
             <el-table-column
@@ -182,6 +185,7 @@
             element-loading-spinner="el-icon-loading"
             :data="serverDetail.server_env"
             border
+            style="font-size: 14px"
             :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
             class="form-table"
           >
@@ -198,11 +202,11 @@
           </el-table>
         </div>
         <br>
-        <div style="margin-bottom: 20px"><label style="font-weight: bold;font-size: 20px">文档信息</label></div>
+        <div style="margin-bottom: 20px"><label style="font-weight: bold;font-size: 15px">文档信息</label></div>
         <div style="float: right;margin: 5px;margin-right: 0px">
           <el-button
             v-if="serverDetail.server_type==='API'"
-            style="background: #2290cd;color: snow;font-size: 15px"
+            style="background: #2290cd;color: snow;font-size: 12px"
             icon="el-icon-magic-stick"
             size="mini"
             :loading="debugButtonloading"
@@ -210,7 +214,7 @@
           >接口调试
           </el-button>
           <el-button
-            style="font-size: 15px"
+            style="font-size: 12px"
             type="warning"
             icon="el-icon-download"
             size="mini"
@@ -219,7 +223,7 @@
           </el-button>
           <el-button
             v-if="serverDetail.server_type==='API'"
-            style="font-size: 15px"
+            style="font-size: 12px"
             type="info"
             icon="el-icon-s-promotion"
             size="mini"
@@ -229,7 +233,7 @@
           </el-button>
           <el-button
             v-if="serverDetail.server_type==='API'"
-            style="background: #6269cd;color: snow;font-size: 15px"
+            style="background: #6269cd;color: snow;font-size: 12px"
             icon="el-icon-top"
             size="mini"
             @click="importSwagger"
@@ -239,7 +243,7 @@
           <el-button
             v-if="serverDetail.permission_type === 2"
             type="success"
-            style="font-size: 15px"
+            style="font-size: 12px"
             icon="el-icon-document-copy"
             size="mini"
             @click="useTemplate"
@@ -247,7 +251,7 @@
           </el-button>
           <el-button
             v-if="serverDetail.permission_type === 2"
-            style="font-size: 15px"
+            style="font-size: 12px"
             type="primary"
             icon="el-icon-document-add"
             size="mini"
@@ -261,7 +265,7 @@
             <el-input
               v-model="searchTxt"
               style="display: inline-block;width: 280px"
-              placeholder="输入关键字进行过滤"
+              placeholder="输入关键字"
               @input="seachApiList"
             >
               <i slot="prefix" class="el-input__icon el-icon-search" />
@@ -276,8 +280,9 @@
             :row-key="getRowKeys"
             :expand-row-keys="expands"
             border
-            :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
+            :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
             class="form-table"
+            style="font-size: 8px"
             :row-class-name="isShowIcon"
             @expand-change="getFacilityList"
           >
@@ -306,7 +311,8 @@
                   :data="expandTable.slice((currentPage2-1)*pagesize2,currentPage2*pagesize2)"
                   class="form-table"
                   border
-                  :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
+                  style="font-size: 10px"
+                  :header-cell-style="{fontSize:'12px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
                   @selection-change="handleSelectionChange"
                 >
                   <el-table-column label="分支名称" prop="branch" min-width="50px" align="center" show-overflow-tooltip>
@@ -321,7 +327,7 @@
                     align="center"
                   >
                     <template slot-scope="scope">
-                      <span class="col-cont" v-html="showData(scope.row.description)" />
+                      <span class="col-cont" style="font-size: 8px" v-html="showData(scope.row.description)" />
                     </template>
                   </el-table-column>
                   <el-table-column
@@ -418,7 +424,7 @@
                 <span class="col-cont" v-html="showData2(scope.row.interface_name)" />
               </template>
             </el-table-column>
-            <el-table-column label="接口地址" prop="path" min-width="180px" align="left" show-overflow-tooltip>
+            <el-table-column label="接口地址" prop="path" min-width="150px" align="left" show-overflow-tooltip>
               <template slot-scope="scope">
                 <label
                   v-if="scope.row.method === 'POST'"
@@ -449,20 +455,21 @@
                 <!--                  placement="top"-->
                 <!--                  width="400"-->
                 <!--                  trigger="hover"-->
+                <!--                  popper-class="popper-class"-->
                 <!--                >-->
                 <!--                  <template>-->
                 <!--                    <ul class="infinite-server-list" style="overflow:auto">-->
-                <!--                      <el-timeline style="margin-top: 50px;margin-right: 15px;margin-left: -5px;margin-bottom: -10px">-->
+                <!--                      <el-timeline style="margin-top: 10px;margin-right: 15px;margin-bottom: -10px;font-size: 10px">-->
                 <!--                        <el-timeline-item-->
                 <!--                          v-for="(version, index) in scope.row.versions"-->
                 <!--                          :key="index"-->
                 <!--                          type="primary"-->
                 <!--                          color="#0bbd87"-->
                 <!--                          icon="el-icon-chat-dot-round"-->
-                <!--                          size="large"-->
+                <!--                          size="normal"-->
                 <!--                          :timestamp="version.update_time"-->
                 <!--                        >-->
-                <!--                          修改人【{{ version.modifier }}】  更新信息【{{ version.description }}】-->
+                <!--                          <span style="font-size: 8px">修改人【{{ version.modifier }}】 更新信息【{{ version.description }}</span>-->
                 <!--                        </el-timeline-item>-->
                 <!--                      </el-timeline>-->
                 <!--                    </ul>-->
@@ -480,16 +487,16 @@
                   v-if="scope.row.description!=null"
                   effect="light"
                   :content="scope.row.description"
-                  placement="top"
+                  placement="top-start"
                 >
                   <el-link
                     target="_blank"
                     style="color:#0174DF"
                     @click="goToDocVersionDetail(scope.row)"
-                  ><label>{{ scope.row.version }}</label>
+                  ><label style="font-size: 8px">{{ scope.row.version }}</label>
                   </el-link>
                 </el-tooltip>
-                <el-tooltip content="创建分支" placement="bottom">
+                <el-tooltip content="创建分支" placement="right">
                   <el-button
                     v-if="serverDetail.permission_type === 2"
                     size="mini"
@@ -517,18 +524,18 @@
                   target="_blank"
                   style="color:#0174DF"
                   @click="getContractDoc(scope.$index,scope.row)"
-                >文档
+                ><span style="font-size: 8px">文档</span>
                 </el-link>
                 <span>&nbsp;|&nbsp;</span>
                 <el-link
                   target="_blank"
                   style="color:#0174DF"
                   @click="getRequest(scope.$index,scope.row)"
-                >报文
+                ><span style="font-size: 8px">报文</span>
                 </el-link>
               </template>
             </el-table-column>
-            <el-table-column label="操作" min-width="60" align="center">
+            <el-table-column label="操作" min-width="80" align="center">
               <template slot-scope="scope">
                 <el-tooltip content="查看文档" placement="left">
                   <el-button
@@ -592,6 +599,7 @@
             element-loading-spinner="el-icon-loading"
             :data="apiList.slice((currentPage-1)*pagesize,currentPage*pagesize)"
             border
+            style="font-size: 14px"
             :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
             class="form-table"
           >
@@ -639,6 +647,7 @@
             element-loading-spinner="el-icon-loading"
             :data="apiList.slice((currentPage-1)*pagesize,currentPage*pagesize)"
             border
+            style="font-size: 14px"
             :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
             class="form-table"
           >
@@ -686,6 +695,7 @@
             element-loading-spinner="el-icon-loading"
             :data="apiList.slice((currentPage-1)*pagesize,currentPage*pagesize)"
             border
+            style="font-size: 14px"
             :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
             class="form-table"
           >
@@ -1250,7 +1260,7 @@
                   <el-select v-model="httpDebugForm.env_type" placeholder="请选环境选择" @change="setEnvInfo">
                     <el-option
                       v-for="item in envInfoOptions"
-                      :key="item.value"
+                      :key="item.key"
                       :label="item.label"
                       :value="item.value"
                     />

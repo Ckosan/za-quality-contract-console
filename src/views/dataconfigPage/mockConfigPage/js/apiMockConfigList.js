@@ -143,6 +143,8 @@ export default {
     this.getHttpTemplates()
     this.getEnvInfo()
   },
+  beforeCreate() {
+  },
   created() {
   },
   computed: {

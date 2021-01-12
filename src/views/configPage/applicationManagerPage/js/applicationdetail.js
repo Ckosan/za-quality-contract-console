@@ -43,6 +43,8 @@ export default {
   },
   mounted() {
   },
+  beforeCreate() {
+  },
   created() {
     this.getDetailData()
     this.getProjectOptions()

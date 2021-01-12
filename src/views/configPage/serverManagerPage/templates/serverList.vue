@@ -87,7 +87,8 @@
         :data="list.slice((currentPage-1)*pagesize,currentPage*pagesize)"
         border
         class="form-table"
-        :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
+        style="font-size: 8px"
+        :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
         @selection-change="handleSelectionChange"
       >
         <el-table-column
@@ -389,7 +390,8 @@
                     v-if="editForm.server_type==='API'"
                     :data="editForm.server_env"
                     border
-                    :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
+                    style="font-size: 8px"
+                    :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
                   >
                     <el-table-column label="配置名称" min-width="100px" align="center">
                       <template slot-scope="scope">
@@ -553,6 +555,7 @@
               v-if="editForm.server_type==='SFTP'"
               :data="editForm.server_env"
               border
+              style="font-size: 14px"
               :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
             >
               <el-table-column label="配置名称" align="center">
@@ -788,7 +791,7 @@
                     v-if="form.server_type==='API'"
                     :data="form.server_env"
                     border
-                    :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#CED8F6',color:'rgb(255, 255, 255)'}"
+                    :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#CED8F6',color:'rgb(255, 255, 255)'}"
                   >
                     <el-table-column label="配置名称" min-width="100px" align="center">
                       <template slot-scope="scope">

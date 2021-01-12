@@ -19,7 +19,6 @@ import router from './router'
 import i18n from './lang' // internationalization
 import './icons' // icon
 import './utils/error-log' // error log
-import 'lib-flexible/flexible'
 import * as filters from './filters' // global filters
 import global from './global'
 // import routeMap from './components'
@@ -37,7 +36,7 @@ Vue.use(global)
  */
 
 Vue.use(Element, {
-  size: Cookies.get('size') || 'medium', // set element-ui default size
+  size: Cookies.get('size') || 'mini', // set element-ui default size
   i18n: (key, value) => i18n.t(key, value)
 })
 // register global utility filters
@@ -75,6 +74,8 @@ new Vue({
   async created() {
     const accessRoutes = await store.dispatch('permission/generateRoutes')
     router.addRoutes(accessRoutes)
+  },
+  mounted() {
   },
   methods: {
   },

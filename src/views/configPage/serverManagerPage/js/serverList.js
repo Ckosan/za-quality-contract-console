@@ -219,6 +219,8 @@ export default {
     this.getAddProjectOptions()
     this.restaurants = this.loadAll()
   },
+  beforeCreate() {
+  },
   created() {
     this.vueTable()
   },

@@ -79,6 +79,8 @@ export default {
     this.vueTable()
     this.getHttpTemplates()
   },
+  beforeCreate() {
+  },
   created() {
     this.mockApi = engine_host + '/S000'
   },

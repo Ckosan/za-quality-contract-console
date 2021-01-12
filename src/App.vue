@@ -26,6 +26,25 @@ export default {
   .menu-wrapper{
     color: rgba(220, 58, 73, 0.66);
   }
+  .el-submenu__title{
+    font-size: 10px;
+  }
+  .el-menu-item{
+    font-size: 10px;
+  }
+  .el-form-item__label{
+    font-size: 10px;
+  }
+  .el-input--medium {
+    font-size: 10px;
+  }
+  .el-button--medium{
+    padding:8px 8px;
+    font-size: 11px;
+  }
+  .el-button--mini.is-circle{
+    padding: 5px;
+  }
   #app .main-container {
     min-height: 100%;
     -webkit-transition: margin-left .28s;

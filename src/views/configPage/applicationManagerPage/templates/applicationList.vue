@@ -62,7 +62,8 @@
         element-loading-spinner="el-icon-loading"
         :data="list.slice((currentPage-1)*pagesize,currentPage*pagesize)"
         class="form-table"
-        :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
+        style="font-size: 8px"
+        :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
         @selection-change="handleSelectionChange"
       >
         <el-table-column
