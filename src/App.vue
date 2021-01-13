@@ -45,9 +45,6 @@ export default {
   .pagination{
     font-size: 10px;
   }
-  /deep/ .pagination .el-pagination__total {
-    font-size: 6px;
-  }
   .el-input--medium {
     font-size: 10px;
   }
@@ -59,6 +56,10 @@ export default {
   }
   .query-form{
     font-size: 8px;
+  }
+  .menu-wrapper {
+    width: 190px;
+    color: rgba(220, 58, 73, 0.66);
   }
   #app .main-container {
     min-height: 100%;

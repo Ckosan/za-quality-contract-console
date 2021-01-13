@@ -357,6 +357,7 @@ export default {
     .breadcrumb-container {
       background: #ffffff;
       float: left;
+      margin-left: -10px;
     }
     .el-breadcrumb__item {
       font-size: 12px;
