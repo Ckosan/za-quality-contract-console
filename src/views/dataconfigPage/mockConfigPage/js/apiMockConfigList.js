@@ -2,7 +2,7 @@ import { mapGetters } from 'vuex'
 import {
   API_EXT_INFO,
   BRNACH_API,
-  DATA_SET_REAPTION_INFO,
+  DATA_SET_REAPTION_INFO, HTTP_INTERFACE_INFO_BY_ID,
   INTERFACE_PROXY,
   MOCK_CONFIG,
   MOCK_CONFIG_UPDATE_ALL_STATUS,
@@ -441,6 +441,13 @@ export default {
       this.$router.push({
         path: '/configpage/apidatabranchdetail/' + row.interface_id + '/' + row.branch,
         query: { serverId: this.$route.query.serverId }
+      })
+    },
+    async goToNewVersionDetail(row) {
+      const data = await httpRequestWithoutLoading('GET', HTTP_INTERFACE_INFO_BY_ID + '?interfaceId=' + row.interface_id)
+      this.$router.push({
+        path: '/configpage/apidataversiondetail/' + row.interface_id,
+        query: { type: 'watchDetail', serverId: this.$route.query.serverId, version: data.version }
       })
     },
     goToVersionDetail(row) {

@@ -34,10 +34,10 @@ export default {
     font-weight: bold;
   }
   .el-submenu__title{
-    font-size: 10px;
+    font-size: 12px;
   }
   .el-menu-item{
-    font-size: 10px;
+    font-size: 12px;
   }
   .el-form-item__label{
     font-size: 10px;
@@ -63,6 +63,7 @@ export default {
     transition: margin-left .28s;
     margin-left: 195px;
     position: relative;
+    margin-top: -10px;
     background: rgba(241, 235, 230, 0.66);
   }
   .app-container{

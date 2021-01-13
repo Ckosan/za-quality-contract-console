@@ -87,7 +87,7 @@
                 />
                 <el-table-column label="规则名称" prop="name" min-width="100px" align="center">
                   <template slot-scope="scope">
-                    <span class="col-cont" v-html="showData(scope.row.name)" />
+                    <span class="col-cont" style="font-size: 8px" v-html="showData(scope.row.name)" />
                   </template>
                 </el-table-column>
                 <el-table-column label="规则内容" prop="conditions" min-width="180px" align="center">
@@ -104,6 +104,14 @@
                         style="color:#0174DF"
                         @click="goToVersionDetail(scope.row)"
                       ><span style="font-size: 8px">{{ scope.row.branch }}</span>
+                      </el-link>
+                    </div>
+                    <div v-if="scope.row.event_type==='mock'&&scope.row.data_type==='default'">
+                      <el-link
+                        target="_blank"
+                        style="color:#0174DF"
+                        @click="goToNewVersionDetail(scope.row)"
+                      ><span style="font-size: 8px">保持最新版本</span>
                       </el-link>
                     </div>
                     <div v-if="scope.row.event_type==='mock'&&scope.row.data_type==='branch'">

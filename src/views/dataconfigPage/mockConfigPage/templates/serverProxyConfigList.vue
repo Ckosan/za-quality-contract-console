@@ -88,7 +88,7 @@
         <div style="float: left;">
           <el-input
             v-model="searchTxt"
-            style="display: inline-block;width: 380px"
+            style="display: inline-block;width: 300px"
             placeholder="输入关键字"
             @input="seachList"
           >
@@ -100,8 +100,8 @@
           :data="list.slice((currentPage-1)*pagesize,currentPage*pagesize)"
           border
           class="form-table"
-          style="font-size: 10px"
-          :header-cell-style="{fontSize:'12px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
+          style="font-size: 8px"
+          :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
           @selection-change="handleSelectionChange"
         >
           <el-table-column
@@ -130,7 +130,7 @@
               </router-link>
             </template>
           </el-table-column>
-          <el-table-column label="归属服务" prop="server_info" min-width="100px" align="center">
+          <el-table-column label="归属服务" prop="server_info" min-width="70px" align="center">
             <template slot-scope="scope">
               <router-link
                 tag="a"
@@ -140,25 +140,25 @@
               </router-link>
             </template>
           </el-table-column>
-          <el-table-column label="代理编码" prop="code" min-width="80px" align="center">
+          <el-table-column label="代理编码" prop="code" min-width="70px" align="center">
             <template slot-scope="scope">
-              <span class="col-cont" v-html="showDate(scope.row.code)" />
+              <span class="col-cont" style="font-size: 8px" v-html="showDate(scope.row.code)" />
             </template>
           </el-table-column>
-          <el-table-column label="代理说明" prop="name" min-width="150px" align="center">
+          <el-table-column label="代理说明" prop="name" min-width="70px" align="center">
             <template slot-scope="scope">
-              <span class="col-cont" v-html="showDate(scope.row.name)" />
+              <span class="col-cont" style="font-size: 8px" v-html="showDate(scope.row.name)" />
             </template>
           </el-table-column>
-          <el-table-column label="代理地址" prop="name" min-width="200px" align="center">
+          <el-table-column label="代理地址" prop="name" min-width="150px" align="center">
             <template slot-scope="scope">
-              <label style="color: #1e6abc">{{ mockApi+scope.row.server_id }}/{{ scope.row.code }}</label>
+              <label style="color: #1e6abc;font-size: 8px">{{ mockApi+scope.row.server_id }}/{{ scope.row.code }}</label>
             </template>
           </el-table-column>
-          <el-table-column label="默认路由" prop="default_router" min-width="80px" align="center">
+          <el-table-column label="默认路由" prop="default_router" min-width="50px" align="center">
             <template slot-scope="scope">
               <div v-if="scope.row.default_router!=null&&scope.row.default_router!=''">
-                <label>{{ scope.row.default_router }}</label>
+                <label style="font-size: 8px">{{ scope.row.default_router }}</label>
                 <el-tooltip
                   class="item env-item"
                   effect="light"
@@ -174,11 +174,11 @@
             label="更新信息"
             prop="update_time"
             :formatter="convertTimeFormat"
-            min-width="80px"
+            min-width="70px"
             align="center"
             sortable
           />
-          <el-table-column label="操作" width="180px" align="center">
+          <el-table-column label="操作" width="140" align="center">
             <template slot-scope="scope">
               <el-tooltip content="查看代理" placement="top">
                 <el-button

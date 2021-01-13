@@ -84,23 +84,23 @@
               label="序号"
               align="center"
             />
-            <el-table-column label="配置名" prop="env_name" min-width="140" align="center" />
+            <el-table-column label="配置名" prop="env_name" min-width="120" align="center" />
             <el-table-column label="协议类型" prop="protocol" min-width="100" align="center" />
-            <el-table-column label="主机地址" prop="host" min-width="300" align="center" />
+            <el-table-column label="主机地址" prop="host" min-width="200" align="center" />
             <el-table-column label="端口" prop="port" min-width="100" align="center" />
             <el-table-column label="服务状态" prop="status" min-width="120" show-overflow-tooltip align="center">
               <template slot-scope="scope">
                 <div v-if="scope.row.status==='服务可用'">
                   <i class="el-icon-success" style="color:#2bb40c" />
-                  <label style="color:#2bb40c">可访问</label>
+                  <label style="color:#2bb40c;font-size: 8px">可访问</label>
                 </div>
                 <div v-if="scope.row.status==='服务不可用'">
                   <i class="el-icon-error" style="color:#FF0000" />
-                  <label style="color:#FF0000">无法访问</label>
+                  <label style="color:#FF0000;font-size: 8px">无法访问</label>
                 </div>
                 <div v-if="scope.row.status==='正在检测...'">
                   <i class="el-icon-loading" style="color:#0404B4" />
-                  <label style="color:#0404B4">正在检测...</label>
+                  <label style="color:#0404B4;font-size: 8px">正在检测...</label>
                 </div>
               </template>
             </el-table-column>
@@ -311,8 +311,8 @@
                   :data="expandTable.slice((currentPage2-1)*pagesize2,currentPage2*pagesize2)"
                   class="form-table"
                   border
-                  style="font-size: 10px"
-                  :header-cell-style="{fontSize:'12px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
+                  style="font-size: 8px"
+                  :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
                   @selection-change="handleSelectionChange"
                 >
                   <el-table-column label="分支名称" prop="branch" min-width="50px" align="center" show-overflow-tooltip>
@@ -467,7 +467,7 @@
                 />
               </template>
             </el-table-column>
-            <el-table-column label="接口名称" prop="interface_name" min-width="140px" align="center">
+            <el-table-column label="接口名称" prop="interface_name" min-width="120px" align="center">
               <template slot-scope="scope">
                 <span class="col-cont" v-html="showData2(scope.row.interface_name)" />
               </template>
@@ -560,7 +560,7 @@
             <el-table-column
               label="更新信息"
               prop="update_time"
-              min-width="100px"
+              min-width="80px"
               :formatter="convertTimeFormat"
               align="center"
               show-overflow-tooltip
@@ -630,7 +630,7 @@
                 </el-popover>
               </template>
             </el-table-column>
-            <el-table-column label="操作" min-width="80" align="center">
+            <el-table-column label="操作" min-width="100" align="center">
               <template slot-scope="scope">
                 <el-tooltip content="查看文档" placement="left">
                   <el-button
