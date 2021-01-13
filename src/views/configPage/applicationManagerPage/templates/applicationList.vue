@@ -42,9 +42,9 @@
           </el-form-item>
         </el-form>
         <div class="tc" style="margin-top:10px;">
-          <el-button type="primary" size="medium" icon="el-icon-search" @click="search">查询</el-button>
-          <el-button type="warning" size="medium" icon="el-icon-refresh" @click="resetForm">重置</el-button>
-          <el-button type="success" size="medium" icon="el-icon-plus" @click="addForm">新增</el-button>
+          <el-button type="primary" size="mini" icon="el-icon-search" @click="search">查询</el-button>
+          <el-button type="warning" size="mini" icon="el-icon-refresh" @click="resetForm">重置</el-button>
+          <el-button type="success" size="mini" icon="el-icon-plus" @click="addForm">新增</el-button>
         </div>
       </SearchContainer>
       <div style="display: inline-block;margin-bottom: 20px">
@@ -149,7 +149,7 @@
     <!--编辑弹出框-->
     <el-dialog title="修改应用" :visible.sync="editFormVisible" width="40%" :show-close="false" :close-on-click-modal="false">
       <div style="margin-top: 10px">
-        <div style="text-align: center;font-size: 20px;font-weight: bold;margin-bottom: 25px"><label>应用信息</label>
+        <div style="text-align: center;font-size: 15px;font-weight: bold;margin-bottom: 25px"><label>应用信息</label>
         </div>
         <el-form
           ref="editForm"
@@ -259,7 +259,7 @@
     <!-- 添加弹出框 -->
     <el-dialog title="添加应用" :visible.sync="addFormVisible" width="40%" :show-close="false" :close-on-click-modal="false">
       <div style="margin-top: 10px">
-        <div style="text-align: center;font-size: 20px;font-weight: bold;margin-bottom: 25px"><label>应用信息</label>
+        <div style="text-align: center;font-size: 15px;font-weight: bold;margin-bottom: 25px"><label>应用信息</label>
         </div>
         <el-form
           ref="form"

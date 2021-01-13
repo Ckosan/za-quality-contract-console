@@ -7,11 +7,11 @@
         <div>
           <el-row style="margin: 10px;">
             <el-col :span="12">
-              <div style="font-size: 18px;font-style: italic;color: #8d8d8d;">
+              <div style="font-size: 12px;font-style: italic;color: #8d8d8d;">
                 {{ serverInfo.project_name }}&nbsp;/&nbsp;{{ serverInfo.application_name }}
               </div>
               <div style="margin-top: 5px;" />
-              <div style="font-size: 16px;font-style: italic;color: #8d8d8d;">
+              <div style="font-size: 10px;font-style: italic;color: #8d8d8d;">
                 <b>{{ serverInfo.server_name }}</b>
               </div>
             </el-col>
@@ -48,29 +48,30 @@
           </el-row>
         </div>
         <div style="display: inline-block">
-          <div style="float: left"><label style="font-weight: bold;font-size: 20px">分支对比结果</label></div>
+          <div style="float: left"><label style="font-weight: bold;font-size: 15px">分支对比结果</label></div>
         </div>
         <div v-if="serverInfo.server_type ==='API'" style="overflow:hidden;" class="bodyRequest">
           <el-tabs v-model="activeName" type="border-card" stretch>
             <el-tab-pane name="first" @click="refresh" @change="refresh">
-              <span slot="label"><i class="el-icon-download" /> 配置请求报文</span>
+              <span slot="label" style="font-size: 12px"><i class="el-icon-download" /> 配置请求报文</span>
               <br>
-              <div><label style="font-weight: bold">请求头：</label></div>
+              <div><label style="font-weight: bold;font-size: 15px">请求头：</label></div>
               <div style="height: auto;overflow: hidden;">
                 <br>
                 <HotTable ref="headersTextHot" :disabled="!submitFlag" :root="test" :settings="headerSettings" />
               </div>
               <br>
               <br>
+              <div style="margin-bottom: 5px"><label style="font-weight: bold;font-size: 15px">请求体：</label></div>
               <div style="height: auto;overflow: hidden;">
-                <HotTable ref="bodyTextHot" :root="test" :settings="hotSettings" />
+                <HotTable ref="bodyTextHot" :disabled="!submitFlag" :root="test" :settings="hotSettings" />
               </div>
             </el-tab-pane>
             <el-tab-pane name="second" @click="refresh" @change="refresh">
-              <span slot="label"><i class="el-icon-upload2" /> 配置响应报文</span>
+              <span slot="label" style="font-size: 12px"><i class="el-icon-upload2" /> 配置响应报文</span>
               <div>
                 <br>
-                <div><label style="font-weight: bold">响应头：</label></div>
+                <div><label style="font-weight: bold;font-size: 15px">响应头：</label></div>
                 <div style="height: auto;overflow: hidden;">
                   <br>
                   <HotTable
@@ -82,8 +83,9 @@
                 </div>
                 <br>
                 <br>
+                <div style="margin-bottom: 5px"><label style="font-weight: bold;font-size: 15px">响应体：</label></div>
                 <div style="height: auto;overflow: hidden;">
-                  <HotTable ref="httpresponseTextHot" :settings="httpResponseSettings" />
+                  <HotTable ref="httpresponseTextHot" :disabled="!submitFlag" :settings="httpResponseSettings" />
                 </div>
               </div>
             </el-tab-pane>

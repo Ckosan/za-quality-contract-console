@@ -45,9 +45,8 @@ export default {
   .el-input--medium {
     font-size: 10px;
   }
-  .el-button--medium{
-    padding:8px 8px;
-    font-size: 11px;
+  .el-dialog__title{
+    font-size: 15px;
   }
   .el-button--mini.is-circle{
     padding: 5px;

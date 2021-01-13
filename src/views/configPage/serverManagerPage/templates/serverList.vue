@@ -67,9 +67,9 @@
           </el-form-item>
         </el-form>
         <div class="tc" style="margin-top:10px;">
-          <el-button type="primary" size="medium" icon="el-icon-search" @click="search">查询</el-button>
-          <el-button type="warning" size="medium" icon="el-icon-refresh" @click="resetForm">重置</el-button>
-          <el-button type="success" size="medium" icon="el-icon-plus" @click="addForm">新增</el-button>
+          <el-button type="primary" size="mini" icon="el-icon-search" @click="search">查询</el-button>
+          <el-button type="warning" size="mini" icon="el-icon-refresh" @click="resetForm">重置</el-button>
+          <el-button type="success" size="mini" icon="el-icon-plus" @click="addForm">新增</el-button>
         </div>
       </SearchContainer>
       <div style="display: inline-block;margin-bottom: 20px">
@@ -275,7 +275,7 @@
       :close-on-click-modal="false"
     >
       <div v-loading="regionLoading" style="margin-top: 10px">
-        <div style="text-align: center;font-size: 20px;font-weight: bold;margin-bottom: 25px"><label>服务信息</label>
+        <div style="text-align: center;font-size: 15px;font-weight: bold;margin-bottom: 25px"><label>服务信息</label>
         </div>
         <el-form
           ref="editForm"
@@ -370,7 +370,7 @@
             </el-col>
           </el-row>
           <div style="margin: 20px 0;" />
-          <div style="text-align: center;font-size: 20px;font-weight: bold;"><label>配置信息</label>
+          <div style="text-align: center;font-size: 15px;font-weight: bold;"><label>配置信息</label>
           </div>
           <div v-if="editForm.server_type==='API'" class="panel-heading" style="margin-bottom: 20px">
             <el-button
@@ -555,8 +555,8 @@
               v-if="editForm.server_type==='SFTP'"
               :data="editForm.server_env"
               border
-              style="font-size: 14px"
-              :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
+              style="font-size: 8px"
+              :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
             >
               <el-table-column label="配置名称" align="center">
                 <template slot-scope="scope">
@@ -675,7 +675,7 @@
       :close-on-click-modal="false"
     >
       <div v-loading="regionLoading" style="margin-top: 10px">
-        <div style="text-align: center;font-size: 20px;font-weight: bold;margin-bottom: 25px"><label>服务信息</label>
+        <div style="text-align: center;font-size: 15px;font-weight: bold;margin-bottom: 25px"><label>服务信息</label>
         </div>
         <el-form
           ref="form"
@@ -770,7 +770,7 @@
             </el-col>
           </el-row>
           <div style="margin: 20px 0;" />
-          <div style="text-align: center;font-size: 20px;font-weight: bold;"><label>配置信息</label>
+          <div style="text-align: center;font-size: 15px;font-weight: bold;"><label>配置信息</label>
           </div>
           <div v-if="form.server_type==='API'" class="panel-heading">
             <el-button

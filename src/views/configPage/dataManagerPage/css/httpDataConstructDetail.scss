@@ -108,12 +108,12 @@ handsontable {
 }
 
 .handsontable span.colHeader {
-  font-size: 15px;
+  font-size: 11px;
   font-weight: bold;
 }
 
 .handsontable .htCenter {
-  font-size: 14px;
+  font-size: 10px;
   text-align: left;
   word-break: break-all;
 }
@@ -176,7 +176,7 @@ table {
 
 .table-mod.table-info tr td {
   padding: 15px;
-  font-size: 14px;
+  font-size: 8px;
   line-height: 1.6;
 }
 
@@ -194,7 +194,7 @@ table {
 .handsontable.ht_clone_top th .relative {
   vertical-align: middle;
   line-height: .9;
-  font-size: 14px;
+  font-size: 8px;
 }
 
 .bodyRequest {
@@ -207,7 +207,7 @@ table {
 
 .el-dialog__title {
   line-height: 24px;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
   align: center;
   color: #606266;
@@ -258,7 +258,9 @@ table {
   text-align: center;
   margin: auto;
 }
-
+.rowHeader{
+  font-size: 10px;
+}
 .el-upload {
   margin: auto;
 }
@@ -269,7 +271,7 @@ table {
 
 .el-form-item__label {
   font-weight: bold;
-  font-size: 15px;
+  font-size: 10px;
 }
 
 .inputClass {

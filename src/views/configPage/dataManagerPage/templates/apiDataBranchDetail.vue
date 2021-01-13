@@ -7,15 +7,15 @@
         <div>
           <el-row style="margin: 10px;">
             <el-col :span="12">
-              <div style="font-size: 18px;font-style: italic;color: #8d8d8d;">
+              <div style="font-size: 12px;font-style: italic;color: #8d8d8d;">
                 {{ serverInfo.project_name }}&nbsp;/&nbsp;{{ serverInfo.application_name }}
               </div>
               <div style="margin-top: 5px;" />
-              <div style="font-size: 16px;font-style: italic;color: #8d8d8d;">
+              <div style="font-size: 10px;font-style: italic;color: #8d8d8d;">
                 <b>{{ serverInfo.server_name }}</b>
               </div>
               <div style="margin-top: 5px;" />
-              <div style="font-size: 14px;font-style: italic;color: #8d8d8d;">
+              <div style="font-size: 8px;font-style: italic;color: #8d8d8d;">
                 <b>{{ apiInfoTitle }}</b>
               </div>
             </el-col>
@@ -54,9 +54,9 @@
         </div>
         <div style="display: inline-block;width: 100%;">
           <div style="float: left">
-            <label style="font-weight: bold;font-size: 20px">
-              文档信息<label style="font-size: small;color: #888888;">
-                （当前分支：{{ branch }}<span>，最新版本：{{ httpInfo.version }}</span>）
+            <label style="font-weight: bold;font-size: 15px">
+              文档信息<label style="font-size: 10px;color: #888888;">
+                （当前分支：{{ branch }}<span style="font-size: 10px">，最新版本：{{ httpInfo.version }}</span>）
               </label>
             </label>
           </div>
@@ -64,12 +64,12 @@
             <el-button
               style="background: #6269cd;color: snow"
               icon="el-icon-magic-stick"
-              size="small"
+              size="mini"
               :loading="debugButtonloading"
               @click="handleDebugging"
             >接口调试
             </el-button>
-            <el-button type="success" icon="el-icon-question" size="small" @click="searchFunc">函数助手
+            <el-button type="success" icon="el-icon-question" size="mini" @click="searchFunc">函数助手
             </el-button>
           </div>
         </div>
@@ -91,9 +91,9 @@
         <div v-if="serverInfo.server_type ==='API'" style="overflow:hidden;" class="bodyRequest">
           <el-tabs v-model="activeName" type="border-card" stretch>
             <el-tab-pane name="first" @click="refresh" @change="refresh">
-              <span slot="label"><i class="el-icon-download" /> 配置请求报文</span>
+              <span slot="label" style="font-size: 12px"><i class="el-icon-download" /> 配置请求报文</span>
               <br>
-              <div><label style="font-weight: bold">请求头：</label></div>
+              <div><label style="font-weight: bold;font-size: 15px">请求头：</label></div>
               <div style="height: auto;overflow: hidden;">
                 <br>
                 <HotTable ref="headersTextHot" :disabled="!submitFlag" :root="test" :settings="headerSettings" />
@@ -102,25 +102,25 @@
               <div style="display: inline-block;display-inside: ruby;width: 100%">
                 <div style="float: left;width: 100%;">
                   <div style="float: left;margin-right: 30px;margin-top: 10px;margin-bottom: 15px"><label
-                    style="font-weight: bold"
+                    style="font-weight: bold;font-size: 15px"
                   >请求体：</label></div>
-                  <div style="float: left;margin-left: 20px">
+                  <div style="float: left;margin-left: 20px;margin-top: 5px">
                     <el-input
                       v-model="searchTxt"
                       style="display: inline-block;width: 300px;height: 15px"
                       placeholder="输入关键字"
                       @input="seachData"
                     ><i slot="prefix" class="el-input__icon el-icon-search" /></el-input>
-                    <label v-if="searchCount!='0'" style="font-weight: normal;font-size: 14px">共查到 <label style="color: #ff0f20">{{ searchCount }} </label>处</label>
+                    <label v-if="searchCount!='0'" style="font-weight: normal;font-size: 8px">共查到 <label style="color: #ff0f20">{{ searchCount }} </label>处</label>
                   </div>
                   <div style="float: right;margin-left: 60px">
-                    <el-button type="primary" icon="el-icon-upload" size="small" :disabled="!submitFlag" @click="requestImportJson">
+                    <el-button type="primary" icon="el-icon-upload" size="mini" :disabled="!submitFlag" @click="requestImportJson">
                       JSON导入
                     </el-button>
                     <el-button
                       type="warning"
                       icon="el-icon-view"
-                      size="small"
+                      size="mini"
                       @click="viewBody"
                     >报文预览
                     </el-button>
@@ -133,10 +133,10 @@
               </div>
             </el-tab-pane>
             <el-tab-pane name="second" @click="refresh" @change="refresh">
-              <span slot="label"><i class="el-icon-upload2" /> 配置响应报文</span>
+              <span slot="label" style="font-size: 12px"><i class="el-icon-upload2" /> 配置响应报文</span>
               <div>
                 <br>
-                <div><label style="font-weight: bold">响应头：</label></div>
+                <div><label style="font-weight: bold;font-size: 15px">响应头：</label></div>
                 <div style="height: auto;overflow: hidden;">
                   <br>
                   <HotTable
@@ -150,19 +150,19 @@
                 <div style="display: inline-block;display-inside: ruby;width: 100%;">
                   <div style="float: left;width: 100%;">
                     <div style="float: left;margin-right: 30px;margin-top: 10px;margin-bottom: 15px"><label
-                      style="font-weight: bold"
+                      style="font-weight: bold;font-size: 15px"
                     >响应体：</label></div>
-                    <div style="float: left;margin-left: 20px">
+                    <div style="float: left;margin-left: 20px;margin-top: 5px">
                       <el-input
                         v-model="searchTxt"
                         style="display: inline-block;width: 300px;height: 15px"
                         placeholder="输入关键字"
                         @input="seachBodyData"
                       ><i slot="prefix" class="el-input__icon el-icon-search" /></el-input>
-                      <label v-if="searchCount!='0'" style="font-weight: normal;font-size: 14px">搜索结果共有 <label style="color: #ff0f20">{{ searchCount }} </label>处</label>
+                      <label v-if="searchCount!='0'" style="font-weight: normal;font-size: 8px">搜索结果共有 <label style="color: #ff0f20">{{ searchCount }} </label>处</label>
                     </div>
                     <div style="float: right;margin-left: 60px">
-                      <el-button type="primary" icon="el-icon-upload" size="small" :disabled="!submitFlag" @click="importJson">JSON导入
+                      <el-button type="primary" icon="el-icon-upload" size="mini" :disabled="!submitFlag" @click="importJson">JSON导入
                       </el-button>
                       <el-button
                         type="warning"

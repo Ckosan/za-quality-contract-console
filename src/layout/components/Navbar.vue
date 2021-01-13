@@ -16,7 +16,7 @@
         <el-menu-item>
           <el-dropdown trigger="click">
             <el-tooltip content="友情链接" placement="top">
-              <el-button style="border: none">
+              <el-button style="border: none;margin-top: -15px">
                 <img class="imgstyle" src="../../assets/imgs/link.png">
                 <a target="_blank" href="https://wiki.zhonganonline.com/pages/viewpage.action?pageId=40306763" />
               </el-button>
@@ -39,7 +39,7 @@
         </el-menu-item>
         <el-menu-item>
           <el-tooltip content="帮助中心" placement="top">
-            <el-button style="border: none">
+            <el-button style="border: none;margin-top: -15px">
               <img class="imgstyle" src="../../assets/imgs/help.png">
             </el-button>
           </el-tooltip>
@@ -93,11 +93,11 @@
         </el-menu-item>
         <el-menu-item>
           <template>
-            <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
+            <el-dropdown class="avatar-container right-menu-item hover-effect" style="margin-top: -8px" trigger="click">
               <div class="avatar-wrapper" style="margin-top: 0px">
                 <img class="imgstyle" src="../../assets/imgs/bussiness-man-fill.png">
-                <span style="font-size: 12px;font-weight: bold">{{ currentUserName }}</span>
-                <span style="font-size: 10px">{{ departmentName }}</span>
+                <span style="font-size: 10px;font-weight: bold">{{ currentUserName }}</span>
+                <span style="font-size: 8px">{{ departmentName }}</span>
                 <i class="el-icon-caret-bottom" />
               </div>
               <el-dropdown-menu slot="dropdown">
@@ -259,6 +259,9 @@ export default {
 </script>
 
 <style lang="scss">
+  .el-popover__reference{
+    margin-top: -15px;
+  }
   .infinite-list {
     height: 300px;
     padding: 0;
@@ -324,7 +327,7 @@ export default {
   }
 
   .navbar {
-    height: 60px;
+    height: 50px;
     overflow: hidden;
     position: relative;
     /*border: 1px solid rgba(146, 128, 205, 0.24);*/
@@ -339,7 +342,7 @@ export default {
     }
 
     .hamburger-container {
-      line-height: 46px;
+      line-height: 50px;
       height: 100%;
       float: left;
       cursor: pointer;
@@ -355,8 +358,10 @@ export default {
       background: #ffffff;
       float: left;
     }
-
-    .errLog-container {
+    .el-breadcrumb__item {
+      font-size: 12px;
+    }
+      .errLog-container {
       display: inline-block;
       vertical-align: top;
     }
@@ -364,14 +369,14 @@ export default {
     .right-menu {
       float: right;
       height: 100%;
-      line-height: 50px;
+      line-height: 30px;
       &:focus {
         outline: none;
       }
 
       .right-menu-item {
         display: inline-block;
-        padding: 0 8px;
+        padding: 0 2px;
         height: 100%;
         font-size: 10px;
         color: #197fcd;

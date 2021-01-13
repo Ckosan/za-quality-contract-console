@@ -67,9 +67,9 @@
           </el-form-item>
         </el-form>
         <div class="tc" style="margin-top:10px;">
-          <el-button type="primary" size="medium" icon="el-icon-search" @click="search">查询</el-button>
-          <el-button type="warning" size="medium" icon="el-icon-refresh" @click="resetForm">重置</el-button>
-          <el-button type="success" size="medium" icon="el-icon-plus" @click="addForm">新增</el-button>
+          <el-button type="primary" size="mini" icon="el-icon-search" @click="search">查询</el-button>
+          <el-button type="warning" size="mini" icon="el-icon-refresh" @click="resetForm">重置</el-button>
+          <el-button type="success" size="mini" icon="el-icon-plus" @click="addForm">新增</el-button>
         </div>
       </SearchContainer>
       <div style="display: inline-block;margin-bottom: 20px">
@@ -224,7 +224,7 @@
             />
           </el-form-item>
           <div style="margin: 20px 0;" />
-          <div style="text-align: center;font-size: 12px;font-weight: bold;margin-bottom: 25px">
+          <div style="text-align: center;font-size: 15px;font-weight: bold;margin-bottom: 25px">
             <label>成员信息</label>
           </div>
           <div v-for="(resource_list,index) in editForm.resource_list" :key="index">

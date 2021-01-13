@@ -18,7 +18,10 @@
   .el-table-column--selection > .cell {
     text-align: center;
   }
-
+  .el-form-item__label {
+    font-size: 8px;
+    font-weight: bold;
+  }
   .mt15 {
     margin-top: 15px;
   }
@@ -210,7 +213,7 @@ table {
 
 .el-dialog__title {
   line-height: 24px;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
   align: center;
   color: #606266;
@@ -270,10 +273,6 @@ table {
   margin: auto;
 }
 
-.el-form-item__label {
-  font-weight: bold;
-  font-size: 15px;
-}
 
 .inputClass {
   width: 300px;

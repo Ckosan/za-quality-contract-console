@@ -80,9 +80,9 @@
             </el-form-item> -->
           </el-form>
           <div class="tc" style="text-align:center;margin-top:10px;">
-            <el-button type="primary" size="medium" icon="el-icon-search" @click="search">查询</el-button>
-            <el-button type="warning" size="medium" icon="el-icon-refresh" @click="resetForm">重置</el-button>
-            <el-button type="success" size="medium" icon="el-icon-plus" @click="addDataSet">新增</el-button>
+            <el-button type="primary" size="mini" icon="el-icon-search" @click="search">查询</el-button>
+            <el-button type="warning" size="mini" icon="el-icon-refresh" @click="resetForm">重置</el-button>
+            <el-button type="success" size="mini" icon="el-icon-plus" @click="addDataSet">新增</el-button>
           </div>
         </SearchContainer>
         <div style="float: left;">

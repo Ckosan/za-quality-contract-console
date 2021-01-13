@@ -14,7 +14,7 @@
   .mt15 {
     margin-top: 15px;
   }
-  .rowItem .el-form-item__label {
+  el-form-item__label {
     font-size: 8px;
     font-weight: bold;
   }
@@ -92,11 +92,6 @@ table {
   line-height: 1.6;
 }
 
-.rowItem .el-form-item__label {
-  font-size: 15px;
-  font-weight: bold;
-
-}
 
 .el-table--border:after,
 .el-table--group:after,
@@ -136,7 +131,7 @@ table {
 
 .el-dialog__title {
   line-height: 24px;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
   align: center;
   color: #606266;

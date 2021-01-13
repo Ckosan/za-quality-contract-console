@@ -6,14 +6,14 @@
       <div>
         <el-row style="margin: 10px;">
           <el-col :span="12">
-            <div style="font-size: 18px;font-style: italic;color: #8d8d8d;">
+            <div style="font-size: 12px;font-style: italic;color: #8d8d8d;">
               {{ serverInfo.project_name }}&nbsp;/&nbsp;{{ serverInfo.application_name }}
             </div>
             <div style="margin-top: 5px;" />
-            <div style="font-size: 16px;font-style: italic;color: #8d8d8d;">
+            <div style="font-size: 10px;font-style: italic;color: #8d8d8d;">
               <b>{{ serverInfo.server_name }}</b>
             </div>
-            <div style="font-size: 14px;font-style: italic;color: #8d8d8d;margin-top: 5px">
+            <div style="font-size: 8px;font-style: italic;color: #8d8d8d;margin-top: 5px">
               <b>{{ apiInfoTitle }}</b>
             </div>
           </el-col>
@@ -38,17 +38,18 @@
       <div style="overflow:hidden;" class="bodyRequest">
         <el-tabs v-model="activeName" type="border-card" stretch>
           <el-tab-pane name="first">
-            <span slot="label"><i class="el-icon-download" /> 配置请求报文</span>
+            <span slot="label" style="font-size: 12px"><i class="el-icon-download" /> 配置请求报文</span>
             <br>
-            <div style="margin-bottom: 10px"><label style="font-weight: bold">请求头：</label></div>
+            <div style="margin-bottom: 10px"><label style="font-weight: bold;font-size: 15px">请求头：</label></div>
             <el-table
               ref="reqHeaderTable"
               element-loading-spinner="el-icon-loading"
               :data="editForm.req_headers"
               border
               class="form-table"
+              style="font-size: 8px"
               row-key="id"
-              :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#394d66',color:'#fafafa'}"
+              :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#394d66',color:'#fafafa'}"
               @selection-change="reqheadersChange"
               @select="changeReqHSelect"
             >
@@ -75,13 +76,13 @@
             <div style="display: inline-block;display-inside: ruby;width: 100%;">
               <div style="float: left;width: 100%;">
                 <div style="float: left;margin-right: 30px;margin-top: 20px;margin-bottom: 20px"><label
-                  style="font-weight: bold"
+                  style="font-weight: bold;font-size: 15px"
                 >请求体：</label></div>
                 <div style="float: right;margin-right: 30px;margin-top: 20px">
                   <el-button
                     type="warning"
                     icon="el-icon-view"
-                    size="small"
+                    size="mini"
                     @click="viewBody"
                   >报文预览
                   </el-button>
@@ -94,8 +95,9 @@
                   :data="editForm.request"
                   border
                   class="form-table"
+                  style="font-size: 8px"
                   row-key="id"
-                  :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#394d66',color:'#fafafa'}"
+                  :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#394d66',color:'#fafafa'}"
                   @selection-change="requestChange"
                   @select="changeReqSelect"
                 >
@@ -128,18 +130,19 @@
             </div>
           </el-tab-pane>
           <el-tab-pane name="second">
-            <span slot="label"><i class="el-icon-upload2" /> 配置响应报文</span>
+            <span slot="label" style="font-size: 12px"><i class="el-icon-upload2" /> 配置响应报文</span>
             <div>
               <br>
-              <div style="margin-bottom: 10px"><label style="font-weight: bold">响应头：</label></div>
+              <div style="margin-bottom: 10px"><label style="font-weight: bold;font-size: 15px">响应头：</label></div>
               <el-table
                 ref="respHeaderTable"
                 element-loading-spinner="el-icon-loading"
                 :data="editForm.resp_headers"
                 border
                 class="form-table"
+                style="font-size: 8px"
                 row-key="id"
-                :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#394d66',color:'#fafafa'}"
+                :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#394d66',color:'#fafafa'}"
                 @selection-change="respHeadersChange"
                 @select="changeRespHSelect"
               >
@@ -166,13 +169,13 @@
               <div style="display: inline-block;display-inside: ruby;width: 100%;">
                 <div style="float: left;width: 100%;">
                   <div style="float: left;margin-right: 30px;margin-top: 20px;margin-bottom: 20px"><label
-                    style="font-weight: bold"
+                    style="font-weight: bold;font-size: 15px"
                   >响应体：</label></div>
                   <div style="float: right;margin-right: 30px;margin-top: 20px">
                     <el-button
                       type="warning"
                       icon="el-icon-view"
-                      size="small"
+                      size="mini"
                       @click="viewResponseBody"
                     >报文预览
                     </el-button>
@@ -185,8 +188,9 @@
                     :data="editForm.response"
                     border
                     class="form-table"
+                    style="font-size: 8px"
                     row-key="id"
-                    :header-cell-style="{fontSize:'15px',fontWeight:'bold',background:'#394d66',color:'#fafafa'}"
+                    :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#394d66',color:'#fafafa'}"
                     @selection-change="responseChange"
                     @select="changeRespSelect"
                   >

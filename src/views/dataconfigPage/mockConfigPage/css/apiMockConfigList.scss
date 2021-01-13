@@ -1,6 +1,6 @@
 .env-item{
   color:#3b91b6;
-  font-size: 14px;
+  font-size: 10px;
   font-family: "Times New Roman";
 }
 .credit-record {
@@ -18,6 +18,13 @@
   .rowItem .el-form-item__label {
     font-size: 8px;
     font-weight: bold;
+  }
+  .el-form-item__label {
+    font-size: 8px;
+    font-weight: bold;
+  }
+  .el-switch{
+    font-size: 8px;
   }
   .mt15 {
     margin-top: 15px;
@@ -210,7 +217,7 @@ table {
 
 .el-dialog__title {
   line-height: 24px;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
   align: center;
   color: #606266;

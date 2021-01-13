@@ -6,20 +6,20 @@
       <div>
         <el-row style="margin: 10px;">
           <el-col :span="12">
-            <div style="font-size: 18px;font-style: italic;color: #8d8d8d;">
+            <div style="font-size: 12px;font-style: italic;color: #8d8d8d;">
               {{ project_info }}&nbsp;/&nbsp;{{ application_info }}
             </div>
             <div style="margin-top: 5px;" />
-            <div style="font-size: 16px;font-style: italic;color: #8d8d8d;margin-bottom: 5px">
+            <div style="font-size: 10px;font-style: italic;color: #8d8d8d;margin-bottom: 5px">
               <b>{{ server_Info }}</b>
             </div>
-            <div style="font-size: 14px;font-style: italic;color: #8d8d8d;">
+            <div style="font-size: 8px;font-style: italic;color: #8d8d8d;">
               <b>{{ proxyTitle }}</b>
             </div>
           </el-col>
           <el-col :span="12">
             <div style="text-align: right;">
-              <el-button type="success" size="medium" icon="el-icon-plus" @click="addMockConfig">添加接口</el-button>
+              <el-button type="success" size="mini" icon="el-icon-plus" @click="addMockConfig">添加接口</el-button>
               <el-button type="info" icon="el-icon-back" @click="gobackList">代理列表
               </el-button>
               <el-button type="warning" icon="el-icon-right" @click="goback">服务详情
@@ -92,7 +92,7 @@
                 </el-table-column>
                 <el-table-column label="规则内容" prop="conditions" min-width="180px" align="center">
                   <template slot-scope="scope">
-                    <span class="col-cont" v-html="showData(scope.row.conditions)" />
+                    <span class="col-cont" style="font-size: 8px" v-html="showData(scope.row.conditions)" />
                   </template>
                 </el-table-column>
                 <el-table-column label="权重" prop="priority" min-width="80px" align="center" sortable />
@@ -103,7 +103,7 @@
                         target="_blank"
                         style="color:#0174DF"
                         @click="goToVersionDetail(scope.row)"
-                      >{{ scope.row.branch }}
+                      ><span style="font-size: 8px">{{ scope.row.branch }}</span>
                       </el-link>
                     </div>
                     <div v-if="scope.row.event_type==='mock'&&scope.row.data_type==='branch'">
@@ -111,7 +111,7 @@
                         target="_blank"
                         style="color:#0174DF"
                         @click="goToBranchDetail(scope.row)"
-                      >{{ scope.row.branch }}
+                      ><span style="font-size: 8px">{{ scope.row.branch }}</span>
                       </el-link>
                       <el-tooltip
                         class="item env-item"
@@ -129,7 +129,7 @@
                         target="_blank"
                         style="color:#0174DF"
                         @click="goToDataSetDetail(scope.row)"
-                      >{{ scope.row.data_set_list[0] }}/{{ scope.row.data_set_list[1] }}
+                      ><span style="font-size: 8px">{{ scope.row.data_set_list[0] }}/{{ scope.row.data_set_list[1] }}</span>
                       </el-link>
                     </div>
                   </template>
@@ -143,6 +143,8 @@
                       :inactive-value="0"
                       active-text="开"
                       inactive-text="关"
+                      size="mini"
+                      border
                       @change="changeStatus(scope.row)"
                     />
                   </template>

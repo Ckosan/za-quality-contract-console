@@ -214,7 +214,7 @@
           >接口调试
           </el-button>
           <el-button
-            style="font-size: 12px"
+            style="font-size: 10px"
             type="warning"
             icon="el-icon-download"
             size="mini"

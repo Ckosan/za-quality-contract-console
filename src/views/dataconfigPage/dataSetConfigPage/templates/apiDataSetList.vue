@@ -6,20 +6,20 @@
       <div>
         <el-row style="margin: 10px;">
           <el-col :span="12">
-            <div style="font-size: 18px;font-style: italic;color: #8d8d8d;">
+            <div style="font-size: 12px;font-style: italic;color: #8d8d8d;">
               {{ project_info }}&nbsp;/&nbsp;{{ application_info }}
             </div>
             <div style="margin-top: 5px;" />
-            <div style="font-size: 16px;font-style: italic;color: #8d8d8d;margin-bottom: 5px">
+            <div style="font-size: 10px;font-style: italic;color: #8d8d8d;margin-bottom: 5px">
               <b>{{ server_Info }}</b>
             </div>
-            <div style="font-size: 14px;font-style: italic;color: #8d8d8d;">
+            <div style="font-size: 8px;font-style: italic;color: #8d8d8d;">
               <b>{{ wareHouseTitle }}</b>
             </div>
           </el-col>
           <el-col :span="12">
             <div style="text-align: right;">
-              <el-button type="success" size="medium" icon="el-icon-plus" @click="addMockConfig">添加接口</el-button>
+              <el-button type="success" size="mini" icon="el-icon-plus" @click="addMockConfig">添加接口</el-button>
               <el-button type="info" icon="el-icon-back" @click="gobackList">用例集列表
               </el-button>
               <el-button type="warning" icon="el-icon-right" @click="goback">服务详情
@@ -102,7 +102,7 @@
                       target="_blank"
                       style="color:#0174DF"
                       @click="goToDocDetial(scope.row)"
-                    ><span class="col-cont" v-html="showData(convertSourceData(scope.row.source_type))" />
+                    ><span class="col-cont" style="font-size: 8px" v-html="showData(convertSourceData(scope.row.source_type))" />
                       <span>&nbsp;|&nbsp;</span>
                       <span class="col-cont" v-html="showData(scope.row.source_value)" />
                     </el-link>
@@ -111,7 +111,7 @@
                       target="_blank"
                       style="color:#0174DF"
                       @click="goToDocDetial(scope.row)"
-                    ><span class="col-cont" v-html="showData(convertSourceData(scope.row.source_type))" />
+                    ><span class="col-cont" style="font-size: 8px" v-html="showData(convertSourceData(scope.row.source_type))" />
                     </el-link>
                   </template>
                 </el-table-column>
