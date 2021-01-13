@@ -29,7 +29,7 @@ export default {
   .el-select-dropdown__item{
     font-size: 8px;
   }
-  .rowItem .el-form-item__label {
+  .el-form-item__label {
     font-size: 8px;
     font-weight: bold;
   }
@@ -42,8 +42,11 @@ export default {
   .el-form-item__label{
     font-size: 10px;
   }
-  .el-pagination__total{
+  .pagination{
     font-size: 10px;
+  }
+  /deep/ .pagination .el-pagination__total {
+    font-size: 6px;
   }
   .el-input--medium {
     font-size: 10px;

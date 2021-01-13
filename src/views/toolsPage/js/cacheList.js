@@ -1,6 +1,7 @@
 import { mapGetters } from 'vuex'
 import { CACHE_DELETE_DATA, CACHE_GET_DATA, CACHE_SET_DATA } from '../../../contractapi'
 import { httpRequest } from '../../../http/interceptors'
+import { convertTime } from '../../../utils/tools'
 
 export default {
   data() {
@@ -155,6 +156,10 @@ export default {
           message: '已取消删除'
         })
       })
+    },
+    convertDataFormat(row, col) {
+      if (row.modifier != null) return row.modifier + '\n\t' + convertTime(row.update_time)
+      return row.creator + '\n\t' + convertTime(row.create_time)
     },
 
     // 查询

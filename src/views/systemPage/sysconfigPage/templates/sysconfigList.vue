@@ -98,8 +98,14 @@
             <span class="col-cont" v-html="showDate(scope.row.describe)" />
           </template>
         </el-table-column>
-        <el-table-column label="修改人" prop="modifier" min-width="100" align="center" />
-        <el-table-column label="更新时间" prop="update_time" min-width="200" align="center" />
+        <el-table-column
+          label="更新信息"
+          prop="update_time"
+          :formatter="convertDataFormat"
+          min-width="120"
+          align="center"
+          sortable
+        />
         <el-table-column label="操作" width="150px" align="center">
           <template slot-scope="scope">
             <el-tooltip content="编辑" placement="top">

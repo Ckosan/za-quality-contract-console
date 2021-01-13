@@ -2,6 +2,7 @@ import { mapGetters } from 'vuex'
 import MyEditor from '../templates/codeEditor'
 import { SYS_SCRIPT_DELETE, SYS_SCRIPT_GET, SYS_SCRIPT_POST, SYS_SCRIPT_PUT } from '../../../contractapi'
 import { httpRequest } from '../../../http/interceptors'
+import { convertTime } from '../../../utils/tools'
 
 export default {
   components: {
@@ -231,6 +232,10 @@ export default {
     javascriptOnCodeChange(value, event) {
     },
     cssOnCodeChange(value, event) {
+    },
+    convertDataFormat(row, col) {
+      if (row.modifier != null) return row.modifier + '\n\t' + convertTime(row.update_time)
+      return row.creator + '\n\t' + convertTime(row.create_time)
     }
   }
 }

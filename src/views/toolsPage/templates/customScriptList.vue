@@ -83,25 +83,29 @@
           label="序号"
           align="center"
         />
-        <el-table-column label="脚本名称" prop="script_name" min-width="150" align="center" sortablesortable>
+        <el-table-column label="脚本名称" prop="script_name" min-width="150px" align="center" sortablesortable>
           <template slot-scope="scope">
             <span class="col-cont" v-html="showDate(scope.row.script_name)" />
           </template>
         </el-table-column>
-        <el-table-column label="脚本说明" prop="script_describe" min-width="250" align="center">
+        <el-table-column label="脚本说明" prop="script_describe" min-width="250px" align="center">
           <template slot-scope="scope">
             <span class="col-cont" v-html="showDate(scope.row.script_describe)" />
           </template>
         </el-table-column>
-        <el-table-column label="脚本语言" prop="script_type" min-width="100" align="center">
+        <el-table-column label="脚本语言" prop="script_type" min-width="100px" align="center">
           <template slot-scope="scope">
             <span class="col-cont" v-html="showDate(scope.row.script_type)" />
           </template>
         </el-table-column>
-        <!-- <el-table-column label="创建时间" prop="create_time" min-width="150" align="center" sortable />
-        <el-table-column label="创建人" prop="creator" min-width="100" align="center" />
-        <el-table-column label="更新时间" prop="update_time" min-width="150" align="center" sortable />
-        <el-table-column label="更新人" prop="modifier" min-width="100" align="center" /> -->
+        <el-table-column
+          label="更新信息"
+          prop="update_time"
+          :formatter="convertDataFormat"
+          min-width="120"
+          align="center"
+          sortable
+        />
         <el-table-column label="操作" width="150px" align="center">
           <template slot-scope="scope">
             <el-tooltip content="编辑" placement="top">

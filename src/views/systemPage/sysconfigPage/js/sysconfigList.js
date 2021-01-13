@@ -1,6 +1,7 @@
 import { mapGetters } from 'vuex'
 import { SYS_CONFIG } from '../../../../contractapi'
 import { httpRequest } from '../../../../http/interceptors'
+import { convertTime } from '../../../../utils/tools'
 
 export default {
   data() {
@@ -164,7 +165,9 @@ export default {
     addForm() {
       this.addFormVisible = true
     },
-
+    convertDataFormat(row, col) {
+      return row.modifier + '\n\t' + convertTime(row.update_time)
+    },
     // 添加数据
     add(form) {
       this.$refs[form].validate(async(valid) => {

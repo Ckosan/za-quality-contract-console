@@ -49,7 +49,7 @@
               class="form-table"
               style="font-size: 8px"
               row-key="id"
-              :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#394d66',color:'#fafafa'}"
+              :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
               @selection-change="reqheadersChange"
               @select="changeReqHSelect"
             >
@@ -59,13 +59,17 @@
                 :reserve-selection="selecttable"
               />
               <el-table-column label="字段名" prop="data_key" min-width="100px" align="center" />
-              <el-table-column label="参考值" prop="data_value" min-width="300px" align="center">
+              <el-table-column label="参考值" prop="data_value" min-width="200px" align="center">
                 <template slot-scope="scope">
                   <div style="display: inline-block">
                     <div style="float: left">
                       <el-input
                         v-model="scope.row.data_value"
                         class="my_input__inner"
+                        type="textarea"
+                        placeholder="请输入取值"
+                        rows="1"
+                        maxlength="2046"
                       />
                     </div>
                   </div>
@@ -86,7 +90,7 @@
                     @click="viewBody"
                   >报文预览
                   </el-button>
-                  <el-button type="success" icon="el-icon-question" size="small" @click="searchFunc">函数助手
+                  <el-button type="success" icon="el-icon-question" size="mini" @click="searchFunc">函数助手
                   </el-button>
                 </div>
                 <el-table
@@ -97,7 +101,7 @@
                   class="form-table"
                   style="font-size: 8px"
                   row-key="id"
-                  :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#394d66',color:'#fafafa'}"
+                  :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
                   @selection-change="requestChange"
                   @select="changeReqSelect"
                 >
@@ -112,19 +116,23 @@
                   <el-table-column label="字段长度" prop="data_length" min-width="40px" align="center" />
                   <el-table-column label="是否必填" prop="is_null" min-width="40px" align="center" />
                   <el-table-column label="字段描述" prop="data_describe" min-width="100px" align="center" />
-                  <el-table-column label="参考值" prop="data_value" min-width="300px" align="center">
+                  <el-table-column label="参考值" prop="data_value" min-width="200px" align="center">
                     <template slot-scope="scope">
                       <div style="display: inline-block">
                         <div style="float: left">
                           <el-input
                             v-model="scope.row.data_value"
                             class="my_input__inner"
+                            type="textarea"
+                            placeholder="请输入取值"
+                            rows="1"
+                            maxlength="2046"
                           />
                         </div>
                       </div>
                     </template>
                   </el-table-column>
-                  <el-table-column label="备注" prop="backup" min-width="100px" align="center" />
+                  <el-table-column label="备注" prop="backup" min-width="100" align="center" />
                 </el-table>
               </div>
             </div>
@@ -142,7 +150,7 @@
                 class="form-table"
                 style="font-size: 8px"
                 row-key="id"
-                :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#394d66',color:'#fafafa'}"
+                :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
                 @selection-change="respHeadersChange"
                 @select="changeRespHSelect"
               >
@@ -152,13 +160,17 @@
                   :reserve-selection="selecttable"
                 />
                 <el-table-column label="字段名" prop="data_key" min-width="100px" align="center" />
-                <el-table-column label="参考值" prop="data_value" min-width="300px" align="center">
+                <el-table-column label="参考值" prop="data_value" min-width="200px" align="center">
                   <template slot-scope="scope">
                     <div style="display: inline-block">
                       <div style="float: left">
                         <el-input
                           v-model="scope.row.data_value"
                           class="my_input__inner"
+                          type="textarea"
+                          placeholder="请输入取值"
+                          rows="1"
+                          maxlength="2046"
                         />
                       </div>
                     </div>
@@ -179,7 +191,7 @@
                       @click="viewResponseBody"
                     >报文预览
                     </el-button>
-                    <el-button type="success" icon="el-icon-question" size="small" @click="searchFunc">函数助手
+                    <el-button type="success" icon="el-icon-question" size="mini" @click="searchFunc">函数助手
                     </el-button>
                   </div>
                   <el-table
@@ -190,7 +202,7 @@
                     class="form-table"
                     style="font-size: 8px"
                     row-key="id"
-                    :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#394d66',color:'#fafafa'}"
+                    :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
                     @selection-change="responseChange"
                     @select="changeRespSelect"
                   >
@@ -205,13 +217,17 @@
                     <el-table-column label="字段长度" prop="data_length" min-width="40px" align="center" />
                     <el-table-column label="是否必填" prop="is_null" min-width="40px" align="center" />
                     <el-table-column label="字段描述" prop="data_describe" min-width="100px" align="center" />
-                    <el-table-column label="参考值" prop="data_value" min-width="300px" align="center">
+                    <el-table-column label="参考值" prop="data_value" min-width="200px" align="center">
                       <template slot-scope="scope">
                         <div style="display: inline-block">
                           <div style="float: left">
                             <el-input
                               v-model="scope.row.data_value"
                               class="my_input__inner"
+                              type="textarea"
+                              placeholder="请输入取值"
+                              rows="1"
+                              maxlength="2046"
                             />
                           </div>
                         </div>

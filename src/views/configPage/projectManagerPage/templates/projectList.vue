@@ -151,6 +151,7 @@
         </el-table-column>
       </el-table>
       <el-pagination
+        class="pagination"
         :current-page="currentPage"
         :page-sizes="[15, 20, 40]"
         :page-size="pagesize"
