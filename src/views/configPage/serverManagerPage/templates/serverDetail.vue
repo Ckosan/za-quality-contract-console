@@ -373,7 +373,17 @@
                               <el-button
                                 size="mini"
                                 type="primary"
-                                style="background: #6269cd;color: snow;font-size: 8px"
+                                style="background: #6269cd;color: snow;font-size: 8px;width: 80px"
+                                icon="el-icon-folder"
+                                @click="getDocAll(props.row,scope.$index, scope.row)"
+                              >全部
+                              </el-button>
+                            </div>
+                            <div class="get-body-item">
+                              <el-button
+                                size="mini"
+                                type="primary"
+                                style="background: #6269cd;color: snow;font-size: 8px;width: 80px"
                                 icon="el-icon-folder"
                                 @click="getDocRequestHeader(props.row,scope.$index, scope.row)"
                               >请求头
@@ -382,7 +392,7 @@
                             <div class="get-body-item">
                               <el-button
                                 size="mini"
-                                style="background: #cdcb2c;color: snow;font-size: 8px"
+                                style="background: #cdcb2c;color: snow;font-size: 8px;width: 80px"
                                 type="primary"
                                 icon="el-icon-tickets"
                                 @click="getDocRequestBody(props.row,scope.$index, scope.row)"
@@ -392,7 +402,7 @@
                             <div class="get-body-item">
                               <el-button
                                 size="mini"
-                                style="background: #49b6cd;color: snow;font-size: 8px"
+                                style="background: #49b6cd;color: snow;font-size: 8px;width: 80px"
                                 type="primary"
                                 icon="el-icon-document"
                                 @click="getDocResponseHeaders(props.row,scope.$index, scope.row)"
@@ -402,7 +412,7 @@
                             <div class="get-body-item">
                               <el-button
                                 size="mini"
-                                style="background: #37cd4e;color: snow;font-size: 8px"
+                                style="background: #37cd4e;color: snow;font-size: 8px;width: 80px"
                                 type="primary"
                                 icon="el-icon-date"
                                 @click="getDocResponseBody(props.row,scope.$index, scope.row)"
@@ -586,7 +596,17 @@
                         <el-button
                           size="mini"
                           type="primary"
-                          style="background: #6269cd;color: snow;font-size: 12px"
+                          style="background: #6269cd;color: snow;font-size: 12px;width: 80px"
+                          icon="el-icon-folder"
+                          @click="getAllData(scope.$index, scope.row)"
+                        >全部
+                        </el-button>
+                      </div>
+                      <div class="get-body-item">
+                        <el-button
+                          size="mini"
+                          type="primary"
+                          style="background: #6269cd;color: snow;font-size: 12px;width: 80px"
                           icon="el-icon-folder"
                           @click="getRequestHeader(scope.$index, scope.row)"
                         >请求头
@@ -595,7 +615,7 @@
                       <div class="get-body-item">
                         <el-button
                           size="mini"
-                          style="background: #cdcb2c;color: snow;font-size: 12px"
+                          style="background: #cdcb2c;color: snow;font-size: 12px;width: 80px"
                           type="primary"
                           icon="el-icon-tickets"
                           @click="getRequestBody(scope.$index, scope.row)"
@@ -605,7 +625,7 @@
                       <div class="get-body-item">
                         <el-button
                           size="mini"
-                          style="background: #49b6cd;color: snow;font-size: 12px"
+                          style="background: #49b6cd;color: snow;font-size: 12px;width: 80px"
                           type="primary"
                           icon="el-icon-document"
                           @click="getResponseHeaders(scope.$index, scope.row)"
@@ -615,7 +635,7 @@
                       <div class="get-body-item">
                         <el-button
                           size="mini"
-                          style="background: #37cd4e;color: snow;font-size: 12px"
+                          style="background: #37cd4e;color: snow;font-size: 12px;width: 80px"
                           type="primary"
                           icon="el-icon-date"
                           @click="getResponseBody(scope.$index, scope.row)"

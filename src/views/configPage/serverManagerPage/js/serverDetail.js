@@ -658,8 +658,12 @@ export default {
       var url = api_url + API_CONTRACT_DOC + '?id=' + row.interface_id + '&version=&branch=' + row.branch
       window.open(url, '_blank')
     },
+    getDocAll(props, index, row) {
+      var url = api_url + '/api/datatool/' + this.serverDetail.server_code + '/' + props.method + '/all' + props.path + '?branch=' + row.branch
+      window.open(url, '_blank')
+    },
     getDocRequestHeader(props, index, row) {
-      var url = api_url + '/api/datatool/' + this.serverDetail.server_code + '/' + props.method + '/reqheaders' + props.path + '?branch=' + row.branch
+      var url = api_url + '/api/datatool/' + this.serverDetail.server_code + '/' + props.method + '/reqHeaders' + props.path + '?branch=' + row.branch
       window.open(url, '_blank')
     },
     getDocRequestBody(props, index, row) {
@@ -667,7 +671,7 @@ export default {
       window.open(url, '_blank')
     },
     getDocResponseHeaders(props, index, row) {
-      var url = api_url + '/api/datatool/' + this.serverDetail.server_code + '/' + props.method + '/rspheaders' + props.path + '?branch=' + row.branch
+      var url = api_url + '/api/datatool/' + this.serverDetail.server_code + '/' + props.method + '/rspHeaders' + props.path + '?branch=' + row.branch
       window.open(url, '_blank')
     },
     getDocResponseBody(props, index, row) {
@@ -679,8 +683,12 @@ export default {
       var url = api_url + API_CONTRACT_DOC + '?id=' + row.id + '&version=&branch='
       window.open(url, '_blank')
     },
+    getAllData(index, row) {
+      var url = api_url + '/api/datatool/' + this.serverDetail.server_code + '/' + row.method + '/all' + row.path
+      window.open(url, '_blank')
+    },
     getRequestHeader(index, row) {
-      var url = api_url + '/api/datatool/' + this.serverDetail.server_code + '/' + row.method + '/reqheaders' + row.path
+      var url = api_url + '/api/datatool/' + this.serverDetail.server_code + '/' + row.method + '/reqHeaders' + row.path
       window.open(url, '_blank')
     },
     getRequestBody(index, row) {
@@ -688,7 +696,7 @@ export default {
       window.open(url, '_blank')
     },
     getResponseHeaders(index, row) {
-      var url = api_url + '/api/datatool/' + this.serverDetail.server_code + '/' + row.method + '/rspheaders' + row.path
+      var url = api_url + '/api/datatool/' + this.serverDetail.server_code + '/' + row.method + '/rspHeaders' + row.path
       window.open(url, '_blank')
     },
     getResponseBody(index, row) {
