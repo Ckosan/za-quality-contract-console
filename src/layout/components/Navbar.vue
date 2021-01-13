@@ -64,7 +64,7 @@
                 </div>
                 <div>
                   <ul v-if="currentCount!=0" class="infinite-list" style="overflow:auto">
-                    <el-timeline style="margin-top: 2px;margin-right: 2px;margin-left: -30px">
+                    <el-timeline style="margin-top: 2px;margin-right: 2px;margin-left: -15px">
                       <el-timeline-item
                         v-for="(message, index) in loadMessageList"
                         :key="index"
@@ -85,7 +85,7 @@
                   </ul>
                 </div>
               </template>
-              <el-button slot="reference" style="border: none" icon="el-icon-message-solid">
+              <el-button slot="reference" style="border: none" icon="el-icon-message-solid" size="mini">
                 <el-badge :value="messageCount" :max="maxCount" class="badge-item" />
               </el-button>
             </el-popover>
