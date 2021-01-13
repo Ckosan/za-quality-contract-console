@@ -22,6 +22,7 @@ export default {
       loading: false,
       resourceList: [],
       editVisible: false,
+      addAppClickVisible: false,
       editForm: {
         id: '',
         project_name: '',
@@ -32,11 +33,23 @@ export default {
         project_describe: '',
         resource_list: []
       },
+      appform: { // 需要添加的字段
+        application_name: '',
+        application_code: '',
+        developers: [{
+        }],
+        testers: [{
+        }],
+        application_describe: '',
+        application_status: '',
+        project_id: ''
+      },
       resource_list: [],
       staffOptionsList: [],
       departmentList: [],
       subDeptOPtions: [],
       deptInfoMap: [],
+      appStatusOptions: [{ key: 1, label: '已上线', value: '已上线' }, { key: 2, label: '未上线', value: '未上线' }],
       userInfoMap: [],
       staffOptions: [],
       rules: {
@@ -293,6 +306,35 @@ export default {
           message: '已取消删除'
         })
       })
+    },
+    addAppClick() {
+      this.addAppClickVisible = true
+    },
+    addApp(form) {
+      this.$refs[form].validate(async(valid) => {
+        if (valid) {
+          const handleAddClick = {
+            project_id: this.$route.params.id,
+            application_name: this.appform.application_describe,
+            application_code: this.appform.application_code.trim(),
+            developers: this.appform.developers[0].names,
+            testers: this.appform.testers[0].names,
+            creator: sessionStorage.getItem('currentUserName'),
+            application_describe: this.appform.application_describe,
+            application_status: this.appform.application_status
+          }
+          const data = await httpRequest('POST', APPLICATION, handleAddClick)
+          // this.vueTable()
+          this.addAppClickVisible = false
+          this.appform = {}
+          this.appform.developers = [{ names: [] }]
+          this.appform.testers = [{ names: [] }]
+          this.goToAppDetail(data.id)
+        }
+      })
+    },
+    goToAppDetail(id) {
+      this.$router.push({ path: '/configpage/applicationdetail/' + id })
     }
   }
 }

@@ -55,10 +55,10 @@
               />
             </div>
             <div v-if="serverDetail.union_server!=serverDetail.id" style="margin-bottom: 20px;margin-top: 10px">
-              <label>共用文档：
+              <label style="font-size: 10px">共用文档：
                 <router-link
                   tag="a"
-                  style="color:#0174DF;font-weight: normal"
+                  style="color:#0174DF;font-weight: normal;font-size: 10px"
                   :to="'/configpage/serverdetail/'+serverDetail.union_server"
                 >S000{{ serverDetail.union_server }}
                 </router-link>

@@ -494,14 +494,18 @@ export default {
             creater: sessionStorage.getItem('currentUserName'),
             server_env: this.form.server_env
           }
-          await httpRequest('POST', SERVER, handleAddClick)
+          const data = await httpRequest('POST', SERVER, handleAddClick)
           this.addFormVisible = false
-          this.vueTable()
+          // this.vueTable()
           this.form = {}
           this.form.server_env = []
           this.rows = []
+          this.goToServerDetail(data.id)
         }
       })
+    },
+    goToServerDetail(id) {
+      this.$router.push({ path: '/configpage/serverdetail/' + id })
     },
     handleDetail(index, row) {
       this.$router.push({ path: '/configpage/serverdetail/' + row.id })

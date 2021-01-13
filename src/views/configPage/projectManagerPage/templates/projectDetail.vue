@@ -69,7 +69,10 @@
           </el-table>
         </div>
       </section>
-      <div><label style="font-weight: bold;font-size: 15px">应用列表</label></div>
+      <div>
+        <div style="float: left"><label style="font-weight: bold;font-size: 15px">应用列表</label></div>
+        <div style="float: right;margin-right: 30px;margin-bottom: 5px"><el-button type="primary" style="float: right;" icon="el-icon-plus" size="mini" @click="addAppClick">新增应用</el-button></div>
+      </div>
       <div style="text-align: center" class="eltable">
         <el-table
           element-loading-spinner="el-icon-loading"
@@ -306,6 +309,104 @@
         </div>
       </el-dialog>
 
+      <el-dialog title="添加应用" :visible.sync="addAppClickVisible" width="40%" :show-close="false" :close-on-click-modal="false">
+        <div style="margin-top: 10px">
+          <div style="text-align: center;font-size: 15px;font-weight: bold;margin-bottom: 25px"><label>应用信息</label>
+          </div>
+          <el-form
+            ref="appform"
+            :inline="false"
+            :rules="rules"
+            :model="appform"
+            class="demo-form-inline"
+            label-width="100px"
+          >
+            <el-row>
+              <el-col :span="14">
+                <el-form-item label="应用代码:" prop="application_code">
+                  <el-input v-model="appform.application_code" maxlength="128" placeholder="请输入应用代码" />
+                </el-form-item>
+              </el-col>
+              <el-col :span="10">
+                <el-form-item label="应用状态:" prop="application_status">
+                  <el-select v-model="appform.application_status" placeholder="请选择" style="display: block;">
+                    <el-option
+                      v-for="item in appStatusOptions"
+                      :key="item.key"
+                      :label="item.label"
+                      :value="item.label"
+                    />
+                  </el-select>
+                </el-form-item>
+              </el-col>
+            </el-row>
+            <div>
+              <el-form-item label="应用简介:" prop="application_describe">
+                <el-input v-model="appform.application_describe" placeholder="请输入应用简介" maxlength="512" />
+              </el-form-item>
+            </div>
+            <div v-for="(developers,index) in appform.developers" :key="index">
+              <el-form-item label="开发人员:">
+                <el-select
+                  v-model="developers.names"
+                  multiple
+                  filterable
+                  remote
+                  :allow-create="false"
+                  default-first-option
+                  no-match-text="未找到用户"
+                  no-data-text="未找到用户"
+                  placeholder="用户关键字进行搜索"
+                  style="display: block;"
+                  :loading="loading"
+                  :remote-method="remoteMethod"
+                >
+                  <el-option
+                    v-for="item in staffOptions"
+                    :key="item.email"
+                    :label="item.label"
+                    :value="item.label"
+                  ><span style="float: left">{{ item.label }}</span>
+                    <span style="float: right; color: #8492a6; font-size: 13px">{{ item.email }}</span>
+                  </el-option>
+                </el-select>
+              </el-form-item>
+            </div>
+            <div v-for="(testers,index) in appform.testers" :key="index">
+              <el-form-item label="测试人员:">
+                <el-select
+                  v-model="testers.names"
+                  multiple
+                  filterable
+                  remote
+                  :allow-create="false"
+                  default-first-option
+                  no-match-text="未找到用户"
+                  no-data-text="未找到用户"
+                  placeholder="用户关键字进行搜索"
+                  style="display: block;"
+                  :loading="loading"
+                  :remote-method="remoteMethod"
+                >
+                  <el-option
+                    v-for="item in staffOptions"
+                    :key="item.email"
+                    :label="item.label"
+                    :value="item.label"
+                  ><span style="float: left">{{ item.label }}</span>
+                    <span style="float: right; color: #8492a6; font-size: 13px">{{ item.email }}</span>
+                  </el-option>
+                </el-select>
+              </el-form-item>
+            </div>
+          </el-form>
+          <div style="margin: 20px 0;" />
+        </div>
+        <div slot="footer" class="dialog-footer">
+          <el-button type="danger" @click="addAppClickVisible = false">取 消</el-button>
+          <el-button type="primary" :loading="addLoading" @click="addApp('appform')">保存</el-button>
+        </div>
+      </el-dialog>
     </Box>
   </div>
 </template>

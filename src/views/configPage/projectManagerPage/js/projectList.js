@@ -464,8 +464,8 @@ export default {
             sub_dept: this.form.sub_dept,
             resource_list: this.getDefultUser(this.form.resource_list)
           }
-          await httpRequest('POST', PROJECT, handleAddClick)
-          this.vueTable()
+          const data = await httpRequest('POST', PROJECT, handleAddClick)
+          // this.vueTable()
           this.addFormVisible = false
           this.form = {}
           this.form.resource_list = [
@@ -475,8 +475,12 @@ export default {
               permission_type: 2
             }
           ]
+          this.goToProjectDetail(data.id)
         }
       })
+    },
+    goToProjectDetail(id) {
+      this.$router.push({ path: '/configpage/projectdetail/' + id })
     },
     getDefultUser(resource_list) {
       // const resourceList = []

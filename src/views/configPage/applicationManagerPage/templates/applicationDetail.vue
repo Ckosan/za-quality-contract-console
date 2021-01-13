@@ -65,7 +65,10 @@
             </div>
           </div>
         </section>
-        <div><label style="font-weight: bold;font-size: 15px;">服务信息</label></div>
+        <div>
+          <div style="float: left"><label style="font-weight: bold;font-size: 15px">服务列表</label></div>
+          <div style="float: right;margin-right: 30px;margin-bottom: 5px"><el-button type="primary" style="float: right;" icon="el-icon-plus" size="mini" @click="addServerClick">新增服务</el-button></div>
+        </div>
         <div class="eltable">
           <el-table
             element-loading-spinner="el-icon-loading"
@@ -213,6 +216,255 @@
           <div slot="footer" class="dialog-footer">
             <el-button type="danger" @click="editFormVisible = false">取 消</el-button>
             <el-button type="primary" :loading="addLoading" @click="editSubmit('editForm')">保存</el-button>
+          </div>
+        </el-dialog>
+        <el-dialog
+          title="新增服务"
+          :visible.sync="addServerFormVisible"
+          width="50%"
+          :show-close="false"
+          :close-on-click-modal="false"
+        >
+          <div v-loading="regionLoading" style="margin-top: 10px">
+            <div style="text-align: center;font-size: 15px;font-weight: bold;margin-bottom: 25px"><label>服务信息</label>
+            </div>
+            <el-form
+              ref="form"
+              :inline="false"
+              :model="serverform"
+              :rules="rules"
+              class="demo-form-inline"
+              label-width="120px"
+            >
+              <el-row>
+                <el-col :span="12">
+                  <el-form-item label="服务类型:" align="center" prop="server_type">
+                    <el-select v-model="serverform.server_type" placeholder="请选择服务类型" style="display: block;">
+                      <el-option
+                        v-for="item in server_type"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                      />
+                    </el-select>
+                  </el-form-item>
+                </el-col>
+              </el-row>
+              <el-row>
+                <el-col :span="24">
+                  <el-form-item label="服务简介:" prop="server_name">
+                    <el-input
+                      v-model="serverform.server_name"
+                      placeholder="请输入服务简介"
+                      maxlength="126"
+                    />
+                  </el-form-item>
+                </el-col>
+              </el-row>
+              <el-row>
+                <el-col :span="12">
+                  <el-form-item label="共用文档:" prop="union_info">
+                    <el-input
+                      v-model="serverform.union_info"
+                      :readonly="true"
+                    />
+                  </el-form-item>
+                </el-col>
+                <el-col :span="12">
+                  <div style="margin-left: 10px">
+                    <el-button
+                      type="success"
+                      icon="el-icon-plus"
+                      @click="unionDocHandle"
+                    >
+                      共用文档
+                    </el-button>
+                    <el-button
+                      type="danger"
+                      icon="el-icon-delete"
+                      @click="removeUnionHandle"
+                    >
+                      删除
+                    </el-button>
+                  </div>
+                </el-col>
+              </el-row>
+              <div style="margin: 20px 0;" />
+              <div style="text-align: center;font-size: 15px;font-weight: bold;"><label>配置信息</label>
+              </div>
+              <div v-if="serverform.server_type==='API'" class="panel-heading">
+                <el-button
+                  type="success"
+                  size="mini"
+                  icon="el-icon-plus"
+                  style="float: right;margin-bottom: 5px;"
+                  @click="addHttpServerForm2"
+                >新增配置
+                </el-button>
+              </div>
+              <div style="margin-top: 20px;" />
+              <el-row>
+                <el-col :span="24">
+                  <template>
+                    <div>
+                      <el-table
+                        v-if="serverform.server_type==='API'"
+                        :data="serverform.server_env"
+                        border
+                        style="font-size: 6px"
+                        :header-cell-style="{fontSize:'8px',fontWeight:'bold',background:'#CED8F6',color:'rgb(255, 255, 255)'}"
+                      >
+                        <el-table-column label="配置名称" min-width="100px" align="center">
+                          <template slot-scope="scope">
+                            <el-form-item
+                              style="margin: 0px;"
+                              label-width="0px"
+                              :prop="'server_env.'+scope.$index + '.env_name'"
+                              :rules="rules.server_env.env_name"
+                            >
+                              <el-autocomplete
+                                v-model="scope.row.env_name"
+                                :fetch-suggestions="querySearch"
+                                maxlength="56"
+                                placeholder="如test、uat"
+                              />
+                            </el-form-item>
+                          </template>
+                        </el-table-column>
+                        <el-table-column label="协议类型" min-width="100px" align="center">
+                          <template slot-scope="scope">
+                            <el-form-item
+                              style="margin: 0px;"
+                              label-width="0px"
+                              :prop="'server_env.'+scope.$index + '.protocol'"
+                              :rules="rules.server_env.protocol"
+                            >
+                              <el-select v-model="scope.row.protocol" placeholder="请选择">
+                                <el-option
+                                  v-for="item in protocolOptions"
+                                  :key="item.value"
+                                  :label="item.label"
+                                  :value="item.value"
+                                />
+                              </el-select>
+                            </el-form-item>
+                          </template>
+                        </el-table-column>
+                        <el-table-column label="主机地址" min-width="200px" align="center">
+                          <template slot-scope="scope">
+                            <el-form-item
+                              style="margin: 0px;"
+                              label-width="0px"
+                              :prop="'server_env.'+scope.$index + '.host'"
+                              :rules="rules.server_env.host"
+                            >
+                              <el-input
+                                v-model="scope.row.host"
+                                maxlength="64"
+                                placeholder="如test.zhongan.com"
+                                style="display: block;"
+                              />
+                            </el-form-item>
+                          </template>
+                        </el-table-column>
+                        <el-table-column label="端口" min-width="80px" align="center">
+                          <template slot-scope="scope">
+                            <el-form-item
+                              style="margin: 0px;"
+                              label-width="0px"
+                              :prop="'server_env.'+scope.$index + '.port'"
+                              :rules="rules.server_env.port"
+                            >
+                              <el-input v-model="scope.row.port" maxlength="5" placeholder="如8080" />
+                            </el-form-item>
+                          </template>
+                        </el-table-column>
+                        <el-table-column label="操作" min-width="150px" align="center">
+                          <template slot-scope="scope">
+                            <el-form-item style="margin: 0px;" label-width="0px">
+                              <el-button size="mini" type="danger" @click="deleteAddHttpItem(scope.$index,scope.row)">删除配置
+                              </el-button>
+                            </el-form-item>
+                          </template>
+                        </el-table-column>
+                      </el-table>
+                    </div>
+                  </template>
+                </el-col>
+              </el-row>
+            </el-form>
+          </div>
+          <div slot="footer" class="dialog-footer">
+            <el-button type="danger" @click="addServerFormVisible = false">取 消</el-button>
+            <el-button type="primary" :loading="addLoading" @click="addSever('form')">保存</el-button>
+          </div>
+        </el-dialog>
+        <el-dialog
+          title="共用文档"
+          :visible.sync="showUnionDoc"
+          width="30%"
+          :show-close="false"
+          :close-on-click-modal="false"
+        >
+          <br>
+          <div style="text-align: center;">
+            <el-form ref="unionForm" label-width="100px" :model="unionForm">
+              <el-form-item label="选择项目:">
+                <el-select
+                  v-model="unionForm.project"
+                  filterable
+                  clearable
+                  placeholder="请选择项目"
+                  style="display: block;"
+                  @change="projectChangeHandle"
+                >
+                  <el-option
+                    v-for="item in projectOptions"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                  />
+                </el-select>
+              </el-form-item>
+              <el-form-item label="选择项目:">
+                <el-select
+                  v-model="unionForm.application"
+                  filterable
+                  clearable
+                  placeholder="请选择应用"
+                  style="display: block;"
+                  @change="applicationChangeHandle"
+                >
+                  <el-option
+                    v-for="item in applicationOptions"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                  />
+                </el-select>
+              </el-form-item>
+              <el-form-item label="选择服务:">
+                <el-select
+                  v-model="unionForm.server"
+                  filterable
+                  clearable
+                  placeholder="请选择服务"
+                  style="display: block;"
+                  @change="changeEditUnionServer"
+                >
+                  <el-option
+                    v-for="item in serverOptions"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                  />
+                </el-select>
+              </el-form-item>
+            </el-form>
+          </div>
+          <div slot="footer" class="dialog-footer">
+            <el-button type="danger" @click="showUnionDoc = false">取 消</el-button>
+            <el-button type="primary" :loading="addLoading" @click="unionDocSubmit">确认</el-button>
           </div>
         </el-dialog>
 

@@ -127,14 +127,14 @@
         <el-table-column label="服务编码" min-width="125px" align="center">
           <template slot-scope="scope">
             {{ scope.row.server_type }}:
-            <label>{{ scope.row.server_code }}</label>
+            <label style="font-size: 8px">{{ scope.row.server_code }}</label>
             <br>
             <el-link
               v-if="scope.row.union_server!=null"
               target="_blank"
-              style="color:#0174DF"
+              style="color:#0174DF;font-size: 8px"
               @click="goToDetail(scope.$index,scope.row)"
-            >共用文档S000<span class="col-cont" v-html="showDate(scope.row.union_server)" />
+            >共用文档S000<span class="col-cont" style="font-size: 8px" v-html="showDate(scope.row.union_server)" />
             </el-link>
           </template>
         </el-table-column>
@@ -390,8 +390,8 @@
                     v-if="editForm.server_type==='API'"
                     :data="editForm.server_env"
                     border
-                    style="font-size: 8px"
-                    :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
+                    style="font-size: 6px"
+                    :header-cell-style="{fontSize:'8px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
                   >
                     <el-table-column label="配置名称" min-width="100px" align="center">
                       <template slot-scope="scope">
@@ -791,7 +791,8 @@
                     v-if="form.server_type==='API'"
                     :data="form.server_env"
                     border
-                    :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#CED8F6',color:'rgb(255, 255, 255)'}"
+                    style="font-size: 6px"
+                    :header-cell-style="{fontSize:'8px',fontWeight:'bold',background:'#CED8F6',color:'rgb(255, 255, 255)'}"
                   >
                     <el-table-column label="配置名称" min-width="100px" align="center">
                       <template slot-scope="scope">

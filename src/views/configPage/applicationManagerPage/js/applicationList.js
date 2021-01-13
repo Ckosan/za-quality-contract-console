@@ -333,14 +333,18 @@ export default {
             application_describe: this.form.application_describe,
             application_status: this.form.application_status
           }
-          await httpRequest('POST', APPLICATION, handleAddClick)
-          this.vueTable()
+          const data = await httpRequest('POST', APPLICATION, handleAddClick)
+          // this.vueTable()
           this.addFormVisible = false
           this.form = {}
           this.form.developers = [{ names: [] }]
           this.form.testers = [{ names: [] }]
+          this.goToAppDetail(data.id)
         }
       })
+    },
+    goToAppDetail(id) {
+      this.$router.push({ path: '/configpage/applicationdetail/' + id })
     },
     // 编辑
     editSubmit(form) {
