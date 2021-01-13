@@ -658,8 +658,20 @@ export default {
       var url = api_url + API_CONTRACT_DOC + '?id=' + row.interface_id + '&version=&branch=' + row.branch
       window.open(url, '_blank')
     },
-    getVersionRequest(props, index, row) {
-      var url = api_url + '/api/datatool/' + this.serverDetail.server_code + '/' + props.method + props.path + '?branch=' + row.branch
+    getDocRequestHeader(props, index, row) {
+      var url = api_url + '/api/datatool/' + this.serverDetail.server_code + '/' + props.method + '/reqheaders' + props.path + '?branch=' + row.branch
+      window.open(url, '_blank')
+    },
+    getDocRequestBody(props, index, row) {
+      var url = api_url + '/api/datatool/' + this.serverDetail.server_code + '/' + props.method + '/request' + props.path + '?branch=' + row.branch
+      window.open(url, '_blank')
+    },
+    getDocResponseHeaders(props, index, row) {
+      var url = api_url + '/api/datatool/' + this.serverDetail.server_code + '/' + props.method + '/rspheaders' + props.path + '?branch=' + row.branch
+      window.open(url, '_blank')
+    },
+    getDocResponseBody(props, index, row) {
+      var url = api_url + '/api/datatool/' + this.serverDetail.server_code + '/' + props.method + '/response' + props.path + '?branch=' + row.branch
       window.open(url, '_blank')
     },
     getContractDoc(index, row) {
@@ -667,8 +679,20 @@ export default {
       var url = api_url + API_CONTRACT_DOC + '?id=' + row.id + '&version=&branch='
       window.open(url, '_blank')
     },
-    getRequest(index, row) {
-      var url = api_url + '/api/datatool/' + this.serverDetail.server_code + '/' + row.method + row.path
+    getRequestHeader(index, row) {
+      var url = api_url + '/api/datatool/' + this.serverDetail.server_code + '/' + row.method + '/reqheaders' + row.path
+      window.open(url, '_blank')
+    },
+    getRequestBody(index, row) {
+      var url = api_url + '/api/datatool/' + this.serverDetail.server_code + '/' + row.method + '/request' + row.path
+      window.open(url, '_blank')
+    },
+    getResponseHeaders(index, row) {
+      var url = api_url + '/api/datatool/' + this.serverDetail.server_code + '/' + row.method + '/rspheaders' + row.path
+      window.open(url, '_blank')
+    },
+    getResponseBody(index, row) {
+      var url = api_url + '/api/datatool/' + this.serverDetail.server_code + '/' + row.method + '/response' + row.path
       window.open(url, '_blank')
     },
     importSwagger() {

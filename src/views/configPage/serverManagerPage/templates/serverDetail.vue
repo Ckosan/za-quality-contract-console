@@ -341,7 +341,7 @@
                         target="_blank"
                         style="color:#0174DF"
                         @click="goToVersionDetail(scope.row)"
-                      ><span class="col-cont" v-html="showData(scope.row.version)" />
+                      ><span class="col-cont" style="font-size: 8px" v-html="showData(scope.row.version)" />
                       </el-link>
                     </template>
                   </el-table-column>
@@ -359,15 +359,63 @@
                         target="_blank"
                         style="color:#0174DF"
                         @click="getBranchDoc(props.row,scope.$index,scope.row)"
-                      >文档
+                      ><span style="font-size: 8px">文档</span>
                       </el-link>
                       <span>&nbsp;|&nbsp;</span>
-                      <el-link
-                        target="_blank"
-                        style="color:#0174DF"
-                        @click="getVersionRequest(props.row,scope.$index,scope.row)"
-                      >报文
-                      </el-link>
+                      <el-popover
+                        placement="right"
+                        width="80"
+                        trigger="hover"
+                      >
+                        <template>
+                          <div>
+                            <div class="get-body-item">
+                              <el-button
+                                size="mini"
+                                type="primary"
+                                style="background: #6269cd;color: snow;font-size: 8px"
+                                icon="el-icon-folder"
+                                @click="getDocRequestHeader(props.row,scope.$index, scope.row)"
+                              >请求头
+                              </el-button>
+                            </div>
+                            <div class="get-body-item">
+                              <el-button
+                                size="mini"
+                                style="background: #cdcb2c;color: snow;font-size: 8px"
+                                type="primary"
+                                icon="el-icon-tickets"
+                                @click="getDocRequestBody(props.row,scope.$index, scope.row)"
+                              >请求体
+                              </el-button>
+                            </div>
+                            <div class="get-body-item">
+                              <el-button
+                                size="mini"
+                                style="background: #49b6cd;color: snow;font-size: 8px"
+                                type="primary"
+                                icon="el-icon-document"
+                                @click="getDocResponseHeaders(props.row,scope.$index, scope.row)"
+                              >响应头
+                              </el-button>
+                            </div>
+                            <div class="get-body-item">
+                              <el-button
+                                size="mini"
+                                style="background: #37cd4e;color: snow;font-size: 8px"
+                                type="primary"
+                                icon="el-icon-date"
+                                @click="getDocResponseBody(props.row,scope.$index, scope.row)"
+                              >响应体
+                              </el-button>
+                            </div>
+                          </div>
+                        </template>
+                        <el-button slot="reference" style="border: none;margin-left: -7px">
+                          <span style="font-size: 8px;color:#0174DF">报文</span>
+                        </el-button>
+                      </el-popover>
+
                     </template>
                   </el-table-column>
                   <el-table-column label="操作" width="120px" align="center">
@@ -524,15 +572,62 @@
                   target="_blank"
                   style="color:#0174DF"
                   @click="getContractDoc(scope.$index,scope.row)"
-                ><span style="font-size: 8px">文档</span>
+                ><span style="font-size: 8px;margin-right: 5px">文档</span>
                 </el-link>
                 <span>&nbsp;|&nbsp;</span>
-                <el-link
-                  target="_blank"
-                  style="color:#0174DF"
-                  @click="getRequest(scope.$index,scope.row)"
-                ><span style="font-size: 8px">报文</span>
-                </el-link>
+                <el-popover
+                  placement="right"
+                  width="80"
+                  trigger="hover"
+                >
+                  <template>
+                    <div>
+                      <div class="get-body-item">
+                        <el-button
+                          size="mini"
+                          type="primary"
+                          style="background: #6269cd;color: snow;font-size: 12px"
+                          icon="el-icon-folder"
+                          @click="getRequestHeader(scope.$index, scope.row)"
+                        >请求头
+                        </el-button>
+                      </div>
+                      <div class="get-body-item">
+                        <el-button
+                          size="mini"
+                          style="background: #cdcb2c;color: snow;font-size: 12px"
+                          type="primary"
+                          icon="el-icon-tickets"
+                          @click="getRequestBody(scope.$index, scope.row)"
+                        >请求体
+                        </el-button>
+                      </div>
+                      <div class="get-body-item">
+                        <el-button
+                          size="mini"
+                          style="background: #49b6cd;color: snow;font-size: 12px"
+                          type="primary"
+                          icon="el-icon-document"
+                          @click="getResponseHeaders(scope.$index, scope.row)"
+                        >响应头
+                        </el-button>
+                      </div>
+                      <div class="get-body-item">
+                        <el-button
+                          size="mini"
+                          style="background: #37cd4e;color: snow;font-size: 12px"
+                          type="primary"
+                          icon="el-icon-date"
+                          @click="getResponseBody(scope.$index, scope.row)"
+                        >响应体
+                        </el-button>
+                      </div>
+                    </div>
+                  </template>
+                  <el-button slot="reference" style="border: none;margin-left: -7px">
+                    <span style="font-size: 8px;color:#0174DF">报文</span>
+                  </el-button>
+                </el-popover>
               </template>
             </el-table-column>
             <el-table-column label="操作" min-width="80" align="center">

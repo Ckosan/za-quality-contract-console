@@ -42,6 +42,9 @@ export default {
   .el-form-item__label{
     font-size: 10px;
   }
+  .el-pagination__total{
+    font-size: 10px;
+  }
   .el-input--medium {
     font-size: 10px;
   }
