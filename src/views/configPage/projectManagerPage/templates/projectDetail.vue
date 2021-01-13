@@ -71,7 +71,7 @@
       </section>
       <div>
         <div style="float: left"><label style="font-weight: bold;font-size: 15px">应用列表</label></div>
-        <div style="float: right;margin-right: 30px;margin-bottom: 5px"><el-button type="primary" style="float: right;" icon="el-icon-plus" size="mini" @click="addAppClick">新增应用</el-button></div>
+        <div style="float: right;margin-right: 30px;margin-bottom: 5px"><el-button type="success" style="float: right;" icon="el-icon-plus" size="mini" @click="addAppClick">新增应用</el-button></div>
       </div>
       <div style="text-align: center" class="eltable">
         <el-table

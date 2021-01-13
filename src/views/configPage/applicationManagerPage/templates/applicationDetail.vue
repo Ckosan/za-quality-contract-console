@@ -67,7 +67,7 @@
         </section>
         <div>
           <div style="float: left"><label style="font-weight: bold;font-size: 15px">服务列表</label></div>
-          <div style="float: right;margin-right: 30px;margin-bottom: 5px"><el-button type="primary" style="float: right;" icon="el-icon-plus" size="mini" @click="addServerClick">新增服务</el-button></div>
+          <div style="float: right;margin-right: 30px;margin-bottom: 5px"><el-button type="success" style="float: right;" icon="el-icon-plus" size="mini" @click="addServerClick">新增服务</el-button></div>
         </div>
         <div class="eltable">
           <el-table
