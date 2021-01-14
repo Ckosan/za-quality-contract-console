@@ -145,7 +145,7 @@
                   </template>
                 </el-table-column>
                 <el-table-column label="延时(s)" prop="delay" min-width="80px" align="center" />
-                <el-table-column label="最大TPS/s" prop="max_tps" min-width="80px" align="center" />
+                <el-table-column label="限流(tps)" prop="max_tps" min-width="80px" align="center" />
                 <el-table-column label="mock开关" min-width="100px" align="center">
                   <template slot-scope="scope">
                     <el-switch
@@ -492,13 +492,13 @@
               </el-form-item>
             </el-col>
             <el-col :span="12">
-              <el-form-item label="最大TPS:" prop="max_tps">
+              <el-form-item label="限流:" prop="max_tps">
                 <el-input
                   v-model="apimockAddForm.maxTps"
-                  placeholder="请输入最大TPS"
+                  placeholder="请输入TPS"
                   oninput="value=value.replace(/[^\d]/g,'')"
                 >
-                  <template slot="append">/秒(s)</template>
+                  <template slot="append">tps</template>
                 </el-input>
               </el-form-item>
             </el-col>
@@ -674,13 +674,13 @@
               </el-form-item>
             </el-col>
             <el-col :span="12">
-              <el-form-item label="最大TPS:" prop="max_tps">
+              <el-form-item label="限流:" prop="max_tps">
                 <el-input
                   v-model="editForm.max_tps"
-                  placeholder="请输入最大TPS"
+                  placeholder="请输入TPS"
                   oninput="value=value.replace(/[^\d]/g,'')"
                 >
-                  <template slot="append">/秒(s)</template>
+                  <template slot="append">tps</template>
                 </el-input>
               </el-form-item>
             </el-col>

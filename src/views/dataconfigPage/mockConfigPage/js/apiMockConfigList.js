@@ -12,7 +12,7 @@ import {
   SERVER_INTERFACE_API, SERVER_PROXY_ID
 } from '../../../../contractapi'
 import { httpRequest, httpRequestWithoutLoading } from '../../../../http/interceptors'
-import { isNum, isNumMax } from '../../../../utils/validata_rules'
+import { isNum } from '../../../../utils/validata_rules'
 import { convertTime } from '../../../../utils/tools'
 
 export default {
@@ -67,10 +67,10 @@ export default {
             { required: true, message: '请选择API', trigger: 'blur' },
             { validator: isNum, trigger: 'blur' }
           ],
-        max_tps:
-          [
-            { validator: isNumMax, trigger: 'blur' }
-          ],
+        // max_tps:
+        //   [
+        //     { validator: isNumMax, trigger: 'blur' }
+        //   ],
         priority:
           [
             { required: true, message: '请输入优先级', trigger: 'blur' },
