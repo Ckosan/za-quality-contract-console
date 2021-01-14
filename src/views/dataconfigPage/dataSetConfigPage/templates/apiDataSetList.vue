@@ -95,7 +95,7 @@
                     <span class="col-cont" v-html="showData(scope.row.description)" />
                   </template>
                 </el-table-column>
-                <el-table-column label="文档来源" prop="source_type" min-width="100px" align="center">
+                <el-table-column label="文档来源" prop="source_type" min-width="80px" align="center">
                   <template slot-scope="scope">
                     <el-link
                       v-if="scope.row.source_type!='default'"
@@ -113,6 +113,73 @@
                       @click="goToDocDetial(scope.row)"
                     ><span class="col-cont" style="font-size: 8px" v-html="showData(convertSourceData(scope.row.source_type))" />
                     </el-link>
+                  </template>
+                </el-table-column>
+                <el-table-column label="契约服务" min-width="60px" align="center">
+                  <template slot-scope="scope">
+                    <el-popover
+                      placement="right"
+                      width="80"
+                      trigger="hover"
+                    >
+                      <template>
+                        <div>
+                          <div class="get-body-item">
+                            <el-button
+                              size="mini"
+                              type="primary"
+                              style="background: #6269cd;color: snow;font-size: 8px;width: 80px"
+                              icon="el-icon-folder"
+                              @click="getDocAll(scope.row)"
+                            >全部
+                            </el-button>
+                          </div>
+                          <div class="get-body-item">
+                            <el-button
+                              size="mini"
+                              type="primary"
+                              style="background: #6269cd;color: snow;font-size: 8px;width: 80px"
+                              icon="el-icon-folder"
+                              @click="getDocRequestHeader(scope.row)"
+                            >请求头
+                            </el-button>
+                          </div>
+                          <div class="get-body-item">
+                            <el-button
+                              size="mini"
+                              style="background: #cdcb2c;color: snow;font-size: 8px;width: 80px"
+                              type="primary"
+                              icon="el-icon-tickets"
+                              @click="getDocRequestBody(scope.row)"
+                            >请求体
+                            </el-button>
+                          </div>
+                          <div class="get-body-item">
+                            <el-button
+                              size="mini"
+                              style="background: #49b6cd;color: snow;font-size: 8px;width: 80px"
+                              type="primary"
+                              icon="el-icon-document"
+                              @click="getDocResponseHeaders(scope.row)"
+                            >响应头
+                            </el-button>
+                          </div>
+                          <div class="get-body-item">
+                            <el-button
+                              size="mini"
+                              style="background: #37cd4e;color: snow;font-size: 8px;width: 80px"
+                              type="primary"
+                              icon="el-icon-date"
+                              @click="getDocResponseBody(scope.row)"
+                            >响应体
+                            </el-button>
+                          </div>
+                        </div>
+                      </template>
+                      <el-button slot="reference" style="border: none;margin-left: -7px">
+                        <span style="font-size: 8px;color:#0174DF">报文</span>
+                      </el-button>
+                    </el-popover>
                   </template>
                 </el-table-column>
                 <el-table-column

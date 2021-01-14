@@ -8,6 +8,7 @@ import {
 import { httpRequest, httpRequestWithoutLoading } from '../../../../http/interceptors'
 import { isNum } from '../../../../utils/validata_rules'
 import { convertTime } from '../../../../utils/tools'
+import { api_url } from '../../../../settings'
 
 export default {
   data() {
@@ -63,6 +64,8 @@ export default {
       tmpApiList: [],
       allList: [],
       ListSearch: '', // 搜索
+      apiMethod: '',
+      apiPath: '',
       rules: {
         name:
           [
@@ -165,6 +168,9 @@ export default {
       this.application_info = data.application_info
       this.server_Info = data.server_info
       this.wareHouseTitle = data.name
+      localStorage.setItem('SERVER_PROJECT', data.project_info)
+      localStorage.setItem('SERVER_APPLICATION', data.application_info)
+      localStorage.setItem('SERVER_INFO', data.server_info)
     },
     // 获取列表
     async vueTable() {
@@ -200,6 +206,8 @@ export default {
         row.interface_id + '&setId=' + row.set_id)
       this.expandTable = data
       this.tmpExpanList = data
+      this.getInterfaceInfo(row.interface_id)
+      localStorage.setItem('API_INFO', row.interface_info)
     },
     viewApiDataSets(row) {
       this.addContractForm.interfaceId = row.interface_id
@@ -406,6 +414,36 @@ export default {
           console.log('error submit!!')
         }
       })
+    },
+    getDocAll(row) {
+      var url = api_url + '/api/datatool/S000' + this.$route.query.serverId + '/' + this.apiMethod + '/all' + this.apiPath +
+        '?branch=&data_set_name=' + this.wareHouseTitle + '&contract_name=' + row.name
+      window.open(url, '_blank')
+    },
+    getDocRequestHeader(row) {
+      var url = api_url + '/api/datatool/S000' + this.$route.query.serverId + '/' + this.apiMethod + '/reqHeaders' + this.apiPath +
+        '?branch=&data_set_name=' + this.wareHouseTitle + '&contract_name=' + row.name
+      window.open(url, '_blank')
+    },
+    getDocRequestBody(row) {
+      var url = api_url + '/api/datatool/S000' + this.$route.query.serverId + '/' + this.apiMethod + '/request' + this.apiPath +
+        '?branch=&data_set_name=' + this.wareHouseTitle + '&contract_name=' + row.name
+      window.open(url, '_blank')
+    },
+    getDocResponseHeaders(row) {
+      var url = api_url + '/api/datatool/S000' + this.$route.query.serverId + '/' + this.apiMethod + '/rspHeaders' + this.apiPath +
+        '?branch=&data_set_name=' + this.wareHouseTitle + '&contract_name=' + row.name
+      window.open(url, '_blank')
+    },
+    getDocResponseBody(row) {
+      var url = api_url + '/api/datatool/S000' + this.$route.query.serverId + '/' + this.apiMethod + '/response' +
+        this.apiPath + '?branch=&data_set_name=' + this.wareHouseTitle + '&contract_name=' + row.name
+      window.open(url, '_blank')
+    },
+    async getInterfaceInfo(id) {
+      const data = await httpRequestWithoutLoading('GET', HTTP_INTERFACE_INFO_BY_ID + '?interfaceId=' + id)
+      this.apiMethod = data.method
+      this.apiPath = data.path
     }
   }
 }
