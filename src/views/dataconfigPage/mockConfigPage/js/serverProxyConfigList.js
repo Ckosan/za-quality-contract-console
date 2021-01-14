@@ -224,7 +224,7 @@ export default {
             server_id: this.mockAddForm.templateId[2],
             modifier: sessionStorage.getItem('currentUserName')
           }
-          const data = await httpRequest('POST', SERVER_PROXY, HandleEdit)
+          const data = await httpRequestWithoutLoading('POST', SERVER_PROXY, HandleEdit)
           // this.vueTable()
           this.mockVisible = false
           this.$router.push({

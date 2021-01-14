@@ -81,21 +81,18 @@ export default {
     },
     // 查询
     async search(form) {
-      this.$refs[form].validate(async(valid) => {
-        if (valid) {
-          const reqData = {
-            search_value: this.searchForm.search_value
-          }
-          const data = await httpRequest('POST', SERVER_PROXY_LOG, reqData)
-          this.list = data
-          this.tmpApiList = data
-        } else {
-          console.log('error submit!!')
-        }
-      })
+      const reqData = {
+        search_value: this.searchForm.search_value
+      }
+      const data = await httpRequest('POST', SERVER_PROXY_LOG, reqData)
+      this.list = data
+      this.tmpApiList = data
     },
     convertDataFormat(data) {
       return getLocalTime(data.created_date)
+    },
+    getDataFormat(data) {
+      return getLocalTime(data)
     }
   }
 }

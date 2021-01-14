@@ -88,7 +88,7 @@
         <div style="float: left;">
           <el-input
             v-model="searchTxt"
-            style="display: inline-block;width: 300px"
+            style="display: inline-block;width: 280px"
             placeholder="输入关键字"
             @input="seachList"
           >
