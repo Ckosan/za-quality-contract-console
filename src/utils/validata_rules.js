@@ -7,6 +7,14 @@ export function isNum(rule, value, callback) {
   }
 }
 
+export function isNumMax(rule, value, callback) {
+  const re = /^(500|[1-4]{0,1}\d{0,1}\d)$/
+  if (!re.test(value)) {
+    callback(new Error('只能为[0-500]范围内的值'))
+  } else {
+    callback()
+  }
+}
 export function isNotNull(rule, value, callback) {
   if (value === null) {
     callback(new Error('不能为空'))

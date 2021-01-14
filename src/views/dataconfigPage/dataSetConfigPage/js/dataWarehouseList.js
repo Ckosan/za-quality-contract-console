@@ -139,11 +139,6 @@ export default {
       }
     },
     viewDataSet(row) {
-      console.log(row)
-      localStorage.setItem('SERVER_PROJECT', row.project_info)
-      localStorage.setItem('SERVER_APPLICATION', row.application_info)
-      localStorage.setItem('SERVER_INFO', row.server_info)
-      localStorage.setItem('SET_INFO', row.name)
       this.$router.push({
         path: '/dataconfigpage/apidatasetlist/' + row.id,
         query: { serverId: row.server_id }
@@ -254,13 +249,17 @@ export default {
             modifier: this.addDataSetForm.modifier,
             description: this.addDataSetForm.description
           }
-          await httpRequestWithoutLoading('POST', DATA_SET_API, HandleEdit)
+          const data = await httpRequestWithoutLoading('POST', DATA_SET_API, HandleEdit)
           this.$message.success('添加成功')
-          this.vueTable()
+          // this.vueTable()
           this.addDataSetForm.name = ''
           this.addDataSetForm.templateId = ''
           this.addDataSetForm.description = ''
           this.addDataSetVisible = false
+          this.$router.push({
+            path: '/dataconfigpage/apidatasetlist/' + data.id,
+            query: { serverId: data.server_id }
+          })
         } else {
           console.log('error submit!!')
         }

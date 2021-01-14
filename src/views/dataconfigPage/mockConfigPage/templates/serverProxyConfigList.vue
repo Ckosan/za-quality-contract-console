@@ -207,7 +207,7 @@
                   icon="el-icon-delete"
                   style="margin: 0px;"
                   circle
-                  @click="deleteProxy(scope.row)"
+                  @click="deleteProxy(scope.$index,scope.row)"
                 />
               </el-tooltip>
             </template>

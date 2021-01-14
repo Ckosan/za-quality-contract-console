@@ -9,10 +9,10 @@ import {
   MOCK_CONFIG_UPDATE_REQ_CHECK, MOCK_CONFIG_UPDATE_RESP_CHECK,
   MOCK_CONFIG_UPDATE_SINGLE_STATUS,
   SERVER_ENV_LIST,
-  SERVER_INTERFACE_API
+  SERVER_INTERFACE_API, SERVER_PROXY_ID
 } from '../../../../contractapi'
 import { httpRequest, httpRequestWithoutLoading } from '../../../../http/interceptors'
-import { isNum } from '../../../../utils/validata_rules'
+import { isNum, isNumMax } from '../../../../utils/validata_rules'
 import { convertTime } from '../../../../utils/tools'
 
 export default {
@@ -67,6 +67,10 @@ export default {
             { required: true, message: '请选择API', trigger: 'blur' },
             { validator: isNum, trigger: 'blur' }
           ],
+        max_tps:
+          [
+            { validator: isNumMax, trigger: 'blur' }
+          ],
         priority:
           [
             { required: true, message: '请输入优先级', trigger: 'blur' },
@@ -106,7 +110,7 @@ export default {
           proxyModelFlag: 1,
           dataType: 'default',
           delay: 0,
-          maxTps: 0
+          maxTps: 500
         },
       APImockSwitch: '',
       editFormRow: '',
@@ -125,7 +129,9 @@ export default {
           modifier: sessionStorage.getItem('currentUserName'),
           proxyModel: '',
           delay: 0,
-          maxTps: 0,
+          max_tps: 500,
+          check_req: '',
+          check_resp: '',
           route_env: '',
           proxyModelFlag: '',
           dataType: 'default'
@@ -199,11 +205,12 @@ export default {
       this.list = this.allList
       this.tmpApiList = this.allList
     },
-    initTitle() {
-      this.project_info = localStorage.getItem('SERVER_PROJECT')
-      this.application_info = localStorage.getItem('SERVER_APPLICATION')
-      this.server_Info = localStorage.getItem('SERVER_INFO')
-      this.proxyTitle = localStorage.getItem('PROXY_INFO')
+    async initTitle() {
+      const data = await httpRequest('POST', SERVER_PROXY_ID + '?id=' + this.$route.params.id)
+      this.project_info = data.project_info
+      this.application_info = data.application_info
+      this.server_Info = data.server_info
+      this.proxyTitle = data.name + '(' + data.code + ')'
     },
     // 获取列表
     async vueTable() {
@@ -553,9 +560,11 @@ export default {
             modifier: sessionStorage.getItem('currentUserName'),
             event_type: this.editForm.proxyModel,
             delay: this.editForm.delay,
-            max_tps: this.editForm.maxTps,
+            max_tps: this.editForm.max_tps,
             proxy_id: this.$route.params.id,
             data_type: this.editForm.dataType,
+            check_resp: this.editForm.check_resp,
+            check_req: this.editForm.check_req,
             data_set_list: this.editForm.dataType === 'dataset' ? this.editForm.dataset : []
           }
           await httpRequest('PUT', MOCK_CONFIG, HandleEdit)

@@ -7,14 +7,14 @@
         <el-row style="margin: 10px;">
           <el-col :span="12">
             <div style="font-size: 12px;font-style: italic;color: #8d8d8d;">
-              {{ project_info }}&nbsp;/&nbsp;{{ application_info }}
+              项目信息: {{ project_info }}&nbsp;/&nbsp;{{ application_info }}
             </div>
             <div style="margin-top: 5px;" />
             <div style="font-size: 10px;font-style: italic;color: #8d8d8d;margin-bottom: 5px">
-              <b>{{ server_Info }}</b>
+              <b>服务信息: {{ server_Info }}</b>
             </div>
             <div style="font-size: 8px;font-style: italic;color: #8d8d8d;">
-              <b>{{ wareHouseTitle }}</b>
+              <b>数据集名称: {{ wareHouseTitle }}</b>
             </div>
           </el-col>
           <el-col :span="12">

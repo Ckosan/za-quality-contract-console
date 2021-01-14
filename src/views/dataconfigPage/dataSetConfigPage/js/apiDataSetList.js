@@ -1,6 +1,6 @@
 import { mapGetters } from 'vuex'
 import {
-  API_EXT_INFO,
+  API_EXT_INFO, DATA_SET_BY_ID,
   DATA_SET_REALATION_API, HTTP_INTERFACE_INFO_BY_ID,
   INTERFACE_DATA_SET_API,
   MOCK_CONFIG_UPDATE_ALL_STATUS, SERVER_INTERFACE_API
@@ -158,11 +158,13 @@ export default {
       this.list = this.allList
       this.tmpApiList = this.allList
     },
-    initTitle() {
-      this.project_info = localStorage.getItem('SERVER_PROJECT')
-      this.application_info = localStorage.getItem('SERVER_APPLICATION')
-      this.server_Info = localStorage.getItem('SERVER_INFO')
+    async initTitle() {
       this.wareHouseTitle = localStorage.getItem('SET_INFO')
+      const data = await httpRequest('GET', DATA_SET_BY_ID + '?id=' + this.$route.params.id)
+      this.project_info = data.project_info
+      this.application_info = data.application_info
+      this.server_Info = data.server_info
+      this.wareHouseTitle = data.name
     },
     // 获取列表
     async vueTable() {

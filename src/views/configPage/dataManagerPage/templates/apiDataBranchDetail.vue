@@ -8,15 +8,15 @@
           <el-row style="margin: 10px;">
             <el-col :span="12">
               <div style="font-size: 12px;font-style: italic;color: #8d8d8d;">
-                {{ serverInfo.project_name }}&nbsp;/&nbsp;{{ serverInfo.application_name }}
+                项目信息: {{ serverInfo.project_name }}&nbsp;/&nbsp;{{ serverInfo.application_name }}
               </div>
               <div style="margin-top: 5px;" />
               <div style="font-size: 10px;font-style: italic;color: #8d8d8d;">
-                <b>{{ serverInfo.server_name }}</b>
+                <b>服务信息: {{ serverInfo.server_name }}</b>
               </div>
               <div style="margin-top: 5px;" />
               <div style="font-size: 8px;font-style: italic;color: #8d8d8d;">
-                <b>{{ apiInfoTitle }}</b>
+                <b>API信息: {{ apiInfoTitle }}</b>
               </div>
             </el-col>
             <el-col :span="12">

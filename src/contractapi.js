@@ -59,12 +59,14 @@ module.exports = {
   ONS_DATA_SERVER: '/resourcesmanager/onsdataserver',
   // 用例集
   DATA_SET_API: '/resourcesmanager/datasets',
+  DATA_SET_BY_ID: '/resourcesmanager/datasets/getDataSetById',
   DATA_SET_REAPTION_INFO: '/resourcesmanager/datasetsRelation/getSet',
   DATA_SET_INFO: '/resourcesmanager/datasets/getDatasetsInfo',
   DATA_SET_DETAIL: '/resourcesmanager/datasets/getdetail',
   DATA_SET_CONSTRUCT: '/resourcesmanager/dataSetConstruct',
 
   SERVER_PROXY: '/resourcesmanager/serverproxy',
+  SERVER_PROXY_ID: '/resourcesmanager/serverproxy/getProxyById',
   INTERFACE_PROXY: '/resourcesmanager/interfaceproxy',
 
   DATA_SET_REALATION_API: '/resourcesmanager/datasetsRelation',

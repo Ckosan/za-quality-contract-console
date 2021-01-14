@@ -181,12 +181,6 @@ export default {
       return this.tmpApiList
     },
     viewMockConfig(row) {
-      console.log(row)
-      localStorage.setItem('SERVER_PROJECT', row.project_info)
-      localStorage.setItem('SERVER_APPLICATION', row.application_info)
-      localStorage.setItem('SERVER_INFO', row.server_info)
-      localStorage.setItem('SERVER_TYPE', 'API')
-      localStorage.setItem('PROXY_INFO', row.name + '(' + row.code + ')')
       this.$router.push({
         path: '/dataconfigpage/mockconfiglist/' + row.id,
         query: { serverId: row.server_id }
@@ -230,9 +224,13 @@ export default {
             server_id: this.mockAddForm.templateId[2],
             modifier: sessionStorage.getItem('currentUserName')
           }
-          await httpRequest('POST', SERVER_PROXY, HandleEdit)
-          this.vueTable()
+          const data = await httpRequest('POST', SERVER_PROXY, HandleEdit)
+          // this.vueTable()
           this.mockVisible = false
+          this.$router.push({
+            path: '/dataconfigpage/mockconfiglist/' + data.id,
+            query: { serverId: data.server_id }
+          })
         } else {
           console.log('error submit!!')
         }

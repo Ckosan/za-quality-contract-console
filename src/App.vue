@@ -54,6 +54,9 @@ export default {
   .el-button--mini.is-circle{
     padding: 5px;
   }
+  .el-cascader-node__label{
+    font-size: 8px;
+  }
   .query-form{
     font-size: 8px;
   }
