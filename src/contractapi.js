@@ -65,6 +65,7 @@ module.exports = {
   DATA_SET_DETAIL: '/resourcesmanager/datasets/getdetail',
   DATA_SET_CONSTRUCT: '/resourcesmanager/dataSetConstruct',
 
+  SERVER_PROXY_LOG: '/api/es/esquery',
   SERVER_PROXY: '/resourcesmanager/serverproxy',
   SERVER_PROXY_ID: '/resourcesmanager/serverproxy/getProxyById',
   INTERFACE_PROXY: '/resourcesmanager/interfaceproxy',

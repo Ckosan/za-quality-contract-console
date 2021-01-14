@@ -36,6 +36,7 @@ const periodictask = () => import('@/views/tasksPages/templates/periodictask')
 const contract = () => import('@/views/contractPage/contractManagerPage/contract')
 const monitor = () => import('@/views/contractPage/monitorManagerPage/monitor')
 
+const proxyloglist = () => import('@/views/dataconfigPage/mockConfigPage/templates/proxyLogList')
 const proxyconfiglist = () => import('@/views/dataconfigPage/mockConfigPage/templates/serverProxyConfigList')
 const mockconfiglist = () => import('@/views/dataconfigPage/mockConfigPage/templates/apiMockConfigList')
 const apidatasetlist = () => import('@/views/dataconfigPage/dataSetConfigPage/templates/apiDataSetList')
@@ -84,7 +85,7 @@ export default {
   // 契约中心
   contract,
   monitor,
-
+  proxyloglist,
   proxyconfiglist,
   mockconfiglist,
   apidatasetlist,
