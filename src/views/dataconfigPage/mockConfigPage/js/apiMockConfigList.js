@@ -105,7 +105,8 @@ export default {
           proxyModel: 'mock',
           proxyModelFlag: 1,
           dataType: 'default',
-          delay: 0
+          delay: 0,
+          maxTps: 0
         },
       APImockSwitch: '',
       editFormRow: '',
@@ -124,6 +125,7 @@ export default {
           modifier: sessionStorage.getItem('currentUserName'),
           proxyModel: '',
           delay: 0,
+          maxTps: 0,
           route_env: '',
           proxyModelFlag: '',
           dataType: 'default'
@@ -256,6 +258,7 @@ export default {
             modifier: sessionStorage.getItem('currentUserName'),
             event_type: this.apimockAddForm.proxyModel,
             delay: this.apimockAddForm.delay,
+            max_tps: this.apimockAddForm.maxTps,
             proxy_id: this.$route.params.id,
             data_type: this.apimockAddForm.dataType,
             data_set_list: this.apimockAddForm.dataType === 'dataset' ? this.apimockAddForm.dataset : []
@@ -550,6 +553,7 @@ export default {
             modifier: sessionStorage.getItem('currentUserName'),
             event_type: this.editForm.proxyModel,
             delay: this.editForm.delay,
+            max_tps: this.editForm.maxTps,
             proxy_id: this.$route.params.id,
             data_type: this.editForm.dataType,
             data_set_list: this.editForm.dataType === 'dataset' ? this.editForm.dataset : []

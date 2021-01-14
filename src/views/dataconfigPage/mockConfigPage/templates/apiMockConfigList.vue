@@ -137,12 +137,15 @@
                         target="_blank"
                         style="color:#0174DF"
                         @click="goToDataSetDetail(scope.row)"
-                      ><span style="font-size: 8px">{{ scope.row.data_set_list[0] }}/{{ scope.row.data_set_list[1] }}</span>
+                      ><span
+                        style="font-size: 8px"
+                      >{{ scope.row.data_set_list[0] }}/{{ scope.row.data_set_list[1] }}</span>
                       </el-link>
                     </div>
                   </template>
                 </el-table-column>
                 <el-table-column label="延时(s)" prop="delay" min-width="80px" align="center" />
+                <el-table-column label="最大TPS/s" prop="max_tps" min-width="80px" align="center" />
                 <el-table-column label="mock开关" min-width="100px" align="center">
                   <template slot-scope="scope">
                     <el-switch
@@ -390,6 +393,8 @@
             <!--                </el-select>-->
             <!--              </el-form-item>-->
             <!--            </el-col>-->
+          </el-row>
+          <el-row>
             <el-col v-show="apimockAddForm.proxyModelFlag===1" :span="10">
               <el-form-item label="文档来源:" prop="dataType">
                 <el-select
@@ -406,7 +411,7 @@
                 </el-select>
               </el-form-item>
             </el-col>
-            <el-col v-if="apimockAddForm.dataType==='branch'" :span="24">
+            <el-col v-if="apimockAddForm.dataType==='branch'" :span="12">
               <el-form-item label="分支:" prop="branch">
                 <el-select
                   v-model="apimockAddForm.branch"
@@ -424,7 +429,7 @@
                 </el-select>
               </el-form-item>
             </el-col>
-            <el-col v-if="apimockAddForm.dataType==='version'" :span="24">
+            <el-col v-if="apimockAddForm.dataType==='version'" :span="12">
               <el-form-item label="版本:" prop="version">
                 <el-select
                   v-model="apimockAddForm.version"
@@ -442,7 +447,7 @@
                 </el-select>
               </el-form-item>
             </el-col>
-            <el-col v-show="apimockAddForm.dataType==='dataset'" :span="24">
+            <el-col v-show="apimockAddForm.dataType==='dataset'" :span="12">
               <el-form-item label="用例集:" prop="dataset">
                 <el-cascader
                   v-model="apimockAddForm.dataset"
@@ -473,6 +478,8 @@
             <!--                </el-select>-->
             <!--              </el-form-item>-->
             <!--            </el-col>-->
+          </el-row>
+          <el-row>
             <el-col :span="12">
               <el-form-item label="延时:" prop="path">
                 <el-input
@@ -481,6 +488,17 @@
                   oninput="value=value.replace(/[^\d]/g,'')"
                 >
                   <template slot="append">秒(s)</template>
+                </el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="最大TPS:" prop="maxTps">
+                <el-input
+                  v-model="apimockAddForm.maxTps"
+                  placeholder="请输入最大TPS"
+                  oninput="value=value.replace(/[^\d]/g,'')"
+                >
+                  <template slot="append">/秒(s)</template>
                 </el-input>
               </el-form-item>
             </el-col>
@@ -540,23 +558,25 @@
                 />
               </el-form-item>
             </el-col>
-            <!--<el-col :span="10">
-              <el-form-item label="代理模式:" prop="proxyModel">
-                <el-select
-                  v-model="editForm.proxyModel"
-                  placeholder="请选择代理模式"
-                  style="display: block;"
-                  @change="changeModel(editForm)"
-                >
-                  <el-option
-                    v-for="item in proxyModelOptions"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value"
-                  />
-                </el-select>
-              </el-form-item>
-            </el-col>-->
+          </el-row>
+          <!--<el-col :span="10">
+            <el-form-item label="代理模式:" prop="proxyModel">
+              <el-select
+                v-model="editForm.proxyModel"
+                placeholder="请选择代理模式"
+                style="display: block;"
+                @change="changeModel(editForm)"
+              >
+                <el-option
+                  v-for="item in proxyModelOptions"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                />
+              </el-select>
+            </el-form-item>
+          </el-col>-->
+          <el-row>
             <el-col v-show="editForm.proxyModelFlag===1" :span="10">
               <el-form-item label="文档来源:" prop="dataType">
                 <el-select
@@ -574,7 +594,7 @@
                 </el-select>
               </el-form-item>
             </el-col>
-            <el-col v-show="dataType==='branch'" :span="24">
+            <el-col v-show="dataType==='branch'" :span="12">
               <el-form-item label="分支:" prop="branch">
                 <el-select
                   v-model="editForm.branch"
@@ -592,7 +612,7 @@
                 </el-select>
               </el-form-item>
             </el-col>
-            <el-col v-show="dataType==='version'" :span="24">
+            <el-col v-show="dataType==='version'" :span="12">
               <el-form-item label="版本:" prop="version">
                 <el-select
                   v-model="editForm.version"
@@ -610,7 +630,7 @@
                 </el-select>
               </el-form-item>
             </el-col>
-            <el-col v-show="dataType==='dataset'" :span="24">
+            <el-col v-show="dataType==='dataset'" :span="12">
               <el-form-item label="用例集:" prop="dataset">
                 <el-cascader
                   v-model="editForm.dataset"
@@ -640,6 +660,8 @@
                 </el-select>
               </el-form-item>
             </el-col>-->
+          </el-row>
+          <el-row>
             <el-col :span="12">
               <el-form-item label="延时:" prop="path">
                 <el-input
@@ -648,6 +670,17 @@
                   oninput="value=value.replace(/[^\d]/g,'')"
                 >
                   <template slot="append">秒(s)</template>
+                </el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="12">
+              <el-form-item label="最大TPS:" prop="maxTps">
+                <el-input
+                  v-model="editForm.maxTps"
+                  placeholder="请输入最大TPS"
+                  oninput="value=value.replace(/[^\d]/g,'')"
+                >
+                  <template slot="append">/秒(s)</template>
                 </el-input>
               </el-form-item>
             </el-col>
