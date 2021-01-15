@@ -102,7 +102,11 @@
                       target="_blank"
                       style="color:#0174DF"
                       @click="goToDocDetial(scope.row)"
-                    ><span class="col-cont" style="font-size: 8px" v-html="showData(convertSourceData(scope.row.source_type))" />
+                    ><span
+                       class="col-cont"
+                       style="font-size: 8px"
+                       v-html="showData(convertSourceData(scope.row.source_type))"
+                     />
                       <span>&nbsp;|&nbsp;</span>
                       <span class="col-cont" v-html="showData(scope.row.source_value)" />
                     </el-link>
@@ -111,7 +115,11 @@
                       target="_blank"
                       style="color:#0174DF"
                       @click="goToDocDetial(scope.row)"
-                    ><span class="col-cont" style="font-size: 8px" v-html="showData(convertSourceData(scope.row.source_type))" />
+                    ><span
+                      class="col-cont"
+                      style="font-size: 8px"
+                      v-html="showData(convertSourceData(scope.row.source_type))"
+                    />
                     </el-link>
                   </template>
                 </el-table-column>
@@ -190,38 +198,40 @@
                   align="center"
                   sortable
                 />
-                <el-table-column label="操作" min-width="70px" align="center">
+                <el-table-column label="操作" min-width="135" align="center">
                   <template slot-scope="scope">
-                    <el-tooltip content="查看用例" placement="top">
-                      <el-button
-                        size="mini"
-                        type="primary"
-                        icon="el-icon-view"
-                        style="margin: 0px;"
-                        circle
-                        @click="handleDataSetEdit(scope.row)"
-                      />
-                    </el-tooltip>
-                    <el-tooltip content="编辑信息" placement="top">
-                      <el-button
-                        size="mini"
-                        type="warning"
-                        icon="el-icon-edit"
-                        style="margin: 0px;"
-                        circle
-                        @click="handleContractEdit(scope.$index, scope.row)"
-                      />
-                    </el-tooltip>
-                    <el-tooltip content="删除用例" placement="right">
-                      <el-button
-                        size="mini"
-                        type="danger"
-                        icon="el-icon-delete"
-                        style="margin: 0px;"
-                        circle
-                        @click="deleteItem(scope.$index,scope.row)"
-                      />
-                    </el-tooltip>
+                    <div style="margin-right: 7px;margin-left: -7px">
+                      <el-tooltip content="查看用例" placement="top">
+                        <el-button
+                          size="mini"
+                          type="primary"
+                          icon="el-icon-view"
+                          style="margin: 0px;"
+                          circle
+                          @click="handleDataSetEdit(scope.row)"
+                        />
+                      </el-tooltip>
+                      <el-tooltip content="编辑信息" placement="top">
+                        <el-button
+                          size="mini"
+                          type="warning"
+                          icon="el-icon-edit"
+                          style="margin: 0px;"
+                          circle
+                          @click="handleContractEdit(scope.$index, scope.row)"
+                        />
+                      </el-tooltip>
+                      <el-tooltip content="删除用例" placement="right">
+                        <el-button
+                          size="mini"
+                          type="danger"
+                          icon="el-icon-delete"
+                          style="margin: 0px;"
+                          circle
+                          @click="deleteItem(scope.$index,scope.row)"
+                        />
+                      </el-tooltip>
+                    </div>
                   </template>
                 </el-table-column>
               </el-table>

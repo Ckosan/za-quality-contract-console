@@ -152,7 +152,8 @@
           </el-table-column>
           <el-table-column label="代理地址" prop="name" min-width="150px" align="center">
             <template slot-scope="scope">
-              <label style="color: #1e6abc;font-size: 8px">{{ mockApi+scope.row.server_id }}/{{ scope.row.code }}</label>
+              <label style="color: #1e6abc;font-size: 8px">{{ mockApi+scope.row.server_id }}/{{ scope.row.code
+              }}</label>
             </template>
           </el-table-column>
           <el-table-column label="默认路由" prop="default_router" min-width="50px" align="center">
@@ -178,38 +179,40 @@
             align="center"
             sortable
           />
-          <el-table-column label="操作" width="140" align="center">
+          <el-table-column label="操作" width="135" align="center">
             <template slot-scope="scope">
-              <el-tooltip content="查看代理" placement="top">
-                <el-button
-                  size="mini"
-                  type="primary"
-                  icon="el-icon-view"
-                  style="margin: 0px;"
-                  circle
-                  @click="viewMockConfig(scope.row)"
-                />
-              </el-tooltip>
-              <el-tooltip content="修改代理" placement="top">
-                <el-button
-                  size="mini"
-                  type="warning"
-                  icon="el-icon-edit"
-                  style="margin: 0px;"
-                  circle
-                  @click="handleEdit(scope.$index, scope.row)"
-                />
-              </el-tooltip>
-              <el-tooltip content="删除代理" placement="top">
-                <el-button
-                  size="mini"
-                  type="danger"
-                  icon="el-icon-delete"
-                  style="margin: 0px;"
-                  circle
-                  @click="deleteProxy(scope.$index,scope.row)"
-                />
-              </el-tooltip>
+              <div style="margin-right: 7px;margin-left: -7px">
+                <el-tooltip content="查看代理" placement="top">
+                  <el-button
+                    size="mini"
+                    type="primary"
+                    icon="el-icon-view"
+                    style="margin: 0px;"
+                    circle
+                    @click="viewMockConfig(scope.row)"
+                  />
+                </el-tooltip>
+                <el-tooltip content="修改代理" placement="top">
+                  <el-button
+                    size="mini"
+                    type="warning"
+                    icon="el-icon-edit"
+                    style="margin: 0px;"
+                    circle
+                    @click="handleEdit(scope.$index, scope.row)"
+                  />
+                </el-tooltip>
+                <el-tooltip content="删除代理" placement="top">
+                  <el-button
+                    size="mini"
+                    type="danger"
+                    icon="el-icon-delete"
+                    style="margin: 0px;"
+                    circle
+                    @click="deleteProxy(scope.$index,scope.row)"
+                  />
+                </el-tooltip>
+              </div>
             </template>
           </el-table-column>
         </el-table>

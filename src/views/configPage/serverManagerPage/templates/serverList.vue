@@ -153,35 +153,37 @@
         />
         <el-table-column label="操作" width="135" align="center">
           <template slot-scope="scope">
-            <el-tooltip content="服务详情" placement="left">
-              <el-button
-                size="mini"
-                type="primary"
-                icon="el-icon-view"
-                circle
-                @click="handleDetail(scope.$index, scope.row)"
-              />
-            </el-tooltip>
-            <el-tooltip content="编辑服务" placement="right">
-              <el-button
-                v-show="scope.row.permission_type!=1"
-                size="mini"
-                type="warning"
-                icon="el-icon-edit"
-                circle
-                @click="handleEdit(scope.$index, scope.row)"
-              />
-            </el-tooltip>
-            <el-tooltip content="删除服务" placement="right">
-              <el-button
-                v-show="scope.row.document_num===0&&scope.row.permission_type===2"
-                size="mini"
-                type="danger"
-                icon="el-icon-delete"
-                circle
-                @click="deleteItem(scope.$index,scope.row)"
-              />
-            </el-tooltip>
+            <div style="margin-right: 7px;margin-left: -7px">
+              <el-tooltip content="服务详情" placement="left">
+                <el-button
+                  size="mini"
+                  type="primary"
+                  icon="el-icon-view"
+                  circle
+                  @click="handleDetail(scope.$index, scope.row)"
+                />
+              </el-tooltip>
+              <el-tooltip content="编辑服务" placement="right">
+                <el-button
+                  v-show="scope.row.permission_type!=1"
+                  size="mini"
+                  type="warning"
+                  icon="el-icon-edit"
+                  circle
+                  @click="handleEdit(scope.$index, scope.row)"
+                />
+              </el-tooltip>
+              <el-tooltip content="删除服务" placement="right">
+                <el-button
+                  v-show="scope.row.document_num===0&&scope.row.permission_type===2"
+                  size="mini"
+                  type="danger"
+                  icon="el-icon-delete"
+                  circle
+                  @click="deleteItem(scope.$index,scope.row)"
+                />
+              </el-tooltip>
+            </div>
           </template>
         </el-table-column>
       </el-table>

@@ -4,7 +4,15 @@
   <div class="credit-record" style="margin-top: -30px;">
     <Box v-loading="loading" class="content-box">
       <SearchContainer style="text-align: center;">
-        <el-form ref="searchForm" :inline="true" label-width="110px" size="mini" :rules="rules" :model="searchForm" class="query-form mb20">
+        <el-form
+          ref="searchForm"
+          :inline="true"
+          label-width="110px"
+          size="mini"
+          :rules="rules"
+          :model="searchForm"
+          class="query-form mb20"
+        >
           <el-form-item label="项目信息" prop="project_code" class="rowItem">
             <el-select
               v-model="searchForm.projectinfo"
@@ -100,38 +108,47 @@
             <span class="col-cont" v-html="showDate(scope.row.application_status)" />
           </template>
         </el-table-column>
-        <el-table-column label="更新信息" prop="application_status" :formatter="convertDataFormat" min-width="110px" align="center" sortable />
+        <el-table-column
+          label="更新信息"
+          prop="application_status"
+          :formatter="convertDataFormat"
+          min-width="110px"
+          align="center"
+          sortable
+        />
         <el-table-column label="操作" width="135" align="center">
           <template slot-scope="scope">
-            <el-tooltip content="应用详情" placement="left">
-              <el-button
-                size="mini"
-                type="primary"
-                icon="el-icon-view"
-                circle
-                @click="handleDetail(scope.$index, scope.row)"
-              />
-            </el-tooltip>
-            <el-tooltip content="编辑应用" placement="right">
-              <el-button
-                v-show="scope.row.permission_type!=1"
-                size="mini"
-                type="warning"
-                icon="el-icon-edit"
-                circle
-                @click="handleEdit(scope.$index, scope.row)"
-              />
-            </el-tooltip>
-            <el-tooltip content="删除应用" placement="right">
-              <el-button
-                v-show="scope.row.server_info===''&&scope.row.permission_type===2"
-                size="mini"
-                type="danger"
-                icon="el-icon-delete"
-                circle
-                @click="deleteItem(scope.$index,scope.row)"
-              />
-            </el-tooltip>
+            <div style="margin-right: 3px;margin-left: -3px">
+              <el-tooltip content="应用详情" placement="left">
+                <el-button
+                  size="mini"
+                  type="primary"
+                  icon="el-icon-view"
+                  circle
+                  @click="handleDetail(scope.$index, scope.row)"
+                />
+              </el-tooltip>
+              <el-tooltip content="编辑应用" placement="right">
+                <el-button
+                  v-show="scope.row.permission_type!=1"
+                  size="mini"
+                  type="warning"
+                  icon="el-icon-edit"
+                  circle
+                  @click="handleEdit(scope.$index, scope.row)"
+                />
+              </el-tooltip>
+              <el-tooltip content="删除应用" placement="right">
+                <el-button
+                  v-show="scope.row.server_info===''&&scope.row.permission_type===2"
+                  size="mini"
+                  type="danger"
+                  icon="el-icon-delete"
+                  circle
+                  @click="deleteItem(scope.$index,scope.row)"
+                />
+              </el-tooltip>
+            </div>
           </template>
         </el-table-column>
       </el-table>
@@ -147,7 +164,13 @@
     </Box>
 
     <!--编辑弹出框-->
-    <el-dialog title="修改应用" :visible.sync="editFormVisible" width="40%" :show-close="false" :close-on-click-modal="false">
+    <el-dialog
+      title="修改应用"
+      :visible.sync="editFormVisible"
+      width="40%"
+      :show-close="false"
+      :close-on-click-modal="false"
+    >
       <div style="margin-top: 10px">
         <div style="text-align: center;font-size: 15px;font-weight: bold;margin-bottom: 25px"><label>应用信息</label>
         </div>
@@ -257,7 +280,13 @@
     </el-dialog>
 
     <!-- 添加弹出框 -->
-    <el-dialog title="添加应用" :visible.sync="addFormVisible" width="40%" :show-close="false" :close-on-click-modal="false">
+    <el-dialog
+      title="添加应用"
+      :visible.sync="addFormVisible"
+      width="40%"
+      :show-close="false"
+      :close-on-click-modal="false"
+    >
       <div style="margin-top: 10px">
         <div style="text-align: center;font-size: 15px;font-weight: bold;margin-bottom: 25px"><label>应用信息</label>
         </div>

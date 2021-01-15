@@ -193,26 +193,28 @@
                 />
                 <el-table-column label="操作" min-width="100px" align="center">
                   <template slot-scope="scope">
-                    <el-tooltip content="编辑" placement="top">
-                      <el-button
-                        size="mini"
-                        type="warning"
-                        icon="el-icon-edit"
-                        style="margin: 0px;"
-                        circle
-                        @click="handleEdit(scope.$index, scope.row)"
-                      />
-                    </el-tooltip>
-                    <el-tooltip content="删除" placement="right">
-                      <el-button
-                        size="mini"
-                        type="danger"
-                        icon="el-icon-delete"
-                        style="margin: 0px;"
-                        circle
-                        @click="deleteConfigItem(scope.$index,scope.row)"
-                      />
-                    </el-tooltip>
+                    <div style="margin-right: 7px;margin-left: -7px">
+                      <el-tooltip content="编辑" placement="top">
+                        <el-button
+                          size="mini"
+                          type="warning"
+                          icon="el-icon-edit"
+                          style="margin: 0px;"
+                          circle
+                          @click="handleEdit(scope.$index, scope.row)"
+                        />
+                      </el-tooltip>
+                      <el-tooltip content="删除" placement="right">
+                        <el-button
+                          size="mini"
+                          type="danger"
+                          icon="el-icon-delete"
+                          style="margin: 0px;"
+                          circle
+                          @click="deleteConfigItem(scope.$index,scope.row)"
+                        />
+                      </el-tooltip>
+                    </div>
                   </template>
                 </el-table-column>
               </el-table>
@@ -252,36 +254,38 @@
           />
           <el-table-column label="操作" width="200px" align="center">
             <template slot-scope="scope">
-              <el-tooltip content="编辑" placement="left">
-                <el-button
-                  size="mini"
-                  type="warning"
-                  icon="el-icon-edit"
-                  style="margin: 0px;"
-                  circle
-                  @click="editMock(scope.row)"
-                />
-              </el-tooltip>
-              <el-tooltip content="新增规则" placement="top">
-                <el-button
-                  size="mini"
-                  type="success"
-                  icon="el-icon-plus"
-                  style="margin: 0px;"
-                  circle
-                  @click="addApiMockConfig(scope.row)"
-                />
-              </el-tooltip>
-              <el-tooltip v-if="scope.row.num === 0" content="删除配置" placement="top">
-                <el-button
-                  size="mini"
-                  type="danger"
-                  icon="el-icon-delete"
-                  style="margin: 0px;"
-                  circle
-                  @click="deleteInterfaceProxy(scope.row)"
-                />
-              </el-tooltip>
+              <div style="margin-right: 7px;margin-left: -7px">
+                <el-tooltip content="编辑" placement="left">
+                  <el-button
+                    size="mini"
+                    type="warning"
+                    icon="el-icon-edit"
+                    style="margin: 0px;"
+                    circle
+                    @click="editMock(scope.row)"
+                  />
+                </el-tooltip>
+                <el-tooltip content="新增规则" placement="top">
+                  <el-button
+                    size="mini"
+                    type="success"
+                    icon="el-icon-plus"
+                    style="margin: 0px;"
+                    circle
+                    @click="addApiMockConfig(scope.row)"
+                  />
+                </el-tooltip>
+                <el-tooltip v-if="scope.row.num === 0" content="删除配置" placement="top">
+                  <el-button
+                    size="mini"
+                    type="danger"
+                    icon="el-icon-delete"
+                    style="margin: 0px;"
+                    circle
+                    @click="deleteInterfaceProxy(scope.row)"
+                  />
+                </el-tooltip>
+              </div>
             </template>
           </el-table-column>
         </el-table>
