@@ -32,6 +32,15 @@ export default {
       mockAddForm:
         {
           interfaceId: '',
+          maxTps: 500,
+          modifier: sessionStorage.getItem('currentUserName')
+        },
+      editConfigFormVisible: false,
+      editConfigForm:
+        {
+          id: '',
+          interfaceId: '',
+          maxTps: 500,
           modifier: sessionStorage.getItem('currentUserName')
         },
       mockSwitch: '',
@@ -63,6 +72,11 @@ export default {
             { required: true, message: '请选择数据集', trigger: 'blur' }
           ],*/
         interfaceId:
+          [
+            { required: true, message: '请选择API', trigger: 'blur' },
+            { validator: isNum, trigger: 'blur' }
+          ],
+        interface_id:
           [
             { required: true, message: '请选择API', trigger: 'blur' },
             { validator: isNum, trigger: 'blur' }
@@ -141,7 +155,8 @@ export default {
         { value: 'mock', label: '挡板' }, { value: 'route', label: '路由' }
       ],
       dataTypeOptions: [
-        { value: 'default', label: '默认最新版本' }, { value: 'version', label: '版本' }, { value: 'branch', label: '分支' }, { value: 'dataset', label: '用例集' }
+        { value: 'default', label: '默认最新版本' }, { value: 'version', label: '版本' },
+        { value: 'branch', label: '分支' }, { value: 'dataset', label: '用例集' }
       ]
     }
   },
@@ -214,7 +229,8 @@ export default {
     },
     // 获取列表
     async vueTable() {
-      this.list = await httpRequest('GET', INTERFACE_PROXY + '?proxyId=' + this.$route.params.id + '&serverId=' + this.$route.query.serverId)
+      this.list = await httpRequest('GET', INTERFACE_PROXY + '?proxyId=' +
+        this.$route.params.id + '&serverId=' + this.$route.query.serverId)
       this.tmpApiList = this.list
       this.allList = this.list
     },
@@ -265,7 +281,6 @@ export default {
             modifier: sessionStorage.getItem('currentUserName'),
             event_type: this.apimockAddForm.proxyModel,
             delay: this.apimockAddForm.delay,
-            max_tps: this.apimockAddForm.maxTps,
             proxy_id: this.$route.params.id,
             data_type: this.apimockAddForm.dataType,
             data_set_list: this.apimockAddForm.dataType === 'dataset' ? this.apimockAddForm.dataset : []
@@ -293,7 +308,8 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(async() => {
-        await httpRequest('DELETE', INTERFACE_PROXY + '/?id=' + row.id + '&modifier=' + sessionStorage.getItem('currentUserName'))
+        await httpRequest('DELETE', INTERFACE_PROXY + '/?id=' + row.id + '&modifier=' +
+          sessionStorage.getItem('currentUserName'))
         this.vueTable()
       }).catch(() => {
         this.$message({
@@ -324,11 +340,35 @@ export default {
             proxy_id: this.$route.params.id,
             is_open: 0,
             interface_id: this.mockAddForm.interfaceId,
+            max_tps: this.mockAddForm.maxTps,
             modifier: sessionStorage.getItem('currentUserName')
           }
           await httpRequest('POST', INTERFACE_PROXY, HandleEdit)
           this.vueTable()
           this.mockVisible = false
+        } else {
+          console.log('error submit!!')
+        }
+      })
+    },
+    editMock(row) {
+      this.editConfigFormVisible = true
+      this.editConfigForm = Object.assign({}, row)
+    },
+    addConfigSubmit(form) {
+      this.$refs[form].validate(async(valid) => {
+        if (valid) {
+          const HandleEdit = {
+            id: this.editConfigForm.id,
+            is_open: this.editConfigForm.is_open,
+            interface_id: this.editConfigForm.interface_id,
+            server_type: 'API',
+            max_tps: this.editConfigForm.max_tps,
+            modifier: sessionStorage.getItem('currentUserName')
+          }
+          await httpRequestWithoutLoading('PUT', INTERFACE_PROXY, HandleEdit)
+          this.vueTable()
+          this.editConfigFormVisible = false
         } else {
           console.log('error submit!!')
         }

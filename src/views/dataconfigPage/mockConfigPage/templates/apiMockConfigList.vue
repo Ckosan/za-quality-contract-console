@@ -145,7 +145,6 @@
                   </template>
                 </el-table-column>
                 <el-table-column label="延时(s)" prop="delay" min-width="80px" align="center" />
-                <el-table-column label="限流(tps)" prop="max_tps" min-width="80px" align="center" />
                 <el-table-column label="mock开关" min-width="100px" align="center">
                   <template slot-scope="scope">
                     <el-switch
@@ -242,6 +241,7 @@
               />
             </template>
           </el-table-column>
+          <el-table-column label="限流(tps)" prop="max_tps" min-width="80px" align="center" />
           <el-table-column
             label="更新信息"
             prop="update_time"
@@ -252,6 +252,16 @@
           />
           <el-table-column label="操作" width="200px" align="center">
             <template slot-scope="scope">
+              <el-tooltip content="编辑" placement="left">
+                <el-button
+                  size="mini"
+                  type="warning"
+                  icon="el-icon-edit"
+                  style="margin: 0px;"
+                  circle
+                  @click="editMock(scope.row)"
+                />
+              </el-tooltip>
               <el-tooltip content="新增规则" placement="top">
                 <el-button
                   size="mini"
@@ -321,6 +331,15 @@
                   />
                 </el-select>
               </el-form-item>
+              <el-form-item label="限流:" prop="max_tps">
+                <el-input
+                  v-model="mockAddForm.maxTps"
+                  placeholder="请输入TPS"
+                  oninput="value=value.replace(/[^\d]/g,'')"
+                >
+                  <template slot="append">tps</template>
+                </el-input>
+              </el-form-item>
             </el-col>
           </el-row>
         </el-form>
@@ -330,6 +349,59 @@
         <el-button type="primary" :loading="addLoading" @click="addMockSubmit('docForm')">保存</el-button>
       </div>
     </el-dialog>
+    <el-dialog
+      title="修改API代理"
+      :visible.sync="editConfigFormVisible"
+      width="30%"
+      :show-close="false"
+      :close-on-click-modal="false"
+    >
+      <br>
+      <div v-loading="addLoading" class="acontent-box">
+        <el-form
+          ref="docForm"
+          :inline="false"
+          :rules="rules"
+          :model="editConfigForm"
+          label-width="100px"
+        >
+          <el-row>
+            <el-col :span="24">
+              <el-form-item label="选择文档:" prop="interface_id">
+                <el-select
+                  v-model="editConfigForm.interface_id"
+                  allow-create
+                  filterable
+                  placeholder="选择选择文档"
+                  style="display: block;"
+                >
+                  <el-option
+                    v-for="item in templatesOptions"
+                    :key="item.key"
+                    :label="item.label"
+                    :value="item.value"
+                  />
+                </el-select>
+              </el-form-item>
+              <el-form-item label="限流:" prop="max_tps">
+                <el-input
+                  v-model="editConfigForm.max_tps"
+                  placeholder="请输入TPS"
+                  oninput="value=value.replace(/[^\d]/g,'')"
+                >
+                  <template slot="append">tps</template>
+                </el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+        </el-form>
+      </div>
+      <div slot="footer" class="dialog-footer">
+        <el-button type="danger" @click="editConfigFormVisible = false">取 消</el-button>
+        <el-button type="primary" :loading="addLoading" @click="addConfigSubmit('docForm')">保存</el-button>
+      </div>
+    </el-dialog>
+
     <el-dialog
       title="新增代理规则"
       :visible.sync="apimockVisible"
@@ -488,17 +560,6 @@
                   oninput="value=value.replace(/[^\d]/g,'')"
                 >
                   <template slot="append">秒(s)</template>
-                </el-input>
-              </el-form-item>
-            </el-col>
-            <el-col :span="12">
-              <el-form-item label="限流:" prop="max_tps">
-                <el-input
-                  v-model="apimockAddForm.maxTps"
-                  placeholder="请输入TPS"
-                  oninput="value=value.replace(/[^\d]/g,'')"
-                >
-                  <template slot="append">tps</template>
                 </el-input>
               </el-form-item>
             </el-col>
@@ -670,17 +731,6 @@
                   oninput="value=value.replace(/[^\d]/g,'')"
                 >
                   <template slot="append">秒(s)</template>
-                </el-input>
-              </el-form-item>
-            </el-col>
-            <el-col :span="12">
-              <el-form-item label="限流:" prop="max_tps">
-                <el-input
-                  v-model="editForm.max_tps"
-                  placeholder="请输入TPS"
-                  oninput="value=value.replace(/[^\d]/g,'')"
-                >
-                  <template slot="append">tps</template>
                 </el-input>
               </el-form-item>
             </el-col>
