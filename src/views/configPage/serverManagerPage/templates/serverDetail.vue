@@ -264,7 +264,7 @@
           <div style="float: right;">
             <el-input
               v-model="searchTxt"
-              style="display: inline-block;width: 280px"
+              style="display: inline-block;width: 200px"
               placeholder="输入关键字"
               @input="seachApiList"
             >
@@ -299,7 +299,7 @@
                   <div style="float: right;">
                     <el-input
                       v-model="searchexpandTxt"
-                      style="display: inline-block;width: 400px;height: 15px"
+                      style="display: inline-block;width: 250px;height: 15px"
                       placeholder="输入关键字"
                       @input="seachexpandTableList"
                     ><i slot="prefix" class="el-input__icon el-icon-search" /></el-input>
