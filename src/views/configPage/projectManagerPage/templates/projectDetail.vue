@@ -4,7 +4,7 @@
   <div v-loading="regionLoading" class="credit-record" style="margin-top: -30px;">
     <Box class="content-box">
       <el-row style="text-align: left;">
-        <span style="font-size: small;color: #6a686b;">
+        <span style="font-size: 4px;color: #6a686b;">
           <span>「{{ projectDetail.creater }}」创建于「{{ projectDetail.create_time }}」</span>
           <span v-if="projectDetail.update_time!=projectDetail.create_time">
             ，「{{ projectDetail.modifier }}」最后修改于「{{ projectDetail.update_time }}」
@@ -20,7 +20,9 @@
         </div>
         <div class="app-container">
           <div style="display: inline-block">
-            <div style="float:left;margin-bottom: 20px;margin-top: 10px;margin-right: 5rem"><label style="font-size: 12px">项目名称：<label
+            <div style="float:left;margin-bottom: 20px;margin-top: 10px;margin-right: 5rem"><label
+              style="font-size: 12px"
+            >项目名称：<label
               style="font-weight: normal"
             >{{ projectDetail.project_name }}({{
               projectDetail.project_code }})</label></label></div>
@@ -71,7 +73,10 @@
       </section>
       <div>
         <div style="float: left"><label style="font-weight: bold;font-size: 15px">应用列表</label></div>
-        <div style="float: right;margin-right: 30px;margin-bottom: 5px"><el-button type="success" style="float: right;" icon="el-icon-plus" size="mini" @click="addAppClick">新增应用</el-button></div>
+        <div style="float: right;margin-right: 30px;margin-bottom: 5px">
+          <el-button type="success" style="float: right;" icon="el-icon-plus" size="mini" @click="addAppClick">新增应用
+          </el-button>
+        </div>
       </div>
       <div style="text-align: center" class="eltable">
         <el-table
@@ -88,32 +93,36 @@
             width="60"
             align="center"
           />
-          <el-table-column label="应用名称" prop="application_name" min-width="200" align="center" />
-          <el-table-column label="应用代码" prop="application_code" min-width="200" align="center" />
+          <el-table-column label="应用名称" prop="application_name" min-width="70px" align="center" />
+          <el-table-column label="应用代码" prop="application_code" min-width="70px" align="center" />
           <el-table-column
             label="应用描述"
             prop="application_describe"
-            min-width="200"
+            min-width="130px"
             align="center"
             show-overflow-tooltip
           />
-          <el-table-column label="状态" prop="application_status" min-width="80" align="center" />
-          <el-table-column label="操作" width="250px" align="center">
+          <el-table-column label="状态" prop="application_status" min-width="50px" align="center" />
+          <el-table-column label="操作" width="160" align="center">
             <template slot-scope="scope">
-              <el-button
-                size="mini"
-                type="primary"
-                icon="el-icon-view"
-                @click="handleDetail(scope.$index, scope.row)"
-              >应用详情
-              </el-button>
-              <el-button
-                size="mini"
-                type="danger"
-                icon="el-icon-delete"
-                @click="handleDeleteApplication(scope.$index, scope.row)"
-              >删除应用
-              </el-button>
+              <el-tooltip content="应用详情" placement="left">
+                <el-button
+                  size="mini"
+                  type="primary"
+                  icon="el-icon-view"
+                  circle
+                  @click="handleDetail(scope.$index, scope.row)"
+                />
+              </el-tooltip>
+              <el-tooltip content="删除应用" placement="left">
+                <el-button
+                  size="mini"
+                  type="danger"
+                  icon="el-icon-delete"
+                  circle
+                  @click="handleDeleteApplication(scope.$index, scope.row)"
+                />
+              </el-tooltip>
             </template>
           </el-table-column>
         </el-table>
@@ -309,7 +318,13 @@
         </div>
       </el-dialog>
 
-      <el-dialog title="添加应用" :visible.sync="addAppClickVisible" width="40%" :show-close="false" :close-on-click-modal="false">
+      <el-dialog
+        title="添加应用"
+        :visible.sync="addAppClickVisible"
+        width="40%"
+        :show-close="false"
+        :close-on-click-modal="false"
+      >
         <div style="margin-top: 10px">
           <div style="text-align: center;font-size: 15px;font-weight: bold;margin-bottom: 25px"><label>应用信息</label>
           </div>

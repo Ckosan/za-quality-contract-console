@@ -98,24 +98,24 @@
           align="center"
           sortable
         />
-        <el-table-column label="项目归属" prop="deptinfo" min-width="100" align="center" show-overflow-tooltip>
+        <el-table-column label="项目归属" prop="deptinfo" min-width="100px" align="center">
           <template slot-scope="scope">
             <span class="col-cont" v-html="showDate(scope.row.deptinfo)" />
           </template>
         </el-table-column>
-        <el-table-column label="项目名称" prop="projectinfo" min-width="100" align="center" show-overflow-tooltip>
+        <el-table-column label="项目名称" prop="projectinfo" min-width="100px" align="center">
           <template slot-scope="scope">
             <span class="col-cont" v-html="showDate(scope.row.projectinfo)" />
           </template>
         </el-table-column>
-        <el-table-column label="项目负责人" prop="owners" min-width="150" align="center" show-overflow-tooltip>
+        <el-table-column label="项目负责人" prop="owners" min-width="100px" align="center">
           <template slot-scope="scope">
             <span class="col-cont" v-html="showDate(scope.row.owners)" />
           </template>
         </el-table-column>
-        <el-table-column label="关联应用数" prop="application_num" min-width="60" align="center" show-overflow-tooltip />
-        <el-table-column label="更新信息" prop="update_time" :formatter="convertDataFormat" min-width="80" align="center" show-overflow-tooltip />
-        <el-table-column label="操作" width="140px" align="center">
+        <el-table-column label="关联应用数" prop="application_num" min-width="60px" align="center" />
+        <el-table-column label="更新信息" prop="update_time" :formatter="convertDataFormat" min-width="80px" align="center" sortable />
+        <el-table-column label="操作" width="135" align="center">
           <template slot-scope="scope">
             <el-tooltip content="项目详情" placement="left">
               <el-button

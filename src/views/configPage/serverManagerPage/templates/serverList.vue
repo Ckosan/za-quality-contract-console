@@ -97,7 +97,7 @@
           width="60"
           align="center"
         />
-        <el-table-column label="项目信息" prop="projectinfo" min-width="150" show-overflow-tooltip align="center" sortable>
+        <el-table-column label="项目信息" prop="projectinfo" min-width="100px" align="center" sortable>
           <template slot-scope="scope">
             <router-link
               tag="a"
@@ -110,8 +110,7 @@
         <el-table-column
           label="应用信息"
           prop="applicationinfo"
-          min-width="150"
-          show-overflow-tooltip
+          min-width="100px"
           align="center"
           sortable
         >
@@ -124,7 +123,7 @@
             </router-link>
           </template>
         </el-table-column>
-        <el-table-column label="服务编码" min-width="125px" align="center">
+        <el-table-column label="服务编码" min-width="100px" align="center">
           <template slot-scope="scope">
             {{ scope.row.server_type }}:
             <label style="font-size: 8px">{{ scope.row.server_code }}</label>
@@ -138,12 +137,12 @@
             </el-link>
           </template>
         </el-table-column>
-        <el-table-column label="服务简介" prop="server_name" min-width="160" show-overflow-tooltip align="center">
+        <el-table-column label="服务简介" prop="server_name" min-width="160px" align="center">
           <template slot-scope="scope">
             <span class="col-cont" v-html="showDate(scope.row.server_name)" />
           </template>
         </el-table-column>
-        <el-table-column label="文档数量" prop="document_num" min-width="90" align="center" />
+        <el-table-column label="文档数量" prop="document_num" min-width="50px" align="center" />
         <el-table-column
           label="更新信息"
           prop="document_num"
@@ -152,7 +151,7 @@
           align="center"
           sortable
         />
-        <el-table-column label="操作" width="150px" align="center">
+        <el-table-column label="操作" width="135" align="center">
           <template slot-scope="scope">
             <el-tooltip content="服务详情" placement="left">
               <el-button

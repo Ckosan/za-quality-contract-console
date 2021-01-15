@@ -100,7 +100,7 @@
           :data="list.slice((currentPage-1)*pagesize,currentPage*pagesize)"
           border
           class="form-table"
-          style="font-size: 8px"
+          style="font-size: 8px;overflow: auto"
           :header-cell-style="{fontSize:'10px',fontWeight:'bold',background:'#CED8F6',color:'#606266'}"
           @selection-change="handleSelectionChange"
         >

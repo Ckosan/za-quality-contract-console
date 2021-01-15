@@ -72,7 +72,7 @@
           width="60px"
           align="center"
         />
-        <el-table-column label="项目信息" prop="project_info" min-width="150px" align="center" sortable>
+        <el-table-column label="项目信息" prop="project_info" min-width="120px" align="center">
           <template slot-scope="scope">
             <router-link
               tag="a"
@@ -90,18 +90,18 @@
           show-overflow-tooltip
           sortable
         />
-        <el-table-column label="应用简介" prop="application_describe" min-width="250px" align="center" show-overflow-tooltip>
+        <el-table-column label="应用简介" prop="application_describe" min-width="150px" align="center">
           <template slot-scope="scope">
             <span class="col-cont" v-html="showDate(scope.row.application_describe)" />
           </template>
         </el-table-column>
-        <el-table-column label="应用状态" prop="application_status" min-width="100px" align="center" show-overflow-tooltip>
+        <el-table-column label="应用状态" prop="application_status" min-width="60px" align="center">
           <template slot-scope="scope">
             <span class="col-cont" v-html="showDate(scope.row.application_status)" />
           </template>
         </el-table-column>
-        <el-table-column label="更新信息" prop="application_status" :formatter="convertDataFormat" min-width="110px" align="center" show-overflow-tooltip sortable />
-        <el-table-column label="操作" width="150px" align="center">
+        <el-table-column label="更新信息" prop="application_status" :formatter="convertDataFormat" min-width="110px" align="center" sortable />
+        <el-table-column label="操作" width="135" align="center">
           <template slot-scope="scope">
             <el-tooltip content="应用详情" placement="left">
               <el-button
