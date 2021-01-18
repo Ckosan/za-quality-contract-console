@@ -428,8 +428,19 @@
 
                     </template>
                   </el-table-column>
-                  <el-table-column label="操作" width="120px" align="center">
+                  <el-table-column label="操作" width="150" align="center">
                     <template slot-scope="scope">
+                      <el-tooltip content="编辑分支" placement="left">
+                        <el-button
+                          v-if="serverDetail.permission_type === 2"
+                          size="mini"
+                          type="warning"
+                          icon="el-icon-edit"
+                          style="margin: 0px;"
+                          circle
+                          @click="handleEditBranch(scope.$index, scope.row)"
+                        />
+                      </el-tooltip>
                       <el-tooltip content="查看文档" placement="left">
                         <el-button
                           v-if="serverDetail.permission_type === 2"
@@ -1179,6 +1190,69 @@
           <el-button type="primary" @click="addBranchSubmit('branchForm')">新建</el-button>
         </div>
       </el-dialog>
+      <el-dialog
+        v-loading="addLoading"
+        title="编辑分支"
+        :visible.sync="editBranchVisible"
+        width="30%"
+        :show-close="false"
+        :close-on-click-modal="false"
+      >
+        <br>
+        <div class="content-box">
+          <el-form
+            ref="editBranchForm"
+            :inline="false"
+            :rules="rules"
+            :model="editBranchForm"
+            label-width="100px"
+          >
+            <el-row>
+              <el-col :span="24">
+                <el-form-item label="分支名称:" prop="branch">
+                  <el-input
+                    v-model="editBranchForm.branch"
+                    placeholder="请输入分支名称"
+                    maxlength="256"
+                  />
+                </el-form-item>
+              </el-col>
+              <el-col :span="24">
+                <el-form-item label="版本来源:" prop="version">
+                  <el-select
+                    v-model="editBranchForm.version"
+                    placeholder="选择版本来源"
+                    clearable
+                    filterable
+                    style="width: 100%;"
+                  >
+                    <el-option
+                      v-for="item in versionOptions"
+                      :key="item.key"
+                      :label="item.label"
+                      :value="item.value"
+                    />
+                  </el-select>
+                </el-form-item>
+              </el-col>
+              <el-col :span="24">
+                <el-form-item label="分支描述:" prop="description">
+                  <el-input
+                    v-model="editBranchForm.description"
+                    placeholder="请输入分支描述"
+                    maxlength="2046"
+                  />
+                </el-form-item>
+              </el-col>
+            </el-row>
+          </el-form>
+        </div>
+        <div slot="footer" class="dialog-footer">
+          <el-button type="danger" @click="editBranchVisible = false">取 消</el-button>
+          <el-button type="primary" @click="editBranchSubmit('editBranchForm')">保存</el-button>
+        </div>
+      </el-dialog>
+
       <el-dialog
         v-loading="addLoading"
         title="创建用例集"

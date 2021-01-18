@@ -2,7 +2,7 @@ import { mapGetters } from 'vuex'
 import { api_url, ws_host } from '../../../../settings'
 import {
   API_CONTRACT_DEBUG,
-  API_CONTRACT_DOC, API_EXT_INFO, DATA_SET_API,
+  API_CONTRACT_DOC, API_EXT_INFO, BRNACH_API, DATA_SET_API,
   DELETE_INTERFACE,
   GET_SWAGGER_INTERFACE,
   HTTP_DEBUG,
@@ -35,6 +35,13 @@ export default {
         apiId: '',
         server: '',
         describe: ''
+      },
+      editBranchVisible: false,
+      editBranchForm: {
+        id: '',
+        branch: '',
+        version: '',
+        description: ''
       },
       addBranchVisible: false,
       docForm: {
@@ -419,6 +426,39 @@ export default {
       } else {
         return
       }
+    },
+    handleEditBranch(index, row) {
+      this.getVersions(row.interface_id)
+      this.editBranchVisible = true
+      this.editBranchForm = Object.assign({}, row)
+    },
+    async getVersions(interfaceId) {
+      const returnData = await httpRequestWithoutLoading('GET', API_EXT_INFO + '?interfaceId=' + interfaceId)
+      this.versionOptions = returnData.versionList
+    },
+    editBranchSubmit(form) {
+      this.$refs[form].validate(async(valid) => {
+        if (valid) {
+          const handleAddClick = {
+            id: this.editBranchForm.id,
+            version: this.editBranchForm.version,
+            branch: this.editBranchForm.branch.trim(),
+            modifier: sessionStorage.getItem('currentUserName'),
+            description: this.editBranchForm.description
+          }
+          try {
+            await httpRequestWithoutLoading('PUT', BRNACH_API, handleAddClick)
+          } catch (e) {
+            console.log(e)
+          } finally {
+            this.editBranchVisible = false
+          }
+          this.branchForm.version = ''
+          this.branchForm.branch = ''
+          this.branchForm.describe = ''
+          this.getInterfaceListByServer()
+        }
+      })
     },
     handleInterfaceEdit(index, row) {
       this.editDocVisible = true
