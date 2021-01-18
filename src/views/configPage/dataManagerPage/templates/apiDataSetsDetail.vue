@@ -75,7 +75,13 @@
                   </div>
                 </template>
               </el-table-column>
-              <el-table-column label="字段描述" prop="data_describe" min-width="100px" align="center" />
+              <el-table-column label="字段描述" prop="data_describe" min-width="180" align="center">
+                <template slot-scope="scope">
+                  <div style="margin-right: 12px">
+                    <span style="font-size: 8px;margin-right: 10px;width: 110px">{{ scope.row.backup }} </span>
+                  </div>
+                </template>
+              </el-table-column>
             </el-table>
             <div style="display: inline-block;display-inside: ruby;width: 100%;">
               <div style="float: left;width: 100%;">
@@ -112,10 +118,10 @@
                   />
                   <el-table-column label="父节点" prop="parent_key" min-width="80px" align="center" />
                   <el-table-column label="字段名" prop="data_key" min-width="80px" align="center" />
-                  <el-table-column label="字段类型" prop="data_type" min-width="40px" align="center" />
+                  <el-table-column label="字段类型" prop="data_type" min-width="60px" align="center" />
                   <el-table-column label="字段长度" prop="data_length" min-width="40px" align="center" />
                   <el-table-column label="是否必填" prop="is_null" min-width="40px" align="center" />
-                  <el-table-column label="字段描述" prop="data_describe" min-width="100px" align="center" />
+                  <el-table-column label="字段描述" prop="data_describe" min-width="80px" align="center" />
                   <el-table-column label="参考值" prop="data_value" min-width="200px" align="center">
                     <template slot-scope="scope">
                       <div style="display: inline-block">
@@ -132,7 +138,13 @@
                       </div>
                     </template>
                   </el-table-column>
-                  <el-table-column label="备注" prop="backup" min-width="100" align="center" />
+                  <el-table-column label="备注" prop="backup" min-width="150" align="center">
+                    <template slot-scope="scope">
+                      <div style="margin-right: 12px">
+                        <span style="font-size: 8px;margin-right: 10px;width: 110px">{{ scope.row.backup }} </span>
+                      </div>
+                    </template>
+                  </el-table-column>
                 </el-table>
               </div>
             </div>
@@ -176,7 +188,13 @@
                     </div>
                   </template>
                 </el-table-column>
-                <el-table-column label="字段描述" prop="description" min-width="100px" align="center" />
+                <el-table-column label="字段描述" prop="description" min-width="180" align="center">
+                  <template slot-scope="scope">
+                    <div style="margin-right: 12px">
+                      <span style="font-size: 8px;margin-right: 10px;width: 110px">{{ scope.row.backup }} </span>
+                    </div>
+                  </template>
+                </el-table-column>
               </el-table>
               <div style="display: inline-block;display-inside: ruby;width: 100%;">
                 <div style="float: left;width: 100%;">
@@ -213,10 +231,10 @@
                     />
                     <el-table-column label="父节点" prop="parent_key" min-width="80px" align="center" />
                     <el-table-column label="字段名" prop="data_key" min-width="80px" align="center" />
-                    <el-table-column label="字段类型" prop="data_type" min-width="40px" align="center" />
+                    <el-table-column label="字段类型" prop="data_type" min-width="60px" align="center" />
                     <el-table-column label="字段长度" prop="data_length" min-width="40px" align="center" />
                     <el-table-column label="是否必填" prop="is_null" min-width="40px" align="center" />
-                    <el-table-column label="字段描述" prop="data_describe" min-width="100px" align="center" />
+                    <el-table-column label="字段描述" prop="data_describe" min-width="80px" align="center" />
                     <el-table-column label="参考值" prop="data_value" min-width="200px" align="center">
                       <template slot-scope="scope">
                         <div style="display: inline-block">
@@ -233,7 +251,13 @@
                         </div>
                       </template>
                     </el-table-column>
-                    <el-table-column label="备注" prop="backup" min-width="100px" align="center" />
+                    <el-table-column label="备注" prop="backup" min-width="150" align="center">
+                      <template slot-scope="scope">
+                        <div style="margin-right: 12px">
+                          <span style="font-size: 8px;margin-right: 10px;width: 110px">{{ scope.row.backup }} </span>
+                        </div>
+                      </template>
+                    </el-table-column>
                   </el-table>
                 </div>
               </div>

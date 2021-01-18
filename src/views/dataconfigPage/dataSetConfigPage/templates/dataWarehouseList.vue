@@ -156,46 +156,48 @@
           />
           <el-table-column label="操作" min-width="100" align="center">
             <template slot-scope="scope">
-              <!-- <el-tooltip content="新增契约数据" placement="top">
-                <el-button
-                  size="mini"
-                  type="primary"
-                  icon="el-icon-plus"
-                  style="margin: 0px;"
-                  circle
-                  @click="handleEdit(scope.row)"
-                />
-              </el-tooltip> -->
-              <el-tooltip content="查看用例集" placement="top">
-                <el-button
-                  size="mini"
-                  type="primary"
-                  icon="el-icon-view"
-                  style="margin: 0px;"
-                  circle
-                  @click="viewDataSet(scope.row)"
-                />
-              </el-tooltip>
-              <el-tooltip content="修改基本信息" placement="top">
-                <el-button
-                  size="mini"
-                  type="warning"
-                  icon="el-icon-edit"
-                  style="margin: 0px;"
-                  circle
-                  @click="handleEditItem(scope.row)"
-                />
-              </el-tooltip>
-              <el-tooltip content="删除用例集" placement="top">
-                <el-button
-                  size="mini"
-                  type="danger"
-                  icon="el-icon-delete"
-                  style="margin: 0px;"
-                  circle
-                  @click="deleteItem(scope.row)"
-                />
-              </el-tooltip>
+              <div style="margin-right: 7px;margin-left: -7px">
+                <!-- <el-tooltip content="新增契约数据" placement="top">
+                  <el-button
+                    size="mini"
+                    type="primary"
+                    icon="el-icon-plus"
+                    style="margin: 0px;"
+                    circle
+                    @click="handleEdit(scope.row)"
+                  />
+                </el-tooltip> -->
+                <el-tooltip content="查看用例集" placement="top">
+                  <el-button
+                    size="mini"
+                    type="primary"
+                    icon="el-icon-view"
+                    style="margin: 0px;"
+                    circle
+                    @click="viewDataSet(scope.row)"
+                  />
+                </el-tooltip>
+                <el-tooltip content="修改基本信息" placement="top">
+                  <el-button
+                    size="mini"
+                    type="warning"
+                    icon="el-icon-edit"
+                    style="margin: 0px;"
+                    circle
+                    @click="handleEditItem(scope.row)"
+                  />
+                </el-tooltip>
+                <el-tooltip content="删除用例集" placement="top">
+                  <el-button
+                    size="mini"
+                    type="danger"
+                    icon="el-icon-delete"
+                    style="margin: 0px;"
+                    circle
+                    @click="deleteItem(scope.row)"
+                  />
+                </el-tooltip>
+              </div>
             </template>
           </el-table-column>
         </el-table>
@@ -209,7 +211,14 @@
           @current-change="handleCurrentChange"
         />
       </div>
-      <el-dialog v-loading="addLoading" title="新增契约数据" :visible.sync="addDataSetVisible2" width="40%" :show-close="false" :close-on-click-modal="false">
+      <el-dialog
+        v-loading="addLoading"
+        title="新增契约数据"
+        :visible.sync="addDataSetVisible2"
+        width="40%"
+        :show-close="false"
+        :close-on-click-modal="false"
+      >
         <br>
         <div class="content-box">
           <el-form
@@ -249,7 +258,14 @@
         </div>
       </el-dialog>
 
-      <el-dialog v-loading="addLoading" title="新增数据用例集" :visible.sync="addDataSetVisible" width="50%" :show-close="false" :close-on-click-modal="false">
+      <el-dialog
+        v-loading="addLoading"
+        title="新增数据用例集"
+        :visible.sync="addDataSetVisible"
+        width="50%"
+        :show-close="false"
+        :close-on-click-modal="false"
+      >
         <br>
         <div class="content-box">
           <el-form
@@ -302,7 +318,14 @@
         </div>
       </el-dialog>
 
-      <el-dialog v-loading="addLoading" title="修改数据用例集" :visible.sync="editVisible" width="50%" :show-close="false" :close-on-click-modal="false">
+      <el-dialog
+        v-loading="addLoading"
+        title="修改数据用例集"
+        :visible.sync="editVisible"
+        width="50%"
+        :show-close="false"
+        :close-on-click-modal="false"
+      >
         <br>
         <div class="content-box">
           <el-form

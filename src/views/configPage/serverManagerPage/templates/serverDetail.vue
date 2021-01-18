@@ -5,7 +5,7 @@
     <Box class="content-box">
       <div>
         <el-row style="text-align: left;">
-          <span style="font-size: small;color: #6a686b;">
+          <span style="font-size: 4px;color: #6a686b;">
             <span>「{{ serverDetail.creater }}」创建于「{{ serverDetail.create_time }}」</span>
             <span v-if="serverDetail.update_time!=serverDetail.create_time">
               ，「{{ serverDetail.modifier }}」最后修改于「{{ serverDetail.update_time }}」
@@ -52,6 +52,8 @@
                 autocomplete="off"
                 icon="caret-top"
                 readonly
+                type="textarea"
+                rows="5"
               />
             </div>
             <div v-if="serverDetail.union_server!=serverDetail.id" style="margin-bottom: 20px;margin-top: 10px">
@@ -88,7 +90,7 @@
             <el-table-column label="协议类型" prop="protocol" min-width="100" align="center" />
             <el-table-column label="主机地址" prop="host" min-width="200" align="center" />
             <el-table-column label="端口" prop="port" min-width="100" align="center" />
-            <el-table-column label="服务状态" prop="status" min-width="120" show-overflow-tooltip align="center">
+            <el-table-column label="服务状态" prop="status" min-width="120" align="center">
               <template slot-scope="scope">
                 <div v-if="scope.row.status==='服务可用'">
                   <i class="el-icon-success" style="color:#2bb40c" />
@@ -106,27 +108,29 @@
             </el-table-column>
             <el-table-column label="操作" prop="status" min-width="100" show-overflow-tooltip align="center">
               <template slot-scope="scope">
-                <el-tooltip content="编辑" placement="left">
-                  <el-button
-                    size="mini"
-                    type="warning"
-                    icon="el-icon-edit"
-                    style="margin: 1px;"
-                    circle
-                    @click="handleEnvEdit(scope.$index, scope.row)"
-                  />
-                </el-tooltip>
-                <el-tooltip content="删除" placement="right">
-                  <el-button
-                    v-show="scope.row.permission_type!=1"
-                    size="mini"
-                    type="danger"
-                    icon="el-icon-delete"
-                    style="margin: 1px;"
-                    circle
-                    @click="handleEnvDelete(scope.$index, scope.row)"
-                  />
-                </el-tooltip>
+                <div style="margin-right: 15px;margin-left: -7px">
+                  <el-tooltip content="编辑" placement="left">
+                    <el-button
+                      size="mini"
+                      type="warning"
+                      icon="el-icon-edit"
+                      style="margin: 1px;"
+                      circle
+                      @click="handleEnvEdit(scope.$index, scope.row)"
+                    />
+                  </el-tooltip>
+                  <el-tooltip content="删除" placement="right">
+                    <el-button
+                      v-show="scope.row.permission_type!=1"
+                      size="mini"
+                      type="danger"
+                      icon="el-icon-delete"
+                      style="margin: 1px;"
+                      circle
+                      @click="handleEnvDelete(scope.$index, scope.row)"
+                    />
+                  </el-tooltip>
+                </div>
               </template>
             </el-table-column>
           </el-table>
@@ -264,7 +268,7 @@
           <div style="float: right;">
             <el-input
               v-model="searchTxt"
-              style="display: inline-block;width: 280px"
+              style="display: inline-block;width: 200px"
               placeholder="输入关键字"
               @input="seachApiList"
             >
@@ -299,7 +303,7 @@
                   <div style="float: right;">
                     <el-input
                       v-model="searchexpandTxt"
-                      style="display: inline-block;width: 400px;height: 15px"
+                      style="display: inline-block;width: 250px;height: 15px"
                       placeholder="输入关键字"
                       @input="seachexpandTableList"
                     ><i slot="prefix" class="el-input__icon el-icon-search" /></el-input>
@@ -493,7 +497,7 @@
                 <span class="col-cont" v-html="showData2(scope.row.interface_name)" />
               </template>
             </el-table-column>
-            <el-table-column label="接口地址" prop="path" min-width="150px" align="left" show-overflow-tooltip>
+            <el-table-column label="接口地址" prop="path" min-width="150px" align="left">
               <template slot-scope="scope">
                 <label
                   v-if="scope.row.method === 'POST'"
@@ -584,7 +588,6 @@
               min-width="80px"
               :formatter="convertTimeFormat"
               align="center"
-              show-overflow-tooltip
               sortable
             />
             <el-table-column label="契约服务" width="120px" align="center">
@@ -663,48 +666,50 @@
             </el-table-column>
             <el-table-column label="操作" min-width="100" align="center">
               <template slot-scope="scope">
-                <el-tooltip content="查看文档" placement="left">
-                  <el-button
-                    v-if="serverDetail.permission_type === 2"
-                    type="primary"
-                    icon="el-icon-view"
-                    style="margin: 0"
-                    circle
-                    @click="handleViewDoc(scope.$index, scope.row)"
-                  />
-                </el-tooltip>
-                <el-tooltip content="编辑信息" placement="top">
-                  <el-button
-                    v-if="serverDetail.permission_type === 2"
-                    size="mini"
-                    type="warning"
-                    icon="el-icon-edit"
-                    style="margin: 0;"
-                    circle
-                    @click="handleInterfaceEdit(scope.$index, scope.row)"
-                  />
-                </el-tooltip>
-                <!--                <el-tooltip content="创建分支" placement="bottom">-->
-                <!--                  <el-button-->
-                <!--                    v-if="serverDetail.permission_type === 2"-->
-                <!--                    size="mini"-->
-                <!--                    type="success"-->
-                <!--                    icon="el-icon-document-copy"-->
-                <!--                    style="margin: 0;"-->
-                <!--                    circle-->
-                <!--                    @click="handleAddBranch(scope.$index, scope.row)"-->
-                <!--                  />-->
-                <el-tooltip content="删除文档" placement="top">
-                  <el-button
-                    v-if="serverDetail.permission_type === 2&&scope.row.branchs==null"
-                    size="mini"
-                    type="danger"
-                    icon="el-icon-delete"
-                    style="margin: 0;"
-                    circle
-                    @click="deleteInterface(scope.row)"
-                  />
-                </el-tooltip>
+                <div style="margin-right: 7px;margin-left: -7px">
+                  <el-tooltip content="查看文档" placement="left">
+                    <el-button
+                      v-if="serverDetail.permission_type === 2"
+                      type="primary"
+                      icon="el-icon-view"
+                      style="margin: 0"
+                      circle
+                      @click="handleViewDoc(scope.$index, scope.row)"
+                    />
+                  </el-tooltip>
+                  <el-tooltip content="编辑信息" placement="top">
+                    <el-button
+                      v-if="serverDetail.permission_type === 2"
+                      size="mini"
+                      type="warning"
+                      icon="el-icon-edit"
+                      style="margin: 0;"
+                      circle
+                      @click="handleInterfaceEdit(scope.$index, scope.row)"
+                    />
+                  </el-tooltip>
+                  <!--                <el-tooltip content="创建分支" placement="bottom">-->
+                  <!--                  <el-button-->
+                  <!--                    v-if="serverDetail.permission_type === 2"-->
+                  <!--                    size="mini"-->
+                  <!--                    type="success"-->
+                  <!--                    icon="el-icon-document-copy"-->
+                  <!--                    style="margin: 0;"-->
+                  <!--                    circle-->
+                  <!--                    @click="handleAddBranch(scope.$index, scope.row)"-->
+                  <!--                  />-->
+                  <el-tooltip content="删除文档" placement="top">
+                    <el-button
+                      v-if="serverDetail.permission_type === 2&&scope.row.branchs==null"
+                      size="mini"
+                      type="danger"
+                      icon="el-icon-delete"
+                      style="margin: 0;"
+                      circle
+                      @click="deleteInterface(scope.row)"
+                    />
+                  </el-tooltip>
+                </div>
               </template>
             </el-table-column>
           </el-table>

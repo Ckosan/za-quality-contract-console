@@ -41,7 +41,7 @@ module.exports = {
    */
   errorLog: 'production',
 
-  api_url: 'http://55850-za-napoleon.test.za.biz', // 'http://51963-za-napoleon.test.za.biz''https://contract-api.zhonganonline.com'
-  ws_host: 'ws://55850-za-napoleon.test.za.biz', // 55850-za-napoleon.test.za.biz 127.0.0.1:8080 ws://127.0.0.1:8080
+  api_url: 'https://contract-api.zhonganonline.com', // 'http://51963-za-napoleon.test.za.biz''https://contract-api.zhonganonline.com'
+  ws_host: 'wss://contract-api.zhonganonline.com', // 55850-za-napoleon.test.za.biz 127.0.0.1:8080 ws://127.0.0.1:8080
   engine_host: 'http://za-quality-contract-engine.pub.za.biz' // 'http://55850-za-quality-contract-engine.test.za.biz'
 }

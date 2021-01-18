@@ -98,55 +98,64 @@
           align="center"
           sortable
         />
-        <el-table-column label="项目归属" prop="deptinfo" min-width="100" align="center" show-overflow-tooltip>
+        <el-table-column label="项目归属" prop="deptinfo" min-width="100px" align="center">
           <template slot-scope="scope">
             <span class="col-cont" v-html="showDate(scope.row.deptinfo)" />
           </template>
         </el-table-column>
-        <el-table-column label="项目名称" prop="projectinfo" min-width="100" align="center" show-overflow-tooltip>
+        <el-table-column label="项目名称" prop="projectinfo" min-width="100px" align="center">
           <template slot-scope="scope">
             <span class="col-cont" v-html="showDate(scope.row.projectinfo)" />
           </template>
         </el-table-column>
-        <el-table-column label="项目负责人" prop="owners" min-width="150" align="center" show-overflow-tooltip>
+        <el-table-column label="项目负责人" prop="owners" min-width="100px" align="center">
           <template slot-scope="scope">
             <span class="col-cont" v-html="showDate(scope.row.owners)" />
           </template>
         </el-table-column>
-        <el-table-column label="关联应用数" prop="application_num" min-width="60" align="center" show-overflow-tooltip />
-        <el-table-column label="更新信息" prop="update_time" :formatter="convertDataFormat" min-width="80" align="center" show-overflow-tooltip />
-        <el-table-column label="操作" width="140px" align="center">
+        <el-table-column label="关联应用数" prop="application_num" min-width="60px" align="center" />
+        <el-table-column
+          label="更新信息"
+          prop="update_time"
+          :formatter="convertDataFormat"
+          min-width="80px"
+          align="center"
+          sortable
+        />
+        <el-table-column label="操作" width="135" align="center">
           <template slot-scope="scope">
-            <el-tooltip content="项目详情" placement="left">
-              <el-button
-                v-show="scope.row.permission_type!=0"
-                size="mini"
-                type="primary"
-                icon="el-icon-view"
-                circle
-                @click="handleDetail(scope.$index, scope.row)"
-              />
-            </el-tooltip>
-            <el-tooltip content="编辑项目" placement="right">
-              <el-button
-                v-show="scope.row.permission_type!=1"
-                size="mini"
-                type="warning"
-                icon="el-icon-edit"
-                circle
-                @click="handleEdit(scope.$index, scope.row)"
-              />
-            </el-tooltip>
-            <el-tooltip content="删除项目" placement="bottom">
-              <el-button
-                v-show="scope.row.application_num===0&&scope.row.permission_type===2"
-                size="mini"
-                type="danger"
-                icon="el-icon-delete"
-                circle
-                @click="deleteItem(scope.$index,scope.row)"
-              />
-            </el-tooltip>
+            <div style="margin-right: 7px;margin-left: -7px">
+              <el-tooltip content="项目详情" placement="left">
+                <el-button
+                  v-show="scope.row.permission_type!=0"
+                  size="mini"
+                  type="primary"
+                  icon="el-icon-view"
+                  circle
+                  @click="handleDetail(scope.$index, scope.row)"
+                />
+              </el-tooltip>
+              <el-tooltip content="编辑项目" placement="right">
+                <el-button
+                  v-show="scope.row.permission_type!=1"
+                  size="mini"
+                  type="warning"
+                  icon="el-icon-edit"
+                  circle
+                  @click="handleEdit(scope.$index, scope.row)"
+                />
+              </el-tooltip>
+              <el-tooltip content="删除项目" placement="bottom">
+                <el-button
+                  v-show="scope.row.application_num===0&&scope.row.permission_type===2"
+                  size="mini"
+                  type="danger"
+                  icon="el-icon-delete"
+                  circle
+                  @click="deleteItem(scope.$index,scope.row)"
+                />
+              </el-tooltip>
+            </div>
           </template>
         </el-table-column>
       </el-table>
@@ -163,7 +172,14 @@
     </Box>
 
     <!--编辑弹出框-->
-    <el-dialog title="编辑项目" :visible.sync="editFormVisible" width="60%" class="elDiaLog" :show-close="false" :close-on-click-modal="false">
+    <el-dialog
+      title="编辑项目"
+      :visible.sync="editFormVisible"
+      width="60%"
+      class="elDiaLog"
+      :show-close="false"
+      :close-on-click-modal="false"
+    >
       <div style="margin: 10px">
         <div style="text-align: center;font-size: 15px;font-weight: bold;margin-bottom: 25px"><label>项目信息</label>
         </div>
@@ -191,7 +207,13 @@
           <el-row>
             <el-col :span="12">
               <el-form-item label="一级部门:" prop="parent_dept">
-                <el-select v-model="editForm.parent_dept" filterable placeholder="请输入一级部门" style="display: block;" @change="getEditSubDept">
+                <el-select
+                  v-model="editForm.parent_dept"
+                  filterable
+                  placeholder="请输入一级部门"
+                  style="display: block;"
+                  @change="getEditSubDept"
+                >
                   <el-option
                     v-for="item in departmentList"
                     :key="item.value"
@@ -348,7 +370,13 @@
     </el-dialog>
 
     <!-- 添加弹出框 -->
-    <el-dialog title="添加项目" :visible.sync="addFormVisible" width="60%" :show-close="false" :close-on-click-modal="false">
+    <el-dialog
+      title="添加项目"
+      :visible.sync="addFormVisible"
+      width="60%"
+      :show-close="false"
+      :close-on-click-modal="false"
+    >
       <div style="margin: 10px">
         <div style="text-align: center;font-size: 15px;font-weight: bold;margin-bottom: 25px"><label>项目信息</label>
         </div>
@@ -376,7 +404,13 @@
           <el-row>
             <el-col :span="12">
               <el-form-item label="一级部门:" prop="parent_dept">
-                <el-select v-model="form.parent_dept" filterable placeholder="请输入一级部门" style="display: block;font-size: 8px" @change="getSubDept">
+                <el-select
+                  v-model="form.parent_dept"
+                  filterable
+                  placeholder="请输入一级部门"
+                  style="display: block;font-size: 8px"
+                  @change="getSubDept"
+                >
                   <el-option
                     v-for="item in departmentList"
                     :key="item.value"

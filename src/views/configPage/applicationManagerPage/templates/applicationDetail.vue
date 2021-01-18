@@ -6,7 +6,7 @@
       <div v-loading="regionLoading">
         <section>
           <el-row style="text-align: left;">
-            <span style="font-size: small;color: #6a686b;">
+            <span style="font-size: 4px;color: #6a686b;">
               <span>「{{ applicationDetail.creater }}」创建于「{{ applicationDetail.create_time }}」</span>
               <span v-if="applicationDetail.update_time!=applicationDetail.create_time">
                 ，「{{ applicationDetail.modifier }}」最后修改于「{{ applicationDetail.update_time }}」
@@ -19,7 +19,9 @@
           <div style="margin-top: 30px"><label style="font-weight: bold;font-size: 15px">应用信息</label></div>
           <div class="app-container">
             <div style="display: inline-block">
-              <div style="float:left;margin-bottom: 20px;margin-top: 10px;margin-right:10rem"><label style="font-size: 12px">所属项目：
+              <div style="float:left;margin-bottom: 20px;margin-top: 10px;margin-right:10rem"><label
+                style="font-size: 12px"
+              >所属项目：
                 <router-link
                   tag="a"
                   style="color:#0174DF;font-weight: normal"
@@ -28,7 +30,9 @@
                 }}({{ applicationDetail.project_code }})
                 </router-link>
               </label></div>
-              <div style="float:left;margin-bottom: 20px;margin-top: 10px;margin-right: 10rem"><label style="font-size: 12px">应用代码：<label
+              <div style="float:left;margin-bottom: 20px;margin-top: 10px;margin-right: 10rem"><label
+                style="font-size: 12px"
+              >应用代码：<label
                 style="font-weight: normal"
               >{{
                 applicationDetail.application_code
@@ -47,6 +51,8 @@
                 autocomplete="off"
                 icon="caret-top"
                 readonly
+                type="textarea"
+                rows="5"
               />
             </div>
           </div>
@@ -55,7 +61,9 @@
           <div><label style="font-weight: bold;font-size: 15px">成员信息</label></div>
           <div class="app-container">
             <div style="display: inline-block">
-              <div style="float:left;margin-bottom: 20px;margin-top: 10px;margin-right: 450px"><label style="font-size: 12px">开发人员：<label
+              <div style="float:left;margin-bottom: 20px;margin-top: 10px;margin-right: 450px"><label
+                style="font-size: 12px"
+              >开发人员：<label
                 style="font-weight: normal"
               >{{ applicationDetail.developers || "无" }}</label></label>
               </div>
@@ -67,7 +75,11 @@
         </section>
         <div>
           <div style="float: left"><label style="font-weight: bold;font-size: 15px">服务列表</label></div>
-          <div style="float: right;margin-right: 30px;margin-bottom: 5px"><el-button type="success" style="float: right;" icon="el-icon-plus" size="mini" @click="addServerClick">新增服务</el-button></div>
+          <div style="float: right;margin-right: 30px;margin-bottom: 5px">
+            <el-button type="success" style="float: right;" icon="el-icon-plus" size="mini" @click="addServerClick">
+              新增服务
+            </el-button>
+          </div>
         </div>
         <div class="eltable">
           <el-table
@@ -88,23 +100,27 @@
             <el-table-column label="服务编码" prop="server_code" min-width="50px" align="center" />
             <el-table-column label="服务说明" prop="server_name" min-width="100px" align="center" />
             <el-table-column label="文档数量" prop="document_num" min-width="50px" align="center" />
-            <el-table-column label="操作" width="300" align="center">
+            <el-table-column label="操作" width="120" align="center">
               <template slot-scope="scope">
-                <el-button
-                  size="small"
-                  type="primary"
-                  icon="el-icon-view"
-                  @click="handleDetail(scope.$index, scope.row)"
-                >服务详情
-                </el-button>
-                <el-button
-                  v-if="scope.row.document_num==0"
-                  size="small"
-                  type="danger"
-                  icon="el-icon-delete"
-                  @click="handleDeleteServer(scope.$index, scope.row)"
-                >删除服务
-                </el-button>
+                <el-tooltip content="服务详情" placement="left">
+                  <el-button
+                    size="mini"
+                    type="primary"
+                    icon="el-icon-view"
+                    circle
+                    @click="handleDetail(scope.$index, scope.row)"
+                  />
+                </el-tooltip>
+                <el-tooltip content="删除服务" placement="left">
+                  <el-button
+                    v-if="scope.row.document_num==0"
+                    size="mini"
+                    type="danger"
+                    icon="el-icon-delete"
+                    circle
+                    @click="handleDeleteServer(scope.$index, scope.row)"
+                  />
+                </el-tooltip>
               </template>
             </el-table-column>
           </el-table>
@@ -382,7 +398,8 @@
                         <el-table-column label="操作" min-width="150px" align="center">
                           <template slot-scope="scope">
                             <el-form-item style="margin: 0px;" label-width="0px">
-                              <el-button size="mini" type="danger" @click="deleteAddHttpItem(scope.$index,scope.row)">删除配置
+                              <el-button size="mini" type="danger" @click="deleteAddHttpItem(scope.$index,scope.row)">
+                                删除配置
                               </el-button>
                             </el-form-item>
                           </template>

@@ -68,7 +68,7 @@ export default {
     min-height: 100%;
     -webkit-transition: margin-left .28s;
     transition: margin-left .28s;
-    margin-left: 195px;
+    margin-left: 180px;
     position: relative;
     margin-top: -10px;
     background: rgba(241, 235, 230, 0.66);

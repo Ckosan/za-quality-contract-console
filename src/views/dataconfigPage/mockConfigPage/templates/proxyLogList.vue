@@ -153,7 +153,7 @@
           label="创建时间"
           prop="created_date"
           :formatter="convertDataFormat"
-          min-width="60px"
+          min-width="70"
           align="center"
           sortable
         />

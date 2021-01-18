@@ -59,12 +59,12 @@
                 <!--                  </li>-->
                 <!--                </ul>-->
                 <div style="margin-left: 180px;margin-bottom: 10px">
-                  <el-button style="background: #45c9cd;color: snow" size="mini" @click="updateMessage">全部标记为已读
+                  <el-button style="background: #45c9cd;color: snow;padding: 3px;font-size: 3px" size="mini" @click="updateMessage">全部标记为已读
                   </el-button>
                 </div>
                 <div>
                   <ul v-if="currentCount!=0" class="infinite-list" style="overflow:auto">
-                    <el-timeline style="margin-top: 2px;margin-right: 2px;margin-left: -15px">
+                    <el-timeline style="margin-top: 2px;margin-right: 2px;margin-left: 2px">
                       <el-timeline-item
                         v-for="(message, index) in loadMessageList"
                         :key="index"
@@ -76,9 +76,9 @@
                       >
                         <el-link
                           target="_blank"
-                          style="color:#35b2ed"
+                          style="color:#35b2ed;font-size: 2px;font-weight: normal"
                           @click="updateMessageByOne(message)"
-                        ><label style="font-size: 6px">{{ message.message }}</label>
+                        ><label style="font-size: 2px;font-weight: normal">{{ message.message }}</label>
                         </el-link>
                       </el-timeline-item>
                     </el-timeline>
@@ -283,8 +283,11 @@ export default {
     margin-right: 5px;
     margin-left: -14px;
     margin-bottom: 15px;
+    font-size: 4px;
   }
-
+  .el-badge__content.el-badge__content--undefined{
+    font-size: 4px;
+  }
   /*.el-button {*/
   /*  margin-right: 5px;*/
   /*  margin-left: 5px;*/
