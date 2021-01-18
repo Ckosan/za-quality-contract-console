@@ -57,6 +57,14 @@ module.exports = {
   SFTP_DATA_CONSTRUCT_ROLLBAKC: '/resourcesmanager/sftpdataconstruct/rollback',
   SFTP_DATA_CONSTRUCT_NEWVERSION: '/resourcesmanager/sftpdataconstruct/newversion',
   ONS_DATA_SERVER: '/resourcesmanager/onsdataserver',
+
+  // yapi操作
+  YAPI_GET_GROUP_LIST: '/yapi/getGroupList',
+  YAPI_GET_PROJECT_BY_GROUP: '/yapi/getProjectByGroup',
+  YAPI_GET_INTERFACE_LIST: '/yapi/getInterfaceByProject',
+  YAPI_IMPORT_ALL: '/yapi/importAll',
+  YAPI_IMPORT_SINGLE: '/yapi/importSingle',
+
   // 用例集
   DATA_SET_API: '/resourcesmanager/datasets',
   DATA_SET_BY_ID: '/resourcesmanager/datasets/getDataSetById',

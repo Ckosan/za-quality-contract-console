@@ -237,6 +237,16 @@
           </el-button>
           <el-button
             v-if="serverDetail.server_type==='API'"
+            style="background: #afcd47;color: snow;font-size: 12px"
+            type="info"
+            icon="el-icon-s-promotion"
+            size="mini"
+            @click="importYapi"
+          >
+            Yapi导入
+          </el-button>
+          <el-button
+            v-if="serverDetail.server_type==='API'"
             style="background: #6269cd;color: snow;font-size: 12px"
             icon="el-icon-top"
             size="mini"
@@ -1677,6 +1687,85 @@
         </div>
       </el-dialog>
 
+      <el-dialog
+        title="通过Yapi转换成接口文档"
+        :visible.sync="yapi.importYapiVisible"
+        width="30%"
+        :show-close="false"
+        :close-on-click-modal="false"
+      >
+        <Box v-loading="addLoading">
+          <div style="margin-left: -70px">
+            <el-form :model="yapi.addForm" class="demo-form-inline" label-width="120px">
+              <el-row>
+                <el-col :span="24">
+                  <el-form-item label="Yapi地址:">
+                    <el-input v-model="yapi.addForm.host" placeholder="请输入Yapi地址" />
+                  </el-form-item>
+                </el-col>
+              </el-row>
+              <el-row>
+                <el-col :span="12">
+                  <el-form-item label="组别:">
+                    <el-select v-model="yapi.addForm.group_id" filterable placeholder="请输入API地址">
+                      <el-option
+                        v-for="item in yapi.groupOptions"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                      />
+                    </el-select>
+                  </el-form-item>
+                </el-col>
+                <el-col :span="12">
+                  <el-form-item label="项目:">
+                    <el-select v-model="yapi.addForm.project_id" placeholder="请选择API请求方式">
+                      <el-option
+                        v-for="item in yapi.projectOptions"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                      />
+                    </el-select>
+                  </el-form-item>
+                </el-col>
+              </el-row>
+              <el-row>
+                <el-col :span="12">
+                  <el-form-item label="分类:">
+                    <el-select v-model="yapi.addForm.cat_id" filterable placeholder="请选择分类">
+                      <el-option
+                        v-for="item in yapi.catOptions"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                      />
+                    </el-select>
+                  </el-form-item>
+                </el-col>
+                <el-col :span="12">
+                  <el-form-item label="接口:">
+                    <el-select v-model="yapi.addForm.id" placeholder="请选择API">
+                      <el-option
+                        v-for="item in yapi.apiOptions"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                      />
+                    </el-select>
+                  </el-form-item>
+                </el-col>
+              </el-row>
+            </el-form>
+            <div style="margin: 20px 0;" />
+            <div slot="footer" class="dialog-footer" style="margin-left: 200px">
+              <el-button type="danger" @click="yapi.importYapiVisible = false">取 消</el-button>
+              <el-button v-if="radio==='1'" type="success" @click="syncSwaggerApi">同步API</el-button>
+              <el-button type="primary" :loading="regionLoading" @click="importSwaggerSubmit">导入</el-button>
+            </div>
+          </div>
+        </Box>
+      </el-dialog>
     </Box>
   </div>
 </template>

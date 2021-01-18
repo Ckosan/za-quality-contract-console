@@ -172,7 +172,22 @@ export default {
         description: ''
       },
       debugButtonloading: false,
-
+      yapi: {
+        importYapiVisible: false,
+        addForm: {
+          host: '',
+          method: 'GET',
+          cookie: '',
+          project_id: '',
+          id: '',
+          group_id: '',
+          cat_id: ''
+        },
+        groupOptions: [],
+        projectOptions: [],
+        catOptions: [],
+        apiOptions: []
+      },
       rules: {
         interface_name: [
           { required: true, message: '接口说明不能为空', trigger: 'blur' }
@@ -1126,6 +1141,9 @@ export default {
       } else {
         return val
       }
+    },
+    importYapi() {
+      this.yapi.importYapiVisible = true
     }
 
   }
