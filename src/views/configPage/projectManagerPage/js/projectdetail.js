@@ -53,6 +53,16 @@ export default {
       userInfoMap: [],
       staffOptions: [],
       rules: {
+        application_status: [
+          { required: true, message: '应用状态不能为空', trigger: 'blur' }
+        ],
+        application_describe: [
+          { required: true, message: '应用说明不能为空', trigger: 'blur' }
+        ],
+        application_code: [
+          { required: true, message: '应用代码不能为空', trigger: 'blur' },
+          { validator: isCode, trigger: 'blur' }
+        ],
         project_code: [
           { required: true, message: '项目编码不能为空', trigger: 'blur' },
           { min: 1, max: 256, message: '长度在 1 到 256 个字符', trigger: 'blur' },

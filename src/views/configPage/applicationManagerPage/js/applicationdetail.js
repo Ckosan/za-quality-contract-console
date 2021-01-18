@@ -83,6 +83,9 @@ export default {
           { required: true, message: '应用代码不能为空', trigger: 'blur' },
           { validator: isCode, trigger: 'blur' }
         ],
+        server_name: [
+          { required: true, message: '服务说明不能为空', trigger: 'blur' }
+        ],
         server_env: {
           env_name: [
             { required: true, message: '配置名称不能为空', trigger: 'blur' },
