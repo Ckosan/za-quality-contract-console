@@ -6,7 +6,7 @@ import {
   DELETE_INTERFACE,
   GET_SWAGGER_INTERFACE,
   HTTP_DEBUG,
-  HTTP_INTERFACE_ADD_BRANCH,
+  HTTP_INTERFACE_ADD_BRANCH, HTTP_INTERFACE_BRANCH,
   HTTP_INTERFACE_DELETE_BRANCH,
   HTTP_INTERFACE_INFO,
   HTTP_SERVER_API,
@@ -15,7 +15,7 @@ import {
   SERVER_DETAIL, SERVER_INTERFACE_API,
   SERVER_PARASE_POSTMAN,
   SWAGGER_IMPORT_ALL,
-  SWAGGER_IMPORT_SINGLE
+  SWAGGER_IMPORT_SINGLE, YAPI_GET_GROUP_LIST
 } from '../../../../contractapi'
 import { httpRequest, httpRequestWithoutLoading } from '../../../../http/interceptors'
 import { isUri } from '../../../../utils/validata_rules'
@@ -41,7 +41,8 @@ export default {
         id: '',
         branch: '',
         version: '',
-        description: ''
+        description: '',
+        row: ''
       },
       addBranchVisible: false,
       docForm: {
@@ -446,6 +447,8 @@ export default {
       this.getVersions(row.interface_id)
       this.editBranchVisible = true
       this.editBranchForm = Object.assign({}, row)
+      this.editBranchForm.row = {}
+      this.editBranchForm.row.id = row.interface_id
     },
     async getVersions(interfaceId) {
       const returnData = await httpRequestWithoutLoading('GET', API_EXT_INFO + '?interfaceId=' + interfaceId)
@@ -468,10 +471,10 @@ export default {
           } finally {
             this.editBranchVisible = false
           }
-          this.branchForm.version = ''
-          this.branchForm.branch = ''
-          this.branchForm.describe = ''
-          this.getInterfaceListByServer()
+          this.editBranchForm.version = ''
+          this.editBranchForm.branch = ''
+          this.editBranchForm.describe = ''
+          this.getReceiver(this.editBranchForm.row)
         }
       })
     },
@@ -1109,7 +1112,8 @@ export default {
       }
     },
     async getReceiver(row) {
-      this.expandTable = row.branchs
+      const returnData = await httpRequestWithoutLoading('GET', HTTP_INTERFACE_BRANCH + '?interfaceId=' + row.id)
+      this.expandTable = returnData
       this.tmpExpanList = this.expandTable
     },
     getExpandFilterApiList() {
@@ -1144,6 +1148,15 @@ export default {
     },
     importYapi() {
       this.yapi.importYapiVisible = true
+    },
+    async syncYApi() {
+      const reqData = {
+        method: 'GET',
+        host: this.yapi.addForm.host,
+        cookie: this.yapi.addForm.cookie
+      }
+      const returnData = await httpRequestWithoutLoading('POST', YAPI_GET_GROUP_LIST, reqData)
+      console.log(returnData)
     }
 
   }

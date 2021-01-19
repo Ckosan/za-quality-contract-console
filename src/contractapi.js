@@ -25,6 +25,7 @@ module.exports = {
   HTTP_TEMPLATES: '/resourcesmanager/httpinterfaceinfo/gethttptemplates',
   HTTP_SERVER_INFO: '/resourcesmanager/httpservers/getEnvListByInterface',
   HTTP_INTERFACE_INFO: '/resourcesmanager/httpinterfaceinfo',
+  HTTP_INTERFACE_BRANCH: '/resourcesmanager/httpinterfaceinfo/getBranches',
   HTTP_INTERFACE_INFO_BY_ID: '/resourcesmanager/httpinterfaceinfo/getInterfaceById',
   HTTP_INTERFACE_ADD_BRANCH: '/resourcesmanager/httpinterfaceinfo/newbranch',
   HTTP_INTERFACE_DELETE_BRANCH: '/resourcesmanager/httpinterfaceinfo/deletebranch',

@@ -38,8 +38,8 @@ module.exports = {
       '/api-dev/*': {
         // target: `http://127.0.0.1:8080`,
         // target: `http://sztest.zhonganonline.com:8081/`,
-        // target: `http://127.0.0.1:8080/`,
-        target: `http://55850-za-napoleon.test.za.biz:80/`,
+        target: `http://127.0.0.1:8080/`,
+        // target: `http://55850-za-napoleon.test.za.biz:80/`,
         // target: `http://za-napoleon.pub.za.biz/`,
         changeOrigin: true,
         pathRewrite: {

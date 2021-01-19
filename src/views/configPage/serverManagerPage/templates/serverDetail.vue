@@ -377,7 +377,7 @@
                       </el-link>
                       <span>&nbsp;|&nbsp;</span>
                       <el-popover
-                        placement="right"
+                        placement="left"
                         width="80"
                         trigger="hover"
                       >
@@ -610,7 +610,7 @@
                 </el-link>
                 <span>&nbsp;|&nbsp;</span>
                 <el-popover
-                  placement="right"
+                  placement="left"
                   width="80"
                   trigger="hover"
                 >
@@ -1690,7 +1690,7 @@
       <el-dialog
         title="通过Yapi转换成接口文档"
         :visible.sync="yapi.importYapiVisible"
-        width="30%"
+        width="40%"
         :show-close="false"
         :close-on-click-modal="false"
       >
@@ -1701,6 +1701,20 @@
                 <el-col :span="24">
                   <el-form-item label="Yapi地址:">
                     <el-input v-model="yapi.addForm.host" placeholder="请输入Yapi地址" />
+                  </el-form-item>
+                </el-col>
+              </el-row>
+              <el-row>
+                <el-col :span="24">
+                  <el-form-item label="Cookie:">
+                    <el-input
+                      v-model="yapi.addForm.cookie"
+                      type="textarea"
+                      placeholder="请输入cookie"
+                      rows="2"
+                      show-word-limit
+                      maxlength="2046"
+                    />
                   </el-form-item>
                 </el-col>
               </el-row>
@@ -1760,7 +1774,7 @@
             <div style="margin: 20px 0;" />
             <div slot="footer" class="dialog-footer" style="margin-left: 200px">
               <el-button type="danger" @click="yapi.importYapiVisible = false">取 消</el-button>
-              <el-button v-if="radio==='1'" type="success" @click="syncSwaggerApi">同步API</el-button>
+              <el-button type="success" @click="syncYApi">同步API</el-button>
               <el-button type="primary" :loading="regionLoading" @click="importSwaggerSubmit">导入</el-button>
             </div>
           </div>

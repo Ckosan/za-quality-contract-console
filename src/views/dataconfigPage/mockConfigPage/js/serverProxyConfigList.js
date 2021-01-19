@@ -82,7 +82,7 @@ export default {
   beforeCreate() {
   },
   created() {
-    this.mockApi = engine_host + '/S000'
+    this.mockApi = engine_host + '/proxy/S000'
   },
   computed: {
     ...mapGetters(['pagination', 'regionLoading'])
