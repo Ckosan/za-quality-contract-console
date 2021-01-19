@@ -1696,7 +1696,7 @@
       >
         <Box v-loading="addLoading">
           <div style="margin-left: -70px">
-            <el-form :model="yapi.addForm" class="demo-form-inline" label-width="120px" :rules="rules">
+            <el-form ref="yapi.addForm" :model="yapi.addForm" class="demo-form-inline" label-width="120px" :rules="rules">
               <el-row>
                 <el-col :span="24">
                   <el-form-item label="Yapi地址:" prop="host">
@@ -1789,7 +1789,7 @@
             <div slot="footer" class="dialog-footer" style="margin-left: 200px">
               <el-button type="danger" @click="yapi.importYapiVisible = false">取 消</el-button>
               <el-button type="success" @click="syncYApi">同步API</el-button>
-              <el-button type="primary" :loading="regionLoading" @click="importYapiSubmit">导入</el-button>
+              <el-button type="primary" :loading="regionLoading" @click="importYapiSubmit('yapi.addForm')">导入</el-button>
             </div>
           </div>
         </Box>

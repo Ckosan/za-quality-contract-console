@@ -186,15 +186,14 @@ export default {
       yapi: {
         importYapiVisible: false,
         addForm: {
-          host: 'https://zapi.zhonganinfo.com',
+          host: '',
           method: 'GET',
-          cookie: '_yapi_uid=705; _yapi_email=hepeihao@zhongan.com; _yapi_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjcwNSwiaWF0IjoxNjExMDMwNTM2LCJleHAiOjE2MTE2MzUzMzZ9.' +
-            'osFU4McLZDnHLPgd_XKr3g0AfYy89QSStTl52BsB9ik',
+          cookie: '',
           project_id: '',
           id: '',
           group_id: '',
           cat_id: '',
-          importType: ''
+          importType: 'catagory'
         },
         groupOptions: [],
         projectOptions: [],
@@ -1248,36 +1247,40 @@ export default {
         }
       }
     },
-    async importYapiSubmit() {
-      if (this.yapi.addForm.importType == 'catagory') {
-        const reqData = {
-          method: 'GET',
-          host: this.yapi.addForm.host,
-          cookie: this.yapi.addForm.cookie,
-          server_id: this.$route.params.id,
-          modifier: sessionStorage.getItem('currentUserName'),
-          data: {
-            project_id: this.yapi.addForm.project_id,
-            cat_id: this.yapi.addForm.cat_id
+    importYapiSubmit(form) {
+      this.$refs[form].validate(async(valid) => {
+        if (valid) {
+          if (this.yapi.addForm.importType == 'catagory') {
+            const reqData = {
+              method: 'GET',
+              host: this.yapi.addForm.host,
+              cookie: this.yapi.addForm.cookie,
+              server_id: this.$route.params.id,
+              modifier: sessionStorage.getItem('currentUserName'),
+              data: {
+                project_id: this.yapi.addForm.project_id,
+                cat_id: this.yapi.addForm.cat_id
+              }
+            }
+            await httpRequest('POST', YAPI_IMPORT_ALL, reqData)
           }
-        }
-        await httpRequest('POST', YAPI_IMPORT_ALL, reqData)
-      }
-      if (this.yapi.addForm.importType == 'api') {
-        const reqData = {
-          method: 'GET',
-          host: this.yapi.addForm.host,
-          cookie: this.yapi.addForm.cookie,
-          server_id: this.$route.params.id,
-          modifier: sessionStorage.getItem('currentUserName'),
-          data: {
-            id: this.yapi.addForm.id
+          if (this.yapi.addForm.importType == 'api') {
+            const reqData = {
+              method: 'GET',
+              host: this.yapi.addForm.host,
+              cookie: this.yapi.addForm.cookie,
+              server_id: this.$route.params.id,
+              modifier: sessionStorage.getItem('currentUserName'),
+              data: {
+                id: this.yapi.addForm.id
+              }
+            }
+            await httpRequest('POST', YAPI_IMPORT_SINGLE, reqData)
           }
+          this.getInterfaceListByServer()
+          this.yapi.importYapiVisible = false
         }
-        await httpRequest('POST', YAPI_IMPORT_SINGLE, reqData)
-      }
-      this.getInterfaceListByServer()
-      this.yapi.importYapiVisible = false
+      })
     }
   }
 }
