@@ -126,7 +126,7 @@
                 <el-table-column label="契约服务" min-width="60px" align="center">
                   <template slot-scope="scope">
                     <el-popover
-                      placement="right"
+                      placement="left"
                       width="80"
                       trigger="hover"
                     >

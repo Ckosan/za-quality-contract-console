@@ -1690,23 +1690,23 @@
       <el-dialog
         title="通过Yapi转换成接口文档"
         :visible.sync="yapi.importYapiVisible"
-        width="40%"
+        width="45%"
         :show-close="false"
         :close-on-click-modal="false"
       >
         <Box v-loading="addLoading">
           <div style="margin-left: -70px">
-            <el-form :model="yapi.addForm" class="demo-form-inline" label-width="120px">
+            <el-form :model="yapi.addForm" class="demo-form-inline" label-width="120px" :rules="rules">
               <el-row>
                 <el-col :span="24">
-                  <el-form-item label="Yapi地址:">
+                  <el-form-item label="Yapi地址:" prop="host">
                     <el-input v-model="yapi.addForm.host" placeholder="请输入Yapi地址" />
                   </el-form-item>
                 </el-col>
               </el-row>
               <el-row>
                 <el-col :span="24">
-                  <el-form-item label="Cookie:">
+                  <el-form-item label="Cookie:" prop="cookie">
                     <el-input
                       v-model="yapi.addForm.cookie"
                       type="textarea"
@@ -1720,11 +1720,11 @@
               </el-row>
               <el-row>
                 <el-col :span="12">
-                  <el-form-item label="组别:">
-                    <el-select v-model="yapi.addForm.group_id" filterable placeholder="请输入API地址">
+                  <el-form-item label="组别:" prop="group_id">
+                    <el-select v-model="yapi.addForm.group_id" filterable placeholder="请输入API地址" @change="changeGroup">
                       <el-option
                         v-for="item in yapi.groupOptions"
-                        :key="item.value"
+                        :key="item.key"
                         :label="item.label"
                         :value="item.value"
                       />
@@ -1732,8 +1732,8 @@
                   </el-form-item>
                 </el-col>
                 <el-col :span="12">
-                  <el-form-item label="项目:">
-                    <el-select v-model="yapi.addForm.project_id" placeholder="请选择API请求方式">
+                  <el-form-item label="项目:" prop="project_id">
+                    <el-select v-model="yapi.addForm.project_id" placeholder="请选择API请求方式" @change="changeYapiProject">
                       <el-option
                         v-for="item in yapi.projectOptions"
                         :key="item.value"
@@ -1746,7 +1746,7 @@
               </el-row>
               <el-row>
                 <el-col :span="12">
-                  <el-form-item label="分类:">
+                  <el-form-item label="分类:" prop="cat_id">
                     <el-select v-model="yapi.addForm.cat_id" filterable placeholder="请选择分类">
                       <el-option
                         v-for="item in yapi.catOptions"
@@ -1757,6 +1757,20 @@
                     </el-select>
                   </el-form-item>
                 </el-col>
+                <el-col :span="12">
+                  <el-form-item label="导入范围:" prop="importType">
+                    <el-select v-model="yapi.addForm.importType" placeholder="请选择导入范围" @change="changeCatagory">
+                      <el-option
+                        v-for="item in yapi.importOptions"
+                        :key="item.value"
+                        :label="item.label"
+                        :value="item.value"
+                      />
+                    </el-select>
+                  </el-form-item>
+                </el-col>
+              </el-row>
+              <el-row v-if="yapi.addForm.importType==='api'">
                 <el-col :span="12">
                   <el-form-item label="接口:">
                     <el-select v-model="yapi.addForm.id" placeholder="请选择API">
@@ -1775,7 +1789,7 @@
             <div slot="footer" class="dialog-footer" style="margin-left: 200px">
               <el-button type="danger" @click="yapi.importYapiVisible = false">取 消</el-button>
               <el-button type="success" @click="syncYApi">同步API</el-button>
-              <el-button type="primary" :loading="regionLoading" @click="importSwaggerSubmit">导入</el-button>
+              <el-button type="primary" :loading="regionLoading" @click="importYapiSubmit">导入</el-button>
             </div>
           </div>
         </Box>

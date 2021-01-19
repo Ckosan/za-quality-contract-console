@@ -2,20 +2,30 @@ import { mapGetters } from 'vuex'
 import { api_url, ws_host } from '../../../../settings'
 import {
   API_CONTRACT_DEBUG,
-  API_CONTRACT_DOC, API_EXT_INFO, BRNACH_API, DATA_SET_API,
+  API_CONTRACT_DOC,
+  API_EXT_INFO,
+  BRNACH_API,
+  DATA_SET_API,
   DELETE_INTERFACE,
   GET_SWAGGER_INTERFACE,
   HTTP_DEBUG,
-  HTTP_INTERFACE_ADD_BRANCH, HTTP_INTERFACE_BRANCH,
+  HTTP_INTERFACE_ADD_BRANCH,
+  HTTP_INTERFACE_BRANCH,
   HTTP_INTERFACE_DELETE_BRANCH,
   HTTP_INTERFACE_INFO,
   HTTP_SERVER_API,
   HTTP_SERVER_ENVLIST,
   HTTP_TEMPLATES,
-  SERVER_DETAIL, SERVER_INTERFACE_API,
+  SERVER_DETAIL,
+  SERVER_INTERFACE_API,
   SERVER_PARASE_POSTMAN,
   SWAGGER_IMPORT_ALL,
-  SWAGGER_IMPORT_SINGLE, YAPI_GET_GROUP_LIST
+  SWAGGER_IMPORT_SINGLE,
+  YAPI_GET_GROUP_LIST,
+  YAPI_GET_INTERFACE_LIST,
+  YAPI_GET_PROJECT_BY_GROUP,
+  YAPI_IMPORT_ALL,
+  YAPI_IMPORT_SINGLE
 } from '../../../../contractapi'
 import { httpRequest, httpRequestWithoutLoading } from '../../../../http/interceptors'
 import { isUri } from '../../../../utils/validata_rules'
@@ -176,18 +186,25 @@ export default {
       yapi: {
         importYapiVisible: false,
         addForm: {
-          host: '',
+          host: 'https://zapi.zhonganinfo.com',
           method: 'GET',
-          cookie: '',
+          cookie: '_yapi_uid=705; _yapi_email=hepeihao@zhongan.com; _yapi_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjcwNSwiaWF0IjoxNjExMDMwNTM2LCJleHAiOjE2MTE2MzUzMzZ9.' +
+            'osFU4McLZDnHLPgd_XKr3g0AfYy89QSStTl52BsB9ik',
           project_id: '',
           id: '',
           group_id: '',
-          cat_id: ''
+          cat_id: '',
+          importType: ''
         },
         groupOptions: [],
         projectOptions: [],
         catOptions: [],
-        apiOptions: []
+        tmpApilist: [],
+        apiOptions: [],
+        importOptions: [
+          { label: '按分类导入', value: 'catagory' },
+          { label: '按接口导入', value: 'api' }
+        ]
       },
       rules: {
         interface_name: [
@@ -220,6 +237,18 @@ export default {
         ],
         api: [
           { required: true, message: '接口不能为空', trigger: 'blur' }
+        ],
+        cookie: [
+          { required: true, message: 'cookie不能为空', trigger: 'blur' }
+        ],
+        group_id: [
+          { required: true, message: '分组不能为空', trigger: 'blur' }
+        ],
+        project_id: [
+          { required: true, message: '项目不能为空', trigger: 'blur' }
+        ],
+        cat_id: [
+          { required: true, message: '分类不能为空', trigger: 'blur' }
         ]
       }
     }
@@ -1036,7 +1065,6 @@ export default {
       return row.modifier + '\n\t' + convertTime(row.update_time)
     },
     goToVersionDetail(row) {
-      console.log(row)
       if (row.server_type === 'API') {
         this.$router.push({
           path: '/configpage/apidataversiondetail/' + row.interface_id,
@@ -1156,8 +1184,100 @@ export default {
         cookie: this.yapi.addForm.cookie
       }
       const returnData = await httpRequestWithoutLoading('POST', YAPI_GET_GROUP_LIST, reqData)
-      console.log(returnData)
+      this.yapi.groupOptions = []
+      returnData.forEach((value) => {
+        this.yapi.groupOptions.push({
+          key: value.id,
+          value: value.id,
+          label: value.group_name
+        })
+      })
+    },
+    async changeGroup() {
+      const reqData = {
+        method: 'GET',
+        host: this.yapi.addForm.host,
+        cookie: this.yapi.addForm.cookie,
+        data: {
+          group_id: this.yapi.addForm.group_id
+        }
+      }
+      const returnData = await httpRequestWithoutLoading('POST', YAPI_GET_PROJECT_BY_GROUP, reqData)
+      this.yapi.projectOptions = []
+      returnData.forEach((value) => {
+        this.yapi.projectOptions.push({
+          key: value.id,
+          value: value.id,
+          label: value.name
+        })
+      })
+    },
+    async changeYapiProject() {
+      const reqData = {
+        method: 'GET',
+        host: this.yapi.addForm.host,
+        cookie: this.yapi.addForm.cookie,
+        data: {
+          project_id: this.yapi.addForm.project_id
+        }
+      }
+      const returnData = await httpRequestWithoutLoading('POST', YAPI_GET_INTERFACE_LIST, reqData)
+      this.yapi.catOptions = []
+      this.yapi.tmpApilist = returnData
+      returnData.forEach((value) => {
+        this.yapi.catOptions.push({
+          key: value._id,
+          value: value._id,
+          label: value.name
+        })
+      })
+    },
+    changeCatagory() {
+      if (this.yapi.addForm.importType != 'api') return
+      let tmpList = []
+      for (let i = 0; i < this.yapi.tmpApilist.length; i++) {
+        if (this.yapi.addForm.cat_id === this.yapi.tmpApilist[i]._id) {
+          tmpList = this.yapi.tmpApilist[i].list
+          tmpList.forEach((value) => {
+            this.yapi.apiOptions.push({
+              key: value._id,
+              value: value._id,
+              label: value.title
+            })
+          })
+        }
+      }
+    },
+    async importYapiSubmit() {
+      if (this.yapi.addForm.importType == 'catagory') {
+        const reqData = {
+          method: 'GET',
+          host: this.yapi.addForm.host,
+          cookie: this.yapi.addForm.cookie,
+          server_id: this.$route.params.id,
+          modifier: sessionStorage.getItem('currentUserName'),
+          data: {
+            project_id: this.yapi.addForm.project_id,
+            cat_id: this.yapi.addForm.cat_id
+          }
+        }
+        await httpRequest('POST', YAPI_IMPORT_ALL, reqData)
+      }
+      if (this.yapi.addForm.importType == 'api') {
+        const reqData = {
+          method: 'GET',
+          host: this.yapi.addForm.host,
+          cookie: this.yapi.addForm.cookie,
+          server_id: this.$route.params.id,
+          modifier: sessionStorage.getItem('currentUserName'),
+          data: {
+            id: this.yapi.addForm.id
+          }
+        }
+        await httpRequest('POST', YAPI_IMPORT_SINGLE, reqData)
+      }
+      this.getInterfaceListByServer()
+      this.yapi.importYapiVisible = false
     }
-
   }
 }
