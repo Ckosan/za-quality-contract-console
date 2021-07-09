@@ -136,6 +136,7 @@ module.exports = {
               chunks: 'all',
               cacheGroups: {
                 libs: {
+
                   name: 'chunk-libs',
                   test: /[\\/]node_modules[\\/]/,
                   priority: 10,
